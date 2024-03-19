@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@types/pg": "^8.11.3",
+    "pg": "^8.11.3",
+    "typescript": "^5.4.2"
+  },
+  "name": "postgres_testing_with_mock_data_bt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

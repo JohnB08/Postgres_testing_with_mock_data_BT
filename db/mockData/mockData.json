@@ -1,0 +1,387 @@
+[
+    [
+        {
+            "name": "Company_741",
+            "liquidity": 3588,
+            "operational_cost": 2575,
+            "tags": [
+                "utvikling",
+                "milj\u00f8",
+                "energi",
+                "helse",
+                "robotics",
+                "hav",
+                "vind",
+                "tech",
+                "havforskning"
+            ],
+            "latest_profit": 1256,
+            "year": 2018
+        },
+        {
+            "name": "Company_741",
+            "liquidity": 4749,
+            "operational_cost": 1301,
+            "tags": [
+                "utvikling",
+                "milj\u00f8",
+                "energi",
+                "helse",
+                "robotics",
+                "hav",
+                "vind",
+                "tech",
+                "havforskning"
+            ],
+            "latest_profit": 4211,
+            "year": 2019
+        },
+        {
+            "name": "Company_741",
+            "liquidity": 2800,
+            "operational_cost": 2956,
+            "tags": [
+                "utvikling",
+                "milj\u00f8",
+                "energi",
+                "helse",
+                "robotics",
+                "hav",
+                "vind",
+                "tech",
+                "havforskning"
+            ],
+            "latest_profit": 3082,
+            "year": 2020
+        },
+        {
+            "name": "Company_741",
+            "liquidity": 4067,
+            "operational_cost": 4025,
+            "tags": [
+                "utvikling",
+                "milj\u00f8",
+                "energi",
+                "helse",
+                "robotics",
+                "hav",
+                "vind",
+                "tech",
+                "havforskning"
+            ],
+            "latest_profit": 615,
+            "year": 2021
+        },
+        {
+            "name": "Company_741",
+            "liquidity": 785,
+            "operational_cost": 3557,
+            "tags": [
+                "utvikling",
+                "milj\u00f8",
+                "energi",
+                "helse",
+                "robotics",
+                "hav",
+                "vind",
+                "tech",
+                "havforskning"
+            ],
+            "latest_profit": 1552,
+            "year": 2022
+        }
+    ],
+    [
+        {
+            "name": "Company_510",
+            "liquidity": 4451,
+            "operational_cost": 2889,
+            "tags": [
+                "havforskning"
+            ],
+            "latest_profit": 994,
+            "year": 2018
+        },
+        {
+            "name": "Company_510",
+            "liquidity": 181,
+            "operational_cost": 2259,
+            "tags": [
+                "havforskning"
+            ],
+            "latest_profit": 4389,
+            "year": 2019
+        },
+        {
+            "name": "Company_510",
+            "liquidity": 2728,
+            "operational_cost": 2579,
+            "tags": [
+                "havforskning"
+            ],
+            "latest_profit": 843,
+            "year": 2020
+        },
+        {
+            "name": "Company_510",
+            "liquidity": 2105,
+            "operational_cost": 5107,
+            "tags": [
+                "havforskning"
+            ],
+            "latest_profit": 4033,
+            "year": 2021
+        },
+        {
+            "name": "Company_510",
+            "liquidity": 4258,
+            "operational_cost": 3132,
+            "tags": [
+                "havforskning"
+            ],
+            "latest_profit": 350,
+            "year": 2022
+        }
+    ],
+    [
+        {
+            "name": "Company_74",
+            "liquidity": 3012,
+            "operational_cost": 1055,
+            "tags": [
+                "utvikling",
+                "helse",
+                "milj\u00f8",
+                "robotics",
+                "tech",
+                "havforskning",
+                "energi",
+                "hav",
+                "vind"
+            ],
+            "latest_profit": 4250,
+            "year": 2018
+        },
+        {
+            "name": "Company_74",
+            "liquidity": 4603,
+            "operational_cost": 1419,
+            "tags": [
+                "utvikling",
+                "helse",
+                "milj\u00f8",
+                "robotics",
+                "tech",
+                "havforskning",
+                "energi",
+                "hav",
+                "vind"
+            ],
+            "latest_profit": 3079,
+            "year": 2019
+        },
+        {
+            "name": "Company_74",
+            "liquidity": 3928,
+            "operational_cost": 4168,
+            "tags": [
+                "utvikling",
+                "helse",
+                "milj\u00f8",
+                "robotics",
+                "tech",
+                "havforskning",
+                "energi",
+                "hav",
+                "vind"
+            ],
+            "latest_profit": 1534,
+            "year": 2020
+        },
+        {
+            "name": "Company_74",
+            "liquidity": 1476,
+            "operational_cost": 1506,
+            "tags": [
+                "utvikling",
+                "helse",
+                "milj\u00f8",
+                "robotics",
+                "tech",
+                "havforskning",
+                "energi",
+                "hav",
+                "vind"
+            ],
+            "latest_profit": 2116,
+            "year": 2021
+        },
+        {
+            "name": "Company_74",
+            "liquidity": 1448,
+            "operational_cost": 1440,
+            "tags": [
+                "utvikling",
+                "helse",
+                "milj\u00f8",
+                "robotics",
+                "tech",
+                "havforskning",
+                "energi",
+                "hav",
+                "vind"
+            ],
+            "latest_profit": 3926,
+            "year": 2022
+        }
+    ],
+    [
+        {
+            "name": "Company_274",
+            "liquidity": 4371,
+            "operational_cost": 3299,
+            "tags": [
+                "vind",
+                "tech",
+                "robotics",
+                "havforskning",
+                "hav",
+                "utvikling",
+                "energi",
+                "helse",
+                "milj\u00f8"
+            ],
+            "latest_profit": 4468,
+            "year": 2018
+        },
+        {
+            "name": "Company_274",
+            "liquidity": 2798,
+            "operational_cost": 4037,
+            "tags": [
+                "vind",
+                "tech",
+                "robotics",
+                "havforskning",
+                "hav",
+                "utvikling",
+                "energi",
+                "helse",
+                "milj\u00f8"
+            ],
+            "latest_profit": -345,
+            "year": 2019
+        },
+        {
+            "name": "Company_274",
+            "liquidity": 2457,
+            "operational_cost": 1912,
+            "tags": [
+                "vind",
+                "tech",
+                "robotics",
+                "havforskning",
+                "hav",
+                "utvikling",
+                "energi",
+                "helse",
+                "milj\u00f8"
+            ],
+            "latest_profit": 2655,
+            "year": 2020
+        },
+        {
+            "name": "Company_274",
+            "liquidity": 5217,
+            "operational_cost": 4361,
+            "tags": [
+                "vind",
+                "tech",
+                "robotics",
+                "havforskning",
+                "hav",
+                "utvikling",
+                "energi",
+                "helse",
+                "milj\u00f8"
+            ],
+            "latest_profit": 4520,
+            "year": 2021
+        },
+        {
+            "name": "Company_274",
+            "liquidity": 4242,
+            "operational_cost": 1680,
+            "tags": [
+                "vind",
+                "tech",
+                "robotics",
+                "havforskning",
+                "hav",
+                "utvikling",
+                "energi",
+                "helse",
+                "milj\u00f8"
+            ],
+            "latest_profit": 3740,
+            "year": 2022
+        }
+    ],
+    [
+        {
+            "name": "Company_834",
+            "liquidity": 5090,
+            "operational_cost": 1140,
+            "tags": [
+                "hav",
+                "havforskning"
+            ],
+            "latest_profit": -244,
+            "year": 2018
+        },
+        {
+            "name": "Company_834",
+            "liquidity": 3848,
+            "operational_cost": 3702,
+            "tags": [
+                "hav",
+                "havforskning"
+            ],
+            "latest_profit": 1316,
+            "year": 2019
+        },
+        {
+            "name": "Company_834",
+            "liquidity": 1021,
+            "operational_cost": 1528,
+            "tags": [
+                "hav",
+                "havforskning"
+            ],
+            "latest_profit": 809,
+            "year": 2020
+        },
+        {
+            "name": "Company_834",
+            "liquidity": 1857,
+            "operational_cost": 4976,
+            "tags": [
+                "hav",
+                "havforskning"
+            ],
+            "latest_profit": 683,
+            "year": 2021
+        },
+        {
+            "name": "Company_834",
+            "liquidity": 4544,
+            "operational_cost": 2858,
+            "tags": [
+                "hav",
+                "havforskning"
+            ],
+            "latest_profit": -37,
+            "year": 2022
+        }
+    ]
+]
