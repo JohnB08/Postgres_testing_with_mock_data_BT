@@ -1,4 +1,6 @@
 import { db } from "../dbConfig/dbConfig.js";
+/* Ikke sikker på denne setupen av databasen. Men liker at vi kan finne data basert på company_id. Gjør det lett å fetche basert på tags. */
+/* Bør det være en identisk, men adskilt database for anonymisert sammenligningsdata? */
 const createUserTable = async () => {
     try {
         const data = await db.query(`
@@ -27,6 +29,8 @@ const createTagTable = async () => {
     }
     return testArray;
 };
+/* Kan det lages funksjoner basert på denne? kanskje vi kan lage en funksjon som kan regne ut levlighetsgrad basert på data over tid for bransje?
+Eller bør de gjøres på frontend siden? */
 const createYearlyTable = async () => {
     try {
         const data = await db.query(`
