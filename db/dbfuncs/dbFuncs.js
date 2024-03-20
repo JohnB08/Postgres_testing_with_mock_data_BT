@@ -64,14 +64,15 @@ const searchByTag = async (tagArray) => {
         return { success: false, error };
     }
 };
-const insertingCompanyNames = [];
-for (let companyData of mockData) {
-    try {
-        const data = await insertData(companyData);
-        insertingCompanyNames.push(data);
-    }
-    catch (error) {
-        insertingCompanyNames.push(error);
+/* const insertingCompanyNames = []
+for (let companyData of mockData){
+    try{
+        const data = await insertData(companyData)
+        insertingCompanyNames.push(data)
+    } catch (error){
+        insertingCompanyNames.push(error)
     }
 }
-console.log(insertingCompanyNames);
+console.log(insertingCompanyNames) */
+const searchResult = await searchByTag(["hav", "vind"]);
+console.log(searchResult);

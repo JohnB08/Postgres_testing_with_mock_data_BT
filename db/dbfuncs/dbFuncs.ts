@@ -81,7 +81,7 @@ try{
 }
 
 
-const insertingCompanyNames = []
+/* const insertingCompanyNames = []
 for (let companyData of mockData){
     try{
         const data = await insertData(companyData)
@@ -90,4 +90,9 @@ for (let companyData of mockData){
         insertingCompanyNames.push(error)
     }
 }
-console.log(insertingCompanyNames)
+console.log(insertingCompanyNames) */
+
+
+const searchResult = await searchByTag(["hav", "vind"])
+
+console.log(searchResult)
