@@ -54,6 +54,15 @@ const insertData = async(dataArray: dataType[]) =>{
 
 /* SEARCHBYTAG. Ikke sikker på om beste gjennomføringsmåte. Usikker på om tagname in ANY er for lite spesifikt. Kanskje en inverse tag search, Not In? når brukeren velger en tag, så excluderer searchen alt annet? */
 
+
+/**
+ * Takes in an array of tags. Returns company name, and economic data for each year.
+ * @param tagArray string array containing tags
+ * @returns an object {
+ * success: boolean,
+ * success ? result : error
+ * }
+ */
 const searchByTag = async(tagArray: string[])=>{
 try{
     const data = await db.query(`
@@ -63,14 +72,12 @@ try{
         ON companytagrelationship.company_id = company_names.company_id
     INNER JOIN yearlyeconomics
         ON yearlyeconomics.company_id = company_names.company_id
-    WHERE companytagrelationship.tagname = ANY('{utvikling}')
-    GROUP BY company_names.company_name, yearlyeconomics.year, yearlyeconomics.liquidity, yearlyeconomics.operational_cost, yearlyeconomics.latest_profit
-    ORDER BY company_names.company_name, yearlyeconomics.year
+    WHERE companytagrelationship.tagname = ANY($1)
     `, [tagArray])
-    return {success: true, data}
+    return {success: true, result: data.rows}
 } catch (error){
     return {success: false, error}
-}
+}   
 }
 
 
