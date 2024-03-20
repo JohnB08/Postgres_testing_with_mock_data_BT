@@ -41,6 +41,8 @@ const insertData = async (dataArray) => {
 /* SEARCHBYTAG. Ikke sikker på om beste gjennomføringsmåte. Usikker på om tagname in ANY er for lite spesifikt. Kanskje en inverse tag search, Not In? når brukeren velger en tag, så excluderer searchen alt annet? */
 /**
  * Takes in an array of tags. Returns company name, and economic data for each year.
+ * Can adjust results based on boolean??
+ * Adding extra parameters to function allow for spesific queries for spesific numbers.
  * @param tagArray string array containing tags
  * @returns an object {
  * success: boolean,

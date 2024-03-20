@@ -57,6 +57,8 @@ const insertData = async(dataArray: dataType[]) =>{
 
 /**
  * Takes in an array of tags. Returns company name, and economic data for each year.
+ * Can adjust results based on boolean??
+ * Adding extra parameters to function allow for spesific queries for spesific numbers.
  * @param tagArray string array containing tags
  * @returns an object {
  * success: boolean,
