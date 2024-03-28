@@ -108,12 +108,31 @@ const searchByTagSpesific = async (tagArray, startYear = 0, endYear = new Date()
 const searchByName = async (companyNameSnippet) => {
     try {
         const data = await db.query(`
-            SELECT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
+            SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
             FROM company_names
             INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
             WHERE company_names.company_name ILIKE '%' || $1 || '%'
             `, [companyNameSnippet]);
         return { success: true, result: data.rows };
+    }
+    catch (error) {
+        return { success: false, error };
+    }
+};
+const searchByOrgNr = async (companyOrgNr) => {
+    try {
+        const stringifiedNr = companyOrgNr.toString();
+        const data = await db.query(`
+        SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
+        FROM company_names
+        INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
+        WHERE company_names.company_org_nr = $1
+        `, [stringifiedNr]);
+        if (data.rowCount !== null && data.rowCount > 0) {
+            return { success: true, result: data.rows };
+        }
+        else
+            return { success: true, result: "No Company Found." };
     }
     catch (error) {
         return { success: false, error };
@@ -134,5 +153,7 @@ console.log(insertingCompanyNames) */
 /* const searchResults = await searchByTagSpesific(['marin', 'innovasjon'])
 
 console.log(searchResults) */
-const searchResults = await searchByName("hav");
-console.log(searchResults);
+/* const searchResults = await searchByName("hav")
+console.log(searchResults) */
+/* const searchResults = await searchByOrgNr(25284583)
+console.log(searchResults) */ 

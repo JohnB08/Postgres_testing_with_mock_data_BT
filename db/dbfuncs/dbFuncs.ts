@@ -126,7 +126,7 @@ const searchByTagSpesific = async(tagArray: string[], startYear: number= 0, endY
 const searchByName = async(companyNameSnippet: string)=>{
     try{
         const data = await db.query(`
-            SELECT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
+            SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
             FROM company_names
             INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
             WHERE company_names.company_name ILIKE '%' || $1 || '%'
@@ -137,6 +137,22 @@ const searchByName = async(companyNameSnippet: string)=>{
     }
 }
 
+const searchByOrgNr = async(companyOrgNr: number)=>{
+    try{
+        const stringifiedNr = companyOrgNr.toString()
+        const data = await db.query(`
+        SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
+        FROM company_names
+        INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
+        WHERE company_names.company_org_nr = $1
+        `, [stringifiedNr])
+        if (data.rowCount !== null && data.rowCount > 0 ){
+            return {success: true, result: data.rows}
+        } else return {success: true, result: "No Company Found."}
+    } catch (error){
+        return {success: false, error}
+    }
+}
 
 /* TESTING FUNCTIONS */
 
@@ -156,5 +172,8 @@ console.log(insertingCompanyNames) */
 
 console.log(searchResults) */
 
-const searchResults = await searchByName("hav")
-console.log(searchResults)
+/* const searchResults = await searchByName("hav")
+console.log(searchResults) */
+
+/* const searchResults = await searchByOrgNr(25284583)
+console.log(searchResults) */
