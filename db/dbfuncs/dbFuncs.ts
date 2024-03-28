@@ -104,7 +104,7 @@ try{
 const searchByTagSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
     try {
         const data = await db.query(`
-        SELECT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
+        SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
         FROM company_names
         INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
         WHERE company_names.company_id IN (
@@ -123,6 +123,23 @@ const searchByTagSpesific = async(tagArray: string[], startYear: number= 0, endY
     }
 }
 
+const searchByName = async(companyNameSnippet: string)=>{
+    try{
+        const data = await db.query(`
+            SELECT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
+            FROM company_names
+            INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
+            WHERE company_names.company_name ILIKE '%' || $1 || '%'
+            `, [companyNameSnippet])
+        return {success: true, result: data.rows}
+    } catch (error){
+        return {success: false, error}
+    }
+}
+
+
+/* TESTING FUNCTIONS */
+
 /* 
 const insertingCompanyNames = []
 for (let companyData of mockData){
@@ -135,6 +152,9 @@ for (let companyData of mockData){
 }
 console.log(insertingCompanyNames) */
 
-const searchResults = await searchByTagSpesific(['marin', 'innovasjon'])
+/* const searchResults = await searchByTagSpesific(['marin', 'innovasjon'])
 
+console.log(searchResults) */
+
+const searchResults = await searchByName("hav")
 console.log(searchResults)

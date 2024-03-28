@@ -4,7 +4,7 @@
 export const verifyYear = (year: unknown):year is number =>{
     return (
         typeof year === "number" &&
-        year >= 0 &&
+        year >= 1900 &&
         year <= new Date().getFullYear()
     )
 }
