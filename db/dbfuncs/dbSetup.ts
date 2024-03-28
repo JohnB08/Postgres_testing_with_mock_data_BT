@@ -7,7 +7,7 @@ import { db } from "../dbConfig/dbConfig.js";
 const createUserTable = async() =>{
 try{
     const data = await db.query(`
-    CREATE TABLE IF NOT EXISTS company_names (company_name VARCHAR(255) UNIQUE NOT NULL, company_id SERIAL PRIMARY KEY)
+    CREATE TABLE IF NOT EXISTS company_names (company_name VARCHAR(255) UNIQUE NOT NULL, company_id SERIAL PRIMARY KEY), company_org_nr VARCHAR(255),
     `)
     return {success: true, data}
 } catch (error){
@@ -40,7 +40,7 @@ Eller bør de gjøres på frontend siden? */
 const createYearlyTable = async()=>{
     try{
         const data = await db.query(`
-        CREATE TABLE IF NOT EXISTS yearlyeconomics (year INTEGER, liquidity INTEGER, operational_cost INTEGER, latest_profit INTEGER, company_id INTEGER REFERENCES company_names(company_id))
+        CREATE TABLE IF NOT EXISTS economic_data (queried_year INTEGER, operating_income INTEGER, operating_profit INTEGER, result_before_taxes INTEGER, annual_result INTEGER, total_assets INTEGER, company_id INTEGER REFERENCES company_names(company_id))
         `)
         return {success: true, data}
     } catch (error){

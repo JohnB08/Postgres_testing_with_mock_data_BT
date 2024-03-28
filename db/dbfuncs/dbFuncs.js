@@ -5,10 +5,10 @@ const insertData = async (dataArray) => {
     const dbQueryArray = [];
     try {
         const userInsertion = await db.query(`
-        INSERT INTO company_names (company_name)
-        VALUES ($1)
+        INSERT INTO company_names (company_name, company_org_nr)
+        VALUES ($, $2)
         RETURNING company_id
-        `, [dataArray[0].name]);
+        `, [dataArray[0].name, dataArray[0].org_nr]);
         dbQueryArray.push(userInsertion);
         const companyId = userInsertion.rows[0].company_id;
         console.log(companyId);
@@ -23,9 +23,9 @@ const insertData = async (dataArray) => {
         for (let dataPoint of dataArray) {
             try {
                 const economicInsertion = await db.query(`
-                INSERT INTO yearlyeconomics (year, liquidity, operational_cost, latest_profit, company_id)
-                VALUES ($1, $2, $3, $4, $5)
-                `, [dataPoint.year, dataPoint.liquidity, dataPoint.operational_cost, dataPoint.latest_profit, companyId]);
+                INSERT INTO yearlyeconomics (queried_year, operating_income, operating_profit, result_before_taxes, annual_result, total_assets, company_id)
+                VALUES ($1, $2, $3, $4, $5, $6, $7)
+                `, [dataPoint.queried_year, dataPoint.operating_income, dataPoint.operating_profit, dataPoint.result_before_taxes, dataPoint.annual_result, dataPoint.total_assets, companyId]);
                 dbQueryArray.push(economicInsertion);
             }
             catch (error) {
@@ -66,15 +66,14 @@ const searchByTag = async (tagArray) => {
         return { success: false, error };
     }
 };
-/* const insertingCompanyNames = []
-for (let companyData of mockData){
-    try{
-        const data = await insertData(companyData)
-        insertingCompanyNames.push(data)
-    } catch (error){
-        insertingCompanyNames.push(error)
+const insertingCompanyNames = [];
+for (let companyData of mockData) {
+    try {
+        const data = await insertData(companyData);
+        insertingCompanyNames.push(data);
+    }
+    catch (error) {
+        insertingCompanyNames.push(error);
     }
 }
-console.log(insertingCompanyNames) */
-const searchResult = await searchByTag(["hav", "vind"]);
-console.log(searchResult);
+console.log(insertingCompanyNames);
