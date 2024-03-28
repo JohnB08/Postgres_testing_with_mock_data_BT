@@ -1,8 +1,6 @@
 import { db } from "../dbConfig/dbConfig.js";
-import mockData from "../mockData/mockData.json" assert {type: "json"}
-
-
-console.log(mockData)
+//brukes bare for insert av mockData til local database
+/* import mockData from "../mockData/mockData.json" assert {type: "json"} */
 
 type dataType = {
     name: string,
@@ -170,9 +168,9 @@ for (let companyData of mockData){
 }
 console.log(insertingCompanyNames) */
 
-/* const searchResults = await searchByTagSpesific(['marin', 'innovasjon'])
+const searchResults = await searchByTagSpesific(['marin', 'innovasjon'])
 
-console.log(searchResults) */
+console.log(searchResults)
 
 /* const searchResults = await searchByName("hav")
 console.log(searchResults) */

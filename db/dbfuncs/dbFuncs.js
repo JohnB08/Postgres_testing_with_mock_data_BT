@@ -1,6 +1,4 @@
 import { db } from "../dbConfig/dbConfig.js";
-import mockData from "../mockData/mockData.json" assert { type: "json" };
-console.log(mockData);
 const insertData = async (dataArray) => {
     const dbQueryArray = [];
     try {
@@ -152,9 +150,8 @@ for (let companyData of mockData){
     }
 }
 console.log(insertingCompanyNames) */
-/* const searchResults = await searchByTagSpesific(['marin', 'innovasjon'])
-
-console.log(searchResults) */
+const searchResults = await searchByTagSpesific(['marin', 'innovasjon']);
+console.log(searchResults);
 /* const searchResults = await searchByName("hav")
 console.log(searchResults) */
 /* const searchResults = await searchByOrgNr(25284583)
