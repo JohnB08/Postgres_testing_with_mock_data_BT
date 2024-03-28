@@ -31,7 +31,32 @@ function generateDynamicMockEconomicData(companyCount, startYear, endYear) {
         "Fornybar",
         "Vann",
         "Skog",
-        "Fjell"
+        "Fjell",
+        "Aegir",
+        "Freyr",
+        "Idunn",
+        "Njord",
+        "Galdhøpiggen",
+        "Trolltunga",
+        "Lofoten",
+        "Svalbard",
+        "Preikestolen",
+        "Panacea",
+        "Vitalis",
+        "Hygieia",
+        "Asclepius",
+        "Neptune",
+        "Poseidon",
+        "Thalassa",
+        "Maris",
+        "Cypher",
+        "Quantum",
+        "Aether",
+        "Tesla",
+        "Agora",
+        "Harmonia",
+        "Civitas",
+        "Utopia"
     ];
     const suffixes = [
         "Solutions",
@@ -51,7 +76,18 @@ function generateDynamicMockEconomicData(companyCount, startYear, endYear) {
         "Energi",
         "Design",
         "Utvikling",
-        "Produkter"
+        "Produkter",
+        "Networks",
+        "Insights",
+        "Ventures",
+        "Horizons",
+        "Pioneers",
+        "Frontiers",
+        "Innsikt",
+        "Eventyr",
+        "Oppdagelse",
+        "Samfunn",
+        "Verdier"
     ];
     const baseTags = ["marin", "helse", "teknologi", "samfunn"];
     const additionalTags = ["bærekraft", "forskning", "innovasjon", "infrastruktur", "miljøvennlig"];
@@ -69,7 +105,7 @@ function generateDynamicMockEconomicData(companyCount, startYear, endYear) {
     };
     //Chatgpt forgot org nrs should be unique for each company, but only generated once, so had to add this:
     const generateOrgNr = () => {
-        return `${Math.floor(100000 + Math.random() * 900000)}`;
+        return `${Math.floor(100000 + Math.random() * 90000000)}`;
     };
     // Generate yearly data with randomized financial stats and consistent company and tag information
     const generateYearlyData = (name, tags, year, orgNr) => ({
@@ -99,7 +135,7 @@ function generateDynamicMockEconomicData(companyCount, startYear, endYear) {
     }
     return data;
 }
-const generatedMockData = generateDynamicMockEconomicData(20, 2020, 2023);
+const generatedMockData = generateDynamicMockEconomicData(200, 2020, 2023);
 console.log(generatedMockData);
 const path = "../mockData/mockData.json";
 fs.writeFileSync(path, JSON.stringify(generatedMockData));

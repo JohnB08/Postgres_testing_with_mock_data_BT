@@ -9,7 +9,7 @@ import fs from "fs"
 Then i'll add a fs function at the end to update my mockData.json file.*/ 
 function generateDynamicMockEconomicData(companyCount: number, startYear: number, endYear: number) {
   // Prefixes and suffixes for dynamic company name generation
-  const prefixes = [
+ const prefixes = [
   "Eco",
   "Bio",
   "Tech",
@@ -37,9 +37,34 @@ function generateDynamicMockEconomicData(companyCount: number, startYear: number
   "Fornybar",
   "Vann",
   "Skog",
-  "Fjell"
+  "Fjell",
+  "Aegir",
+  "Freyr",
+  "Idunn",
+  "Njord",
+  "Galdhøpiggen",
+  "Trolltunga",
+  "Lofoten",
+  "Svalbard",
+  "Preikestolen",
+  "Panacea",
+  "Vitalis",
+  "Hygieia",
+  "Asclepius",
+  "Neptune",
+  "Poseidon",
+  "Thalassa",
+  "Maris",
+  "Cypher",
+  "Quantum",
+  "Aether",
+  "Tesla",
+  "Agora",
+  "Harmonia",
+  "Civitas",
+  "Utopia"
 ];
-  const suffixes = [
+ const suffixes = [
   "Solutions",
   "Marine",
   "Health",
@@ -57,7 +82,18 @@ function generateDynamicMockEconomicData(companyCount: number, startYear: number
   "Energi",
   "Design",
   "Utvikling",
-  "Produkter" 
+  "Produkter",
+  "Networks",
+  "Insights",
+  "Ventures",
+  "Horizons",
+  "Pioneers",
+  "Frontiers",
+  "Innsikt",
+  "Eventyr",
+  "Oppdagelse",
+  "Samfunn",
+  "Verdier"
 ];
   const baseTags = ["marin", "helse", "teknologi", "samfunn"];
   const additionalTags = ["bærekraft", "forskning", "innovasjon", "infrastruktur", "miljøvennlig"];
@@ -78,7 +114,7 @@ function generateDynamicMockEconomicData(companyCount: number, startYear: number
 
   //Chatgpt forgot org nrs should be unique for each company, but only generated once, so had to add this:
   const generateOrgNr = () =>{
-    return `${Math.floor(100000 + Math.random() * 900000)}`
+    return `${Math.floor(100000 + Math.random() * 90000000)}`
   }
 
   // Generate yearly data with randomized financial stats and consistent company and tag information
@@ -113,7 +149,7 @@ function generateDynamicMockEconomicData(companyCount: number, startYear: number
 }
 
 
-const generatedMockData = generateDynamicMockEconomicData(20, 2020, 2023);
+const generatedMockData = generateDynamicMockEconomicData(200, 2020, 2023);
 console.log(generatedMockData);
 
 const path = "../mockData/mockData.json"

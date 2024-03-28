@@ -22,7 +22,7 @@ const insertData = async(dataArray: dataType[]) =>{
     try{
         const userInsertion = await db.query(`
         INSERT INTO company_names (company_name, company_org_nr)
-        VALUES ($, $2)
+        VALUES ($1, $2)
         RETURNING company_id
         `, [dataArray[0].name, dataArray[0].org_nr])
         dbQueryArray.push(userInsertion)
@@ -39,7 +39,7 @@ const insertData = async(dataArray: dataType[]) =>{
         for (let dataPoint of dataArray){
             try{
                 const economicInsertion = await db.query(`
-                INSERT INTO yearlyeconomics (queried_year, operating_income, operating_profit, result_before_taxes, annual_result, total_assets, company_id)
+                INSERT INTO economic_data (queried_year, operating_income, operating_profit, result_before_taxes, annual_result, total_assets, company_id)
                 VALUES ($1, $2, $3, $4, $5, $6, $7)
                 `, [dataPoint.queried_year, dataPoint.operating_income, dataPoint.operating_profit, dataPoint.result_before_taxes, dataPoint.annual_result, dataPoint.total_assets, companyId])
                 dbQueryArray.push(economicInsertion)
@@ -70,13 +70,14 @@ const insertData = async(dataArray: dataType[]) =>{
 const searchByTag = async(tagArray: string[])=>{
 try{
     const data = await db.query(`
-    SELECT DISTINCT company_names.company_name, yearlyeconomics.year, yearlyeconomics.liquidity, yearlyeconomics.operational_cost, yearlyeconomics.latest_profit
+    SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
     FROM companytagrelationship
     INNER JOIN company_names 
         ON companytagrelationship.company_id = company_names.company_id
-    INNER JOIN yearlyeconomics
-        ON yearlyeconomics.company_id = company_names.company_id
+    INNER JOIN economic_data
+        ON economic_data.company_id = company_names.company_id
     WHERE companytagrelationship.tagname = ANY($1)
+	ORDER BY company_names.company_name
     `, [tagArray])
     return {success: true, result: data.rows}
 } catch (error){
