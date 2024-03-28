@@ -105,13 +105,14 @@ const searchByTagSpesific = async (tagArray, startYear = 0, endYear = new Date()
         return { success: false, error };
     }
 };
-const searchByName = async (companyNameSnippet) => {
+const searchByName = async (companyNameSnippet, startYear = 0, endYear = new Date().getFullYear()) => {
     try {
         const data = await db.query(`
             SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
             FROM company_names
             INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
             WHERE company_names.company_name ILIKE '%' || $1 || '%'
+            AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
             `, [companyNameSnippet]);
         return { success: true, result: data.rows };
     }
@@ -119,7 +120,7 @@ const searchByName = async (companyNameSnippet) => {
         return { success: false, error };
     }
 };
-const searchByOrgNr = async (companyOrgNr) => {
+const searchByOrgNr = async (companyOrgNr, startYear = 0, endYear = new Date().getFullYear()) => {
     try {
         const stringifiedNr = companyOrgNr.toString();
         const data = await db.query(`
@@ -127,6 +128,7 @@ const searchByOrgNr = async (companyOrgNr) => {
         FROM company_names
         INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
         WHERE company_names.company_org_nr = $1
+        AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
         `, [stringifiedNr]);
         if (data.rowCount !== null && data.rowCount > 0) {
             return { success: true, result: data.rows };
