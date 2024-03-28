@@ -59,7 +59,7 @@ const insertData = async(dataArray: dataType[]) =>{
 
 /**
  * Takes in an array of tags. Returns company name, and economic data for each year.
- * Can adjust results based on boolean??
+ * Returns all data matching any tags. Very general search. 
  * Adding extra parameters to function allow for spesific queries for spesific numbers.
  * @param tagArray string array containing tags
  * @returns an object {
@@ -67,7 +67,7 @@ const insertData = async(dataArray: dataType[]) =>{
  * success ? result : error
  * }
  */
-const searchByTag = async(tagArray: string[])=>{
+const searchByTagGeneral = async(tagArray: string[])=>{
 try{
     const data = await db.query(`
     SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
@@ -85,7 +85,45 @@ try{
 }   
 }
 
+/**
+ * En mer spesifikk søkefunksjon for tags.
+ * 
+ * 
+ * Subquery WHERE company_names.company_id IN (
+ * ...
+ * ...
+ * HAVING COUNT(DISTINCT tagname) = ${tagArray.length} 
+ * Passer på at vi bare får tilbake resultater for bedrifter hvor alle tags i arrayet matcher.
+ * 
+ * HUSK Å VERIFIE START YEAR OG END YEAR FØR DU BRUKER DENNE FUNKSJONEN.
+ *  
+ * )
+ * @param tagArray Et array av tags.
+ * @returns Array av data av typen dataType
+ */
+const searchByTagSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
+    try {
+        const data = await db.query(`
+        SELECT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
+        FROM company_names
+        INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
+        WHERE company_names.company_id IN (
+            SELECT company_id
+            FROM companytagrelationship
+            WHERE tagname = ANY($1::text[])
+            GROUP BY company_id
+            HAVING COUNT(DISTINCT tagname) = ${tagArray.length}
+        )
+        AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
+        ORDER BY company_names.company_name
+        `, [tagArray])
+        return { success: true, result: data.rows }
+    } catch (error) {
+        return { success: false, error }
+    }
+}
 
+/* 
 const insertingCompanyNames = []
 for (let companyData of mockData){
     try{
@@ -95,4 +133,8 @@ for (let companyData of mockData){
         insertingCompanyNames.push(error)
     }
 }
-console.log(insertingCompanyNames)
+console.log(insertingCompanyNames) */
+
+const searchResults = await searchByTagSpesific(['marin', 'innovasjon'])
+
+console.log(searchResults)
