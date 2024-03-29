@@ -83,33 +83,71 @@ function generateDynamicMockEconomicData(companyCount: number, startYear: number
   "Design",
   "Utvikling",
   "Produkter",
-  "Networks",
-  "Insights",
-  "Ventures",
-  "Horizons",
-  "Pioneers",
-  "Frontiers",
   "Innsikt",
-  "Eventyr",
+  "Fremgang",
+  "Kraft",
+  "Vekst",
+  "Helbred",
   "Oppdagelse",
-  "Samfunn",
-  "Verdier"
+  "Styrke",
+  "Visjon",
+  "Architects",
+  "Frontiers",
+  "Horizons",
+  "Networks"
 ];
   const baseTags = ["marin", "helse", "teknologi", "samfunn"];
-  const additionalTags = ["bærekraft", "forskning", "innovasjon", "infrastruktur", "miljøvennlig"];
+  const additionalTags = [
+  "bærekraft", 
+  "forskning", 
+  "innovasjon", 
+  "infrastruktur", 
+  "miljøvennlig",
+  "digitalisering",
+  "kunstig intelligens",
+  "ren energi",
+  "sirkulærøkonomi",
+  "folkehelse",
+  "EdTech",
+  "FinTech",
+  "Biotech",
+  "mobilitetsløsninger",
+  "datasikkerhet",
+  "skytjenester",
+  "robotikk",
+  "virtual reality",
+  "augmented reality",
+  "e-helse",
+  "bærekraftig matproduksjon",
+  "velferdsteknologi",
+  "smartbyer",
+  "avfallshåndtering",
+  "vannrensing"
+];
 
   // Helper function to generate a random company name
   const generateCompanyName = () => {
     const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
     const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
-    return `${prefix}${suffix} AS`;
+    const coinFlip = Math.floor(Math.random()*2)
+    if (coinFlip) return `${prefix}${suffix} AS`;
+    else return `${prefix}${suffix}`
   };
 
-  // Helper function to generate tags, ensuring at least one base tag and adding one additional tag
+  // Helper function to generate tags, ensuring at least one base tag and adding atleast one additional tag
+  //This originally only added one tag for each, but i rewrote it to add a random amount of tags, which feels more organic. 
   const generateTags = () => {
+    const tagArray: string[] = []
     const baseTag = baseTags[Math.floor(Math.random() * baseTags.length)];
-    const additionalTag = additionalTags[Math.floor(Math.random() * additionalTags.length)];
-    return [baseTag, additionalTag];
+    tagArray.push(baseTag)
+    const potentialAdditionalTagAmount = Math.ceil(Math.random() * additionalTags.length)
+    for (let i = 0; i<=potentialAdditionalTagAmount; i++){
+      const randomTag = Math.floor(Math.random() * additionalTags.length)
+      if (!tagArray.includes(additionalTags[randomTag])){
+        tagArray.push(additionalTags[randomTag])
+      }
+    }
+    return tagArray;
   };
 
   //Chatgpt forgot org nrs should be unique for each company, but only generated once, so had to add this:
@@ -149,7 +187,7 @@ function generateDynamicMockEconomicData(companyCount: number, startYear: number
 }
 
 
-const generatedMockData = generateDynamicMockEconomicData(200, 2020, 2023);
+const generatedMockData = generateDynamicMockEconomicData(500, 2020, 2023);
 console.log(generatedMockData);
 
 const path = "../mockData/mockData.json"
