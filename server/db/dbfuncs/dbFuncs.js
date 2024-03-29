@@ -83,7 +83,7 @@ try{
  * @param tagArray Et array av tags.
  * @returns Array av data av typen dataType
  */
-const searchByTagSpesific = async (tagArray, startYear = 0, endYear = new Date().getFullYear()) => {
+export const searchByTagSpesific = async (tagArray, startYear = 0, endYear = new Date().getFullYear()) => {
     try {
         const data = await db.query(`
         SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
@@ -100,15 +100,15 @@ const searchByTagSpesific = async (tagArray, startYear = 0, endYear = new Date()
         ORDER BY company_names.company_name
         `, [tagArray]);
         if (data.rowCount != null && data.rowCount > 0)
-            return { success: true, result: data.rows };
+            return { success: true, error: null, result: data.rows };
         else
-            return { success: true, result: `No Company Found Containing The Tags: ${tagArray.join(", ")}` };
+            return { success: true, error: null, result: `No Company Found Containing The Tags: ${tagArray.join(", ")}` };
     }
     catch (error) {
-        return { success: false, error };
+        return { success: false, error: error, result: null };
     }
 };
-const searchByName = async (companyNameSnippet, startYear = 0, endYear = new Date().getFullYear()) => {
+export const searchByName = async (companyNameSnippet, startYear = 0, endYear = new Date().getFullYear()) => {
     try {
         const data = await db.query(`
             SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
@@ -118,15 +118,15 @@ const searchByName = async (companyNameSnippet, startYear = 0, endYear = new Dat
             AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
             `, [companyNameSnippet]);
         if (data.rowCount != null && data.rowCount > 0)
-            return { success: true, result: data.rows };
+            return { success: true, error: null, result: data.rows };
         else
-            return { success: true, result: `No Company Found With Name Containing ${companyNameSnippet}` };
+            return { success: true, error: null, result: `No Company Found With Name Containing ${companyNameSnippet}` };
     }
     catch (error) {
-        return { success: false, error };
+        return { success: false, error: error, result: null };
     }
 };
-const searchByOrgNr = async (companyOrgNr, startYear = 0, endYear = new Date().getFullYear()) => {
+export const searchByOrgNr = async (companyOrgNr, startYear = 0, endYear = new Date().getFullYear()) => {
     try {
         const stringifiedNr = companyOrgNr.toString();
         const data = await db.query(`
@@ -137,13 +137,13 @@ const searchByOrgNr = async (companyOrgNr, startYear = 0, endYear = new Date().g
         AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
         `, [stringifiedNr]);
         if (data.rowCount !== null && data.rowCount > 0) {
-            return { success: true, result: data.rows };
+            return { success: true, error: null, result: data.rows };
         }
         else
-            return { success: true, result: `No Company Found With The Org Nr: ${companyOrgNr}` };
+            return { success: true, error: null, result: `No Company Found With The Org Nr: ${companyOrgNr}` };
     }
     catch (error) {
-        return { success: false, error };
+        return { success: false, error: error, result: null };
     }
 };
 /* TESTING FUNCTIONS */

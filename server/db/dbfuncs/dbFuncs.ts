@@ -103,7 +103,7 @@ try{
  * @param tagArray Et array av tags.
  * @returns Array av data av typen dataType
  */
-const searchByTagSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
+export const searchByTagSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
     try {
         const data = await db.query(`
         SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
@@ -119,14 +119,14 @@ const searchByTagSpesific = async(tagArray: string[], startYear: number= 0, endY
         AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
         ORDER BY company_names.company_name
         `, [tagArray])
-        if (data.rowCount != null && data.rowCount > 0) return { success: true, result: data.rows }
-        else return {success: true, result: `No Company Found Containing The Tags: ${tagArray.join(", ")}`}
+        if (data.rowCount != null && data.rowCount > 0) return { success: true, error: null, result: data.rows }
+        else return {success: true, error: null, result: `No Company Found Containing The Tags: ${tagArray.join(", ")}`}
     } catch (error) {
-        return { success: false, error }
+        return { success: false, error: error, result: null }
     }
 }
 
-const searchByName = async(companyNameSnippet: string, startYear: number = 0, endYear:number = new Date().getFullYear())=>{
+export const searchByName = async(companyNameSnippet: string, startYear: number = 0, endYear:number = new Date().getFullYear())=>{
     try{
         const data = await db.query(`
             SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
@@ -135,14 +135,14 @@ const searchByName = async(companyNameSnippet: string, startYear: number = 0, en
             WHERE company_names.company_name ILIKE '%' || $1 || '%'
             AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
             `, [companyNameSnippet])
-            if (data.rowCount != null && data.rowCount > 0) return {success: true, result: data.rows}
-            else return {success: true, result: `No Company Found With Name Containing ${companyNameSnippet}`}
+            if (data.rowCount != null && data.rowCount > 0) return {success: true, error: null, result: data.rows}
+            else return {success: true, error: null, result: `No Company Found With Name Containing ${companyNameSnippet}`}
     } catch (error){
-        return {success: false, error}
+        return {success: false, error: error, result: null}
     }
 }
 
-const searchByOrgNr = async(companyOrgNr: number, startYear: number = 0, endYear: number = new Date().getFullYear())=>{
+export const searchByOrgNr = async(companyOrgNr: number, startYear: number = 0, endYear: number = new Date().getFullYear())=>{
     try{
         const stringifiedNr = companyOrgNr.toString()
         const data = await db.query(`
@@ -153,10 +153,10 @@ const searchByOrgNr = async(companyOrgNr: number, startYear: number = 0, endYear
         AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
         `, [stringifiedNr])
         if (data.rowCount !== null && data.rowCount > 0 ){
-            return {success: true, result: data.rows}
-        } else return {success: true, result: `No Company Found With The Org Nr: ${companyOrgNr}`}
+            return {success: true, error: null, result: data.rows}
+        } else return {success: true, error: null, result: `No Company Found With The Org Nr: ${companyOrgNr}`}
     } catch (error){
-        return {success: false, error}
+        return {success: false, error: error, result: null}
     }
 }
 
