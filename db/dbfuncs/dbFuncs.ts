@@ -1,6 +1,6 @@
 import { db } from "../dbConfig/dbConfig.js";
 //brukes bare for insert av mockData til local database
-/* import mockData from "../mockData/mockData.json" assert {type: "json"} */
+import mockData from "../mockData/mockData.json" assert {type: "json"}
 
 type dataType = {
     name: string,
@@ -65,7 +65,8 @@ const insertData = async(dataArray: dataType[]) =>{
  * success ? result : error
  * }
  */
-const searchByTagGeneral = async(tagArray: string[], startYear: number = 0, endYear: number = new Date().getFullYear())=>{
+
+/* const searchByTagGeneral = async(tagArray: string[], startYear: number = 0, endYear: number = new Date().getFullYear())=>{
 try{
     const data = await db.query(`
     SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
@@ -83,7 +84,7 @@ try{
 } catch (error){
     return {success: false, error}
 }   
-}
+} */
 
 /**
  * En mer spesifikk søkefunksjon for tags.
@@ -94,6 +95,7 @@ try{
  * ...
  * HAVING COUNT(DISTINCT tagname) = ${tagArray.length} 
  * Passer på at vi bare får tilbake resultater for bedrifter hvor alle tags i arrayet matcher.
+ * F.eks hvis bedriften bare har 2 av 3 tags, er COUNT(DISTINCT tagname) mindre enn tagArray.length og bedriften blir ikke tatt med. 
  * 
  * HUSK Å VERIFIE START YEAR OG END YEAR FØR DU BRUKER DENNE FUNKSJONEN.
  *  
@@ -110,7 +112,7 @@ const searchByTagSpesific = async(tagArray: string[], startYear: number= 0, endY
         WHERE company_names.company_id IN (
             SELECT company_id
             FROM companytagrelationship
-            WHERE tagname = ANY($1::text[])
+            WHERE tagname = ANY($1)
             GROUP BY company_id
             HAVING COUNT(DISTINCT tagname) = ${tagArray.length}
         )
@@ -169,14 +171,14 @@ for (let companyData of mockData){
         insertingCompanyNames.push(error)
     }
 }
-console.log(insertingCompanyNames)  */
+console.log(insertingCompanyNames) */
+/* 
+const searchResults = await searchByTagSpesific(['marin', 'innovasjon', 'skytjenester'], 2016, 2024)
 
-const searchResults = await searchByTagSpesific(['marin', 'innovasjon', 'skytjenester', 'biotech'])
-
-console.log(searchResults)
+console.log(searchResults) */
 
 /* const searchResults = await searchByName("hav")
 console.log(searchResults) */
 
-/* const searchResults = await searchByOrgNr(25284583)
+/* const searchResults = await searchByOrgNr(34484040)
 console.log(searchResults) */
