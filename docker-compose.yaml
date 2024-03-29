@@ -1,4 +1,11 @@
 services:
+  server: 
+    image: node:20-bookworm-slim
+    command: ["node", "./app/server.js"]
+    ports:
+      - 3000:3000
+    volumes:
+      - ./server:/app/
   postgres:
     image: postgres:latest
     ports:
