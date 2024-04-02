@@ -5,7 +5,7 @@ import { db } from "../dbConfig/dbConfig.js";
 const createCompanyNameTable = async() =>{
 try{
     const data = await db.query(`
-    CREATE TABLE IF NOT EXISTS company_names (company_name VARCHAR(255) UNIQUE NOT NULL, company_id SERIAL PRIMARY KEY, company_org_nr VARCHAR(255))`)
+    CREATE TABLE IF NOT EXISTS company_names (company_name VARCHAR(255) NOT NULL, company_id SERIAL PRIMARY KEY, company_org_nr VARCHAR(255) UNIQUE NOT NULL)`)
     return {success: true, data}
 } catch (error){
     return {success: false, error}

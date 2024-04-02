@@ -1,4 +1,5 @@
 import express from "express"
+import cors from "cors"
 import { verifiyBaseQuery, verifyNameQueryType, verifyOrgNrQueryType, verifyTagQueryType } from "./db/verifierFuncs/queryVerifier.js"
 import { getTagsFromCompanyId, searchByComparisonTagSpesific, searchByName, searchByOrgNr, searchByTagSpesific } from "./db/dbfuncs/dbFuncs.js"
 
@@ -7,6 +8,10 @@ const server = express()
 const port = 3000
 
 server.use(express.json())
+server.use(cors())
+
+
+/* Veldig uryddig atm. Kanskje query bør være på sitt eget endpoint. Sammen med Login?*/
 
 server.get("/", async (req, res)=>{
     const query = req.query

@@ -1,3 +1,7 @@
+
+
+/* Kanskje gjøre om ID til f.eks hasha uid fra f.eks supabase? EVT lage egen simpel login service. Litt mer arbeid. 
+Kan bruke andre måter å skifte mellom querymethods.*/
 type queryType = {
     id: "tagQuery" | "nameQuery" | "orgNrQuery"
     to?: string,
