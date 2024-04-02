@@ -1,6 +1,6 @@
 import express from "express"
 import { verifiyBaseQuery, verifyNameQueryType, verifyOrgNrQueryType, verifyTagQueryType } from "./db/verifierFuncs/queryVerifier.js"
-import { searchByName, searchByOrgNr, searchByTagSpesific } from "./db/dbfuncs/dbFuncs.js"
+import { getTagsFromCompanyId, searchByComparisonTagSpesific, searchByName, searchByOrgNr, searchByTagSpesific } from "./db/dbfuncs/dbFuncs.js"
 
 
 const server = express()
@@ -24,18 +24,20 @@ server.get("/", async (req, res)=>{
                 message: "Bad Request, Could Not Validate Name Snippet."
             }
         })
-        const queryNameSnippet = await searchByName(query.nameSnippet, query.from? query.from : 0, query.to? query.to : new Date().getFullYear())
+        const queryNameSnippet = await searchByName(query.nameSnippet, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
         if (queryNameSnippet.success === false && typeof queryNameSnippet.result === null) return res.status(500).json({
             error: {
                 error: queryNameSnippet.error,
                 message: "Internal Server Error"
             }
         })
-        else return res.status(200).json({
-            success: {
-                result: queryNameSnippet.result,
-            }
-        })
+            if (queryNameSnippet.success && queryNameSnippet.result != null && typeof queryNameSnippet.result != "string"){
+            return res.status(200).json({
+                success: {
+                    data: queryNameSnippet.result
+                }
+            })
+        }
     }
     if (query.id === "tagQuery"){
         const verifyTagQuery = verifyTagQueryType(query)
@@ -45,38 +47,111 @@ server.get("/", async (req, res)=>{
             }
         })
         const queryTagArray = query.tags.split(",")
-        const queryTags = await searchByTagSpesific(queryTagArray, query.from? query.from : 0, query.to? query.to : new Date().getFullYear())
-        if (queryTags.success === false && typeof queryTags.result === null) return res.status(500).json({
+        const queryTags = await searchByTagSpesific(queryTagArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+        if (queryTags.success === false || queryTags.result === null) return res.status(500).json({
             error: {
                 error: queryTags.error,
                 message: "Internal Server Error"
             }
         })
-        else return res.status(200).json({
+        if (queryTags.success === true && typeof queryTags.result === "string") {
+            return res.status(200).json({
             success: {
                 result: queryTags.result,
             }
         })
+        }
+        else {
+            const comparisonData = await searchByComparisonTagSpesific(queryTagArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+            console.log(comparisonData)
+            if (comparisonData.success === false || comparisonData.result === null){
+                return res.status(500).json({
+                    error: {
+                        error: comparisonData.error,
+                        message: "Internal Server Error."
+                    }
+                })
+            }
+            if (comparisonData.success === true && typeof comparisonData.result === "string"){
+                return res.status(200).json({
+                    success: {
+                        data: queryTags.result,
+                        comparisonData: "No Comparison Data Found."
+                    }
+                })
+            }
+            return res.status(200).json({
+                success: {
+                    data: queryTags.result,
+                    comparisonData: comparisonData.result
+                }
+            })
+        }
     }
     if (query.id === "orgNrQuery"){
+        console.log(query)
         const verifyOrgNrQuery = verifyOrgNrQueryType(query)
         if (!verifyOrgNrQuery) return res.status(400).json({
             error: {
                 message: "Bad Request, Could Not Validate Organisation Number."
             }
         })
-        const queryOrgNr = await searchByOrgNr(query.orgNr, query.from ? query.from : 0, query.to ? query.to : new Date().getFullYear())
-        if (queryOrgNr.success === false && typeof queryOrgNr.result === null) return res.status(500).json({
+        const queryOrgNr = await searchByOrgNr(query.orgNr, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+        if (queryOrgNr.success === false && queryOrgNr.error !== null) return res.status(500).json({
             error: {
                 error: queryOrgNr.error,
                 message: "Internal Server Error"
             }
         })
-        else return res.status(200).json({
-            success: {
-                result: queryOrgNr.result,
+        if (queryOrgNr.success === true && queryOrgNr.result === null || typeof queryOrgNr.result === "string"){
+            return res.status(200).json({
+                success: {
+                    data: queryOrgNr.result,
+                    message: `Missing data for ${query.orgNr}`
+                }
+            })
+        }
+        if (queryOrgNr.success === true && queryOrgNr.result !== null){
+            const companyId = queryOrgNr.result[0].company_id
+            const fetchTags = await getTagsFromCompanyId(companyId)
+            if (fetchTags.success === false && fetchTags.error != null || fetchTags.result === null){
+                return res.status(500).json({
+                    error: {
+                        error: fetchTags.error,
+                        message: "Internal Server Error."
+                    }
+                })
             }
-        })
+            const tags: string[] = []
+            fetchTags.result.forEach(tag=>{
+                tags.push(tag.tagname)
+            })
+            console.log(tags)
+            const comparisonData = await searchByComparisonTagSpesific(tags, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+            if (comparisonData.success === false && comparisonData.error != null){
+                return res.status(500).json({
+                    error: {
+                        error: comparisonData.error,
+                        message: "Internal Server Error."
+                    }
+                })
+            }
+            console.log(comparisonData.result)
+            if (comparisonData.success && comparisonData.result === null || typeof comparisonData.result === "string"){
+                return res.status(200).json({
+                    success: {
+                        data: queryOrgNr.result,
+                        comparisonData: "No Comparison Data Found."
+                    }
+                })
+            }
+            return res.status(200).json({
+                success: {
+                    data: queryOrgNr.result,
+                    comparisonData: comparisonData.result
+                }
+            })
+        }
     }
 })
 

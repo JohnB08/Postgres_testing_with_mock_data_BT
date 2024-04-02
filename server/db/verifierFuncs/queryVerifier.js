@@ -9,5 +9,5 @@ export const verifyNameQueryType = (query) => {
     return (typeof query.nameSnippet === "string");
 };
 export const verifyOrgNrQueryType = (query) => {
-    return (typeof query.orgNr === "number");
+    return (typeof query.orgNr === "string");
 };

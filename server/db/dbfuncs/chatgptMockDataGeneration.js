@@ -102,9 +102,6 @@ function generateDynamicMockEconomicData(companyCount, startYear, endYear) {
         "ren energi",
         "sirkulærøkonomi",
         "folkehelse",
-        "EdTech",
-        "FinTech",
-        "Biotech",
         "mobilitetsløsninger",
         "datasikkerhet",
         "skytjenester",
@@ -112,7 +109,7 @@ function generateDynamicMockEconomicData(companyCount, startYear, endYear) {
         "virtual reality",
         "augmented reality",
         "e-helse",
-        "bærekraftig matproduksjon",
+        "matproduksjon",
         "velferdsteknologi",
         "smartbyer",
         "avfallshåndtering",
@@ -122,9 +119,11 @@ function generateDynamicMockEconomicData(companyCount, startYear, endYear) {
     const generateCompanyName = () => {
         const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
         const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
-        const coinFlip = Math.floor(Math.random() * 2);
-        if (coinFlip)
+        const coinFlip = Math.floor(Math.random() * 3);
+        if (coinFlip === 1)
             return `${prefix}${suffix} AS`;
+        if (coinFlip === 2)
+            return `${prefix}${suffix} and ${suffixes[Math.floor(Math.random() * suffixes.length)]}`;
         else
             return `${prefix}${suffix}`;
     };
@@ -134,7 +133,7 @@ function generateDynamicMockEconomicData(companyCount, startYear, endYear) {
         const tagArray = [];
         const baseTag = baseTags[Math.floor(Math.random() * baseTags.length)];
         tagArray.push(baseTag);
-        const potentialAdditionalTagAmount = Math.ceil(Math.random() * additionalTags.length);
+        const potentialAdditionalTagAmount = Math.ceil(Math.random() * 4);
         for (let i = 0; i <= potentialAdditionalTagAmount; i++) {
             const randomTag = Math.floor(Math.random() * additionalTags.length);
             if (!tagArray.includes(additionalTags[randomTag])) {
@@ -175,7 +174,7 @@ function generateDynamicMockEconomicData(companyCount, startYear, endYear) {
     }
     return data;
 }
-const generatedMockData = generateDynamicMockEconomicData(500, 2020, 2023);
+const generatedMockData = generateDynamicMockEconomicData(1000, 2010, 2023);
 console.log(generatedMockData);
-const path = "../mockData/mockData.json";
+const path = "../mockData/comparisonMockData.json";
 fs.writeFileSync(path, JSON.stringify(generatedMockData));

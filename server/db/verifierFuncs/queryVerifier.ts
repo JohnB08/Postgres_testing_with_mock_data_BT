@@ -1,7 +1,7 @@
 type queryType = {
     id: "tagQuery" | "nameQuery" | "orgNrQuery"
-    to?: number,
-    from?: number
+    to?: string,
+    from?: string
 }
 
 
@@ -17,7 +17,7 @@ type nameQueryType = queryType & {
 
 type orgNrQuery = queryType & {
     id: "orgNrQuery",
-    orgNr: number,
+    orgNr: string,
 }
 
 export const verifiyBaseQuery = (query:unknown): query is queryType => {
@@ -41,6 +41,6 @@ export const verifyNameQueryType = (query: queryType): query is nameQueryType =>
 
 export const verifyOrgNrQueryType = (query: queryType): query is orgNrQuery => {
     return (
-        typeof (query as orgNrQuery).orgNr === "number"
+        typeof (query as orgNrQuery).orgNr === "string"
     )
 }
