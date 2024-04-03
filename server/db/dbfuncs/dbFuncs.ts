@@ -18,14 +18,22 @@ type dataType = {
 /* company_names.company_id, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets, */
 
 type queryReturnType = {
-    company_name: string,
-    company_id: number,
-    queried_year: number,
-    operating_income: number,
-    operating_profit: number,
-    result_before_taxes: number,
-    annual_result: number,
-    total_assets: number
+            company_name: string,
+            company_id: number,
+            data: [
+                    {
+                    queried_year: number,
+                    queried_data: [
+                            {
+                            operating_income: number,
+                            operating_profit: number,
+                            result_before_taxes: number,
+                            annual_result: number,
+                            total_assets: number
+                        }
+                    ]
+                }
+            ]
 
 }
 
@@ -160,18 +168,52 @@ try{
 export const searchByTagSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
     try {
         const data = await db.query<queryReturnType>(`
-        SELECT DISTINCT company_names.company_name, company_names.company_id, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
-        FROM company_names
-        INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
-        WHERE company_names.company_id IN (
-            SELECT company_id
-            FROM company_tag_relationship
-            WHERE tagname = ANY($1)
-            GROUP BY company_id
-            HAVING COUNT(DISTINCT tagname) = ${tagArray.length}
+        WITH company_data AS (
+            SELECT
+                company_names.company_name,
+                company_names.company_id,
+                economic_data.queried_year,
+                json_agg(
+                        json_build_object(
+                            'operating_income', economic_data.operating_income,
+                            'operating_profit', economic_data.operating_profit,
+                            'result_before_taxes', economic_data.result_before_taxes,
+                            'annual_result', economic_data.annual_result,
+                            'total_assets', economic_data.total_assets
+                        )
+                    ) AS queried_data
+            FROM company_names
+            INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
+            WHERE company_names.company_id IN (
+                SELECT company_id
+                FROM company_tag_relationship
+                WHERE tagname = ANY($1)
+                GROUP BY company_id
+                HAVING COUNT(DISTINCT tagname) = ${tagArray.length}
+            )
+            AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
+            GROUP BY company_names.company_name, company_names.company_id, economic_data.queried_year
+            ORDER BY company_names.company_name, economic_data.queried_year
+        ), aggregated_data AS (
+            SELECT 
+                company_name,
+                company_id,
+                json_agg(
+                    json_build_object(
+                        'queried_year', queried_year,
+                        'queried_data', queried_data
+                    )
+                ) AS data
+            FROM
+                company_data
+            GROUP BY
+                company_name, company_id
+            ORDER BY
+                company_name
         )
-        AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
-        ORDER BY company_names.company_name
+        SELECT 
+            *
+        FROM aggregated_data
         `, [tagArray])
         if (data.rowCount != null && data.rowCount > 0) return { success: true, error: null, result: data.rows }
         else return {success: true, error: null, result: `No Company Found Containing The Tags: ${tagArray.join(", ")}`}
@@ -183,11 +225,47 @@ export const searchByTagSpesific = async(tagArray: string[], startYear: number= 
 export const searchByName = async(companyNameSnippet: string, startYear: number = 0, endYear:number = new Date().getFullYear())=>{
     try{
         const data = await db.query<queryReturnType>(`
-            SELECT DISTINCT company_names.company_name, company_names.company_id, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
-            FROM company_names
-            INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
-            WHERE company_names.company_name ILIKE '%' || $1 || '%'
-            AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
+            WITH company_data AS (
+                SELECT 
+                    company_names.company_name,
+                    company_names.company_id,
+                    economic_data.queried_year,
+                    json_agg(
+                        json_build_object(
+                            'operating_income', economic_data.operating_income,
+                            'operating_profit', economic_data.operating_profit,
+                            'result_before_taxes', economic_data.result_before_taxes,
+                            'annual_result', economic_data.annual_result,
+                            'total_assets', economic_data.total_assets
+                        )
+                    ) AS queried_data
+                FROM company_names
+                INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
+                WHERE company_names.company_name ILIKE '%' || $1 || '%'
+                AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
+                GROUP BY company_names.company_name, company_names.company_id, economic_data.queried_year
+                ORDER BY company_names.company_name, economic_data.queried_year
+            ), aggregated_data AS (
+                SELECT
+                    company_name,
+                    company_id,
+                    json_agg(
+                        json_build_object(
+                            'queried_year', queried_year,
+                            'queried_data', queried_data
+                        )
+                    ) AS data
+                FROM
+                    company_data
+                GROUP BY
+                    company_name, company_id
+                ORDER BY
+                    company_name
+            )
+            SELECT 
+                *
+            FROM
+                aggregated_data
             `, [companyNameSnippet])
             if (data.rowCount != null && data.rowCount > 0) return {success: true, error: null, result: data.rows}
             else return {success: true, error: null, result: `No Company Found With Name Containing ${companyNameSnippet}`}
@@ -199,11 +277,47 @@ export const searchByName = async(companyNameSnippet: string, startYear: number 
 export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, endYear: number = new Date().getFullYear())=>{
     try{
         const data = await db.query<queryReturnType>(`
-        SELECT DISTINCT company_names.company_name, company_names.company_id, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
-        FROM company_names
-        INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
-        WHERE company_names.company_org_nr = $1
-        AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
+        WITH company_data AS (
+            SELECT
+                company_names.company_name,
+                company_names.company_id,
+                economic_data.queried_year,
+                json_agg(
+                    json_build_object(
+                        'operating_income', economic_data.operating_income,
+                        'operating_profit', economic_data.operating_profit,
+                        'result_before_taxes', economic_data.result_before_taxes,
+                        'annual_result', economic_data.annual_result,
+                        'total_assets', economic_data.total_assets
+                    )
+                ) AS queried_data
+            FROM company_names
+            INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
+            WHERE company_names.company_org_nr = $1
+            AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
+            GROUP BY company_names.company_name, company_names.company_id, economic_data.queried_year
+            ORDER BY company_names.company_name, economic_data.queried_year
+        ), aggregated_data AS (
+                SELECT
+                    company_name,
+                    company_id,
+                    json_agg(
+                        json_build_object(
+                            'queried_year', queried_year,
+                            'queried_data', queried_data
+                        )
+                    ) AS data
+                FROM
+                    company_data
+                GROUP BY
+                    company_name, company_id
+                ORDER BY
+                    company_name
+            )
+            SELECT 
+                *
+            FROM
+                aggregated_data
         `, [companyOrgNr])
         if (data.rowCount !== null && data.rowCount > 0 ){
             return {success: true, error: null, result: data.rows}
@@ -248,17 +362,17 @@ export const searchByComparisonTagSpesific = async(tagArray: string[], startYear
         const data = await db.query(`
         WITH company_data AS (
             SELECT DISTINCT comparison_company_names.company_name, comparison_economic_data.queried_year, comparison_economic_data.operating_income, comparison_economic_data.operating_profit, comparison_economic_data.result_before_taxes, comparison_economic_data.annual_result, comparison_economic_data.total_assets
-        FROM comparison_company_names
-        INNER JOIN comparison_economic_data ON comparison_economic_data.company_id = comparison_company_names.company_id
-        WHERE comparison_company_names.company_id IN (
-            SELECT company_id
-            FROM comparison_company_tag_relationship
-            WHERE tagname = ANY($1)
-            GROUP BY company_id
-            HAVING COUNT(DISTINCT tagname) = ${tagArray.length}
-        )
-        AND comparison_economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
-        ORDER BY comparison_company_names.company_name
+            FROM comparison_company_names
+            INNER JOIN comparison_economic_data ON comparison_economic_data.company_id = comparison_company_names.company_id
+            WHERE comparison_company_names.company_id IN (
+                SELECT company_id
+                FROM comparison_company_tag_relationship
+                WHERE tagname = ANY($1)
+                GROUP BY company_id
+                HAVING COUNT(DISTINCT tagname) = ${tagArray.length}
+            )
+            AND comparison_economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
+            ORDER BY comparison_company_names.company_name
         ), aggregated_data AS (
             SELECT 
                 queried_year,

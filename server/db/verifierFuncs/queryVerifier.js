@@ -9,5 +9,6 @@ export const verifyNameQueryType = (query) => {
     return (typeof query.nameSnippet === "string");
 };
 export const verifyOrgNrQueryType = (query) => {
-    return (typeof query.orgNr === "string");
+    return (typeof query.orgNr === "string" &&
+        !Number.isNaN(query.orgNr));
 };

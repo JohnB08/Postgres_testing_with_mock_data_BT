@@ -117,7 +117,9 @@ server.get("/", async (req, res)=>{
             })
         }
         if (queryOrgNr.success === true && queryOrgNr.result !== null){
+            console.log(queryOrgNr.result[0].company_id)
             const companyId = queryOrgNr.result[0].company_id
+
             const fetchTags = await getTagsFromCompanyId(companyId)
             if (fetchTags.success === false && fetchTags.error != null || fetchTags.result === null){
                 return res.status(500).json({
@@ -145,14 +147,14 @@ server.get("/", async (req, res)=>{
             if (comparisonData.success && comparisonData.result === null || typeof comparisonData.result === "string"){
                 return res.status(200).json({
                     success: {
-                        data: queryOrgNr.result,
+                        data: queryOrgNr.result[0],
                         comparisonData: "No Comparison Data Found."
                     }
                 })
             }
             return res.status(200).json({
                 success: {
-                    data: queryOrgNr.result,
+                    data: queryOrgNr.result[0],
                     comparisonData: comparisonData.result
                 }
             })

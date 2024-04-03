@@ -32,6 +32,7 @@ const createYearlyTable = async (startYearLowerLimit, startYearUpperLimit) => {
     try {
         const data = await db.query(`
         CREATE TABLE IF NOT EXISTS economic_data (queried_year INTEGER, operating_income INTEGER, operating_profit INTEGER, result_before_taxes INTEGER, annual_result INTEGER, total_assets INTEGER, company_id INTEGER REFERENCES company_names(company_id)) PARTITION BY RANGE (queried_year)
+        PRIMARY KEY (company_id, queried_year)
         `);
         const subTableArray = [];
         for (let startYear = startYearLowerLimit; startYear <= startYearUpperLimit; startYear += 5) {
@@ -50,7 +51,7 @@ const createYearlyTable = async (startYearLowerLimit, startYearUpperLimit) => {
 const createComparisonCompanyTable = async () => {
     try {
         const data = db.query(`
-        CREATE TABLE IF NOT EXISTS comparison_company_names (company_name VARCHAR(255) UNIQUE NOT NULL, company_id SERIAL PRIMARY KEY, company_org_nr VARCHAR(255)) 
+        CREATE TABLE IF NOT EXISTS comparison_company_names (company_name VARCHAR(255) NOT NULL, company_id SERIAL PRIMARY KEY, company_org_nr VARCHAR(255) UNIQUE NOT NULL) 
         `);
         return { success: true, data };
     }
@@ -76,6 +77,7 @@ const createComparisonTagRelationship = async () => {
 const createEconomicComparisonTable = async (startYearLowerLimit, startYearUpperLimit) => {
     const data = await db.query(`
         CREATE TABLE IF NOT EXISTS comparison_economic_data (queried_year INTEGER, operating_income INTEGER, operating_profit INTEGER, result_before_taxes INTEGER, annual_result INTEGER, total_assets INTEGER, company_id INTEGER REFERENCES comparison_company_names(company_id)) PARTITION BY RANGE (queried_year)
+        PRIMARY KEY (company_id, queried_year)
         `);
     const subTableArray = [];
     for (let startYear = startYearLowerLimit; startYear <= startYearUpperLimit; startYear += 5) {

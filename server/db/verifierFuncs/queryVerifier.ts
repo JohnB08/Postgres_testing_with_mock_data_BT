@@ -45,6 +45,7 @@ export const verifyNameQueryType = (query: queryType): query is nameQueryType =>
 
 export const verifyOrgNrQueryType = (query: queryType): query is orgNrQuery => {
     return (
-        typeof (query as orgNrQuery).orgNr === "string"
+        typeof (query as orgNrQuery).orgNr === "string" &&
+        !Number.isNaN((query as orgNrQuery).orgNr)
     )
 }
