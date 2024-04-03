@@ -3,7 +3,8 @@ export const verifiyBaseQuery = (query) => {
         typeof query.id === "string");
 };
 export const verifyTagQueryType = (query) => {
-    return (typeof query.tags === "string");
+    return (typeof query.tags === "string" &&
+        /^(\p{L}+,)*\p{L}+$/u.test(query.tags));
 };
 export const verifyNameQueryType = (query) => {
     return (typeof query.nameSnippet === "string");

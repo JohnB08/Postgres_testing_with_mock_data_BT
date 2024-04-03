@@ -33,7 +33,8 @@ export const verifiyBaseQuery = (query:unknown): query is queryType => {
 
 export const verifyTagQueryType = (query: queryType): query is tagQueryType => {
     return (
-        typeof (query as tagQueryType).tags === "string"
+        typeof (query as tagQueryType).tags === "string" &&
+        /^(\p{L}+,)*\p{L}+$/u.test((query as tagQueryType).tags)
     )
 }
 
