@@ -38,9 +38,11 @@ export const verifyTagQueryType = (query: queryType): query is tagQueryType => {
     )
 }
 
+/* Kanskje lage et eget table i databasen hvor organisasjonsnavnene er blitt strippet for spesialtegn, sånn at de er tryggere å søke rundt. */
 export const verifyNameQueryType = (query: queryType): query is nameQueryType =>{
     return (
-        typeof (query as nameQueryType).nameSnippet === "string"
+        typeof (query as nameQueryType).nameSnippet === "string" &&
+        (query as nameQueryType).nameSnippet.length > 0
     )
 }
 
