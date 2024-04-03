@@ -12,7 +12,7 @@ server.get("/", async (req, res) => {
     const verifyQuery = verifiyBaseQuery(query);
     if (!verifyQuery)
         return res.status(400).json({
-            error: {
+            result: {
                 message: "Bad Request, missing Query."
             }
         });
@@ -20,21 +20,21 @@ server.get("/", async (req, res) => {
         const verifyNameQuery = verifyNameQueryType(query);
         if (!verifyNameQuery)
             return res.status(400).json({
-                error: {
+                result: {
                     message: "Bad Request, Could Not Validate Name Snippet."
                 }
             });
         const queryNameSnippet = await searchByName(query.nameSnippet, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
         if (queryNameSnippet.success === false && typeof queryNameSnippet.result === null)
             return res.status(500).json({
-                error: {
+                result: {
                     error: queryNameSnippet.error,
                     message: "Internal Server Error"
                 }
             });
         if (queryNameSnippet.success && queryNameSnippet.result != null && typeof queryNameSnippet.result != "string") {
             return res.status(200).json({
-                success: {
+                result: {
                     data: queryNameSnippet.result
                 }
             });
@@ -44,7 +44,7 @@ server.get("/", async (req, res) => {
         const verifyTagQuery = verifyTagQueryType(query);
         if (!verifyTagQuery)
             return res.status(400).json({
-                error: {
+                result: {
                     message: "Bad Request, Could Not Validate Query Tags"
                 }
             });
@@ -52,14 +52,14 @@ server.get("/", async (req, res) => {
         const queryTags = await searchByTagSpesific(queryTagArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
         if (queryTags.success === false || queryTags.result === null)
             return res.status(500).json({
-                error: {
+                result: {
                     error: queryTags.error,
                     message: "Internal Server Error"
                 }
             });
         if (queryTags.success === true && typeof queryTags.result === "string") {
             return res.status(200).json({
-                success: {
+                result: {
                     result: queryTags.result,
                 }
             });
@@ -69,7 +69,7 @@ server.get("/", async (req, res) => {
             console.log(comparisonData);
             if (comparisonData.success === false || comparisonData.result === null) {
                 return res.status(500).json({
-                    error: {
+                    result: {
                         error: comparisonData.error,
                         message: "Internal Server Error."
                     }
@@ -77,14 +77,14 @@ server.get("/", async (req, res) => {
             }
             if (comparisonData.success === true && typeof comparisonData.result === "string") {
                 return res.status(200).json({
-                    success: {
+                    result: {
                         data: queryTags.result,
                         comparisonData: "No Comparison Data Found."
                     }
                 });
             }
             return res.status(200).json({
-                success: {
+                result: {
                     data: queryTags.result,
                     comparisonData: comparisonData.result
                 }
@@ -96,21 +96,21 @@ server.get("/", async (req, res) => {
         const verifyOrgNrQuery = verifyOrgNrQueryType(query);
         if (!verifyOrgNrQuery)
             return res.status(400).json({
-                error: {
+                result: {
                     message: "Bad Request, Could Not Validate Organisation Number."
                 }
             });
         const queryOrgNr = await searchByOrgNr(query.orgNr, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
         if (queryOrgNr.success === false && queryOrgNr.error !== null)
             return res.status(500).json({
-                error: {
+                result: {
                     error: queryOrgNr.error,
                     message: "Internal Server Error"
                 }
             });
         if (queryOrgNr.success === true && queryOrgNr.result === null || typeof queryOrgNr.result === "string") {
             return res.status(200).json({
-                success: {
+                result: {
                     data: queryOrgNr.result,
                     message: `Missing data for ${query.orgNr}`
                 }
@@ -122,7 +122,7 @@ server.get("/", async (req, res) => {
             const fetchTags = await getTagsFromCompanyId(companyId);
             if (fetchTags.success === false && fetchTags.error != null || fetchTags.result === null) {
                 return res.status(500).json({
-                    error: {
+                    result: {
                         error: fetchTags.error,
                         message: "Internal Server Error."
                     }
@@ -136,7 +136,7 @@ server.get("/", async (req, res) => {
             const comparisonData = await searchByComparisonTagSpesific(tags, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
             if (comparisonData.success === false && comparisonData.error != null) {
                 return res.status(500).json({
-                    error: {
+                    result: {
                         error: comparisonData.error,
                         message: "Internal Server Error."
                     }
@@ -145,14 +145,14 @@ server.get("/", async (req, res) => {
             console.log(comparisonData.result);
             if (comparisonData.success && comparisonData.result === null || typeof comparisonData.result === "string") {
                 return res.status(200).json({
-                    success: {
+                    result: {
                         data: queryOrgNr.result[0],
                         comparisonData: "No Comparison Data Found."
                     }
                 });
             }
             return res.status(200).json({
-                success: {
+                result: {
                     data: queryOrgNr.result[0],
                     comparisonData: comparisonData.result
                 }
