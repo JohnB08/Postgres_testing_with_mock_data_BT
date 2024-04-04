@@ -22,6 +22,17 @@ server.get("/", async (req, res)=>{
             message: "Bad Request, missing Query."
         }
     })
+    if (query.comparewith && typeof query.comparewith === "string"){
+            const compareStringCheck = /^(\p{L}+,)*\p{L}+$/u.test(query.comparewith)
+            if (!compareStringCheck){
+                return res.status(400).json({
+                    result: {
+                        error: "Bad Request",
+                        message: "Could not validate comparison value."
+                    }
+                })
+            }
+        }
     if (query.id === "nameQuery"){
         const verifyNameQuery = verifyNameQueryType(query)
         if (!verifyNameQuery) return res.status(400).json({
@@ -36,7 +47,27 @@ server.get("/", async (req, res)=>{
                 message: "Internal Server Error"
             }
         })
-            if (queryNameSnippet.success && queryNameSnippet.result != null && typeof queryNameSnippet.result != "string"){
+        if (query.comparewith){
+            const comparisonStatusArray = query.comparewith.split(",")
+            const comparisonData = await searchByComparisonTagSpesific(comparisonStatusArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
+            if (comparisonData.success === false && comparisonData.result === null){
+                return res.status(500).json({
+                    result: {
+                        error: comparisonData.error,
+                        message: "Internal Server Error."
+                    }
+                })
+            }
+            if (comparisonData.success === true && comparisonData.result != null){
+                return res.status(200).json({
+                    result: {
+                        data: queryNameSnippet.result,
+                        comparisonData: comparisonData.result
+                    }
+                })
+            }
+        }
+        if (queryNameSnippet.success && queryNameSnippet.result != null){
             return res.status(200).json({
                 result: {
                     data: queryNameSnippet.result
@@ -44,14 +75,14 @@ server.get("/", async (req, res)=>{
             })
         }
     }
-    if (query.id === "tagQuery"){
+    if (query.id === "statusQuery"){
         const verifyTagQuery = verifyTagQueryType(query)
         if (!verifyTagQuery) return res.status(400).json({
             result: {
                 message: "Bad Request, Could Not Validate Query Tags"
             }
         })
-        const queryTagArray = query.tags.split(",")
+        const queryTagArray = query.status.split(",")
         const queryTags = await searchByTagSpesific(queryTagArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
         if (queryTags.success === false || queryTags.result === null) return res.status(500).json({
             result: {
@@ -61,37 +92,36 @@ server.get("/", async (req, res)=>{
         })
         if (queryTags.success === true && typeof queryTags.result === "string") {
             return res.status(200).json({
-            result: {
-                result: queryTags.result,
-            }
-        })
-        }
-        else {
-            const comparisonData = await searchByComparisonTagSpesific(queryTagArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
-            console.log(comparisonData)
-            if (comparisonData.success === false || comparisonData.result === null){
-                return res.status(500).json({
-                    result: {
-                        error: comparisonData.error,
-                        message: "Internal Server Error."
-                    }
-                })
-            }
-            if (comparisonData.success === true && typeof comparisonData.result === "string"){
-                return res.status(200).json({
-                    result: {
-                        data: queryTags.result,
-                        comparisonData: "No Comparison Data Found."
-                    }
-                })
-            }
-            return res.status(200).json({
                 result: {
-                    data: queryTags.result,
-                    comparisonData: comparisonData.result
+                    result: queryTags.result,
                 }
             })
         }
+        const comparisonArray = query.comparewith ? query.comparewith.split(",") : queryTagArray
+        const comparisonData = await searchByComparisonTagSpesific(comparisonArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+        console.log(comparisonData)
+        if (comparisonData.success === false || comparisonData.result === null){
+            return res.status(500).json({
+                result: {
+                    error: comparisonData.error,
+                    message: "Internal Server Error."
+                }
+            })
+        }
+        if (comparisonData.success === true && typeof comparisonData.result === "string"){
+            return res.status(200).json({
+                result: {
+                    data: queryTags.result,
+                    comparisonData: "No Comparison Data Found."
+                }
+            })
+        }
+        return res.status(200).json({
+            result: {
+                data: queryTags.result,
+                comparisonData: comparisonData.result
+            }
+        })
     }
     if (query.id === "orgNrQuery"){
         console.log(query)
@@ -117,45 +147,36 @@ server.get("/", async (req, res)=>{
             })
         }
         if (queryOrgNr.success === true && queryOrgNr.result !== null){
-            console.log(queryOrgNr.result[0].company_id)
-            const companyId = queryOrgNr.result[0].company_id
-
-            const fetchTags = await getTagsFromCompanyId(companyId)
-            if (fetchTags.success === false && fetchTags.error != null || fetchTags.result === null){
-                return res.status(500).json({
-                    result: {
-                        error: fetchTags.error,
-                        message: "Internal Server Error."
-                    }
-                })
-            }
-            const tags: string[] = []
-            fetchTags.result.forEach(tag=>{
-                tags.push(tag.tagname)
-            })
-            console.log(tags)
-            const comparisonData = await searchByComparisonTagSpesific(tags, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
-            if (comparisonData.success === false && comparisonData.error != null){
-                return res.status(500).json({
-                    result: {
-                        error: comparisonData.error,
-                        message: "Internal Server Error."
-                    }
-                })
-            }
-            console.log(comparisonData.result)
-            if (comparisonData.success && comparisonData.result === null || typeof comparisonData.result === "string"){
+            if (query.comparewith){
+                const tags = query.comparewith.split(",")
+                const comparisonData = await searchByComparisonTagSpesific(tags, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+                if (comparisonData.success === false && comparisonData.error != null){
+                    return res.status(500).json({
+                        result: {
+                            error: comparisonData.error,
+                            message: "Internal Server Error."
+                        }
+                    })
+                }
+                console.log(comparisonData.result)
+                if (comparisonData.success && comparisonData.result === null || typeof comparisonData.result === "string"){
+                    return res.status(200).json({
+                        result: {
+                            data: queryOrgNr.result,
+                            comparisonData: "No Comparison Data Found."
+                        }
+                    })
+                }
                 return res.status(200).json({
                     result: {
-                        data: queryOrgNr.result[0],
-                        comparisonData: "No Comparison Data Found."
+                        data: queryOrgNr.result,
+                        comparisonData: comparisonData.result
                     }
                 })
             }
             return res.status(200).json({
                 result: {
-                    data: queryOrgNr.result[0],
-                    comparisonData: comparisonData.result
+                    data: queryOrgNr.result
                 }
             })
         }
