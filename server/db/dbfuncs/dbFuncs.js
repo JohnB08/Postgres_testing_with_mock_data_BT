@@ -3,28 +3,24 @@ const insertData = async (dataArray) => {
     const dbQueryArray = [];
     try {
         const userInsertion = await db.query(`
-        INSERT INTO company_names (company_name, company_org_nr)
-        VALUES ($1, $2)
+        INSERT INTO company_names (company_name, company_org_nr, company_field)
+        VALUES ($1, $2, $3)
         RETURNING company_id
-        `, [dataArray[0].name, dataArray[0].org_nr]);
+        `, [dataArray[0].name, dataArray[0].org_nr, dataArray[0].field]);
         dbQueryArray.push(userInsertion);
         const companyId = userInsertion.rows[0].company_id;
         console.log(companyId);
-        for (let tag of dataArray[0].tags) {
-            const tagRelation = await db.query(`
-                    INSERT INTO company_tag_relationship (company_id, tagname)
-                    VALUES ($1, '${tag}')
-                    RETURNING * 
-                    `, [companyId]);
-            dbQueryArray.push(tagRelation);
-        }
         for (let dataPoint of dataArray) {
             try {
                 const economicInsertion = await db.query(`
                 INSERT INTO economic_data (queried_year, operating_income, operating_profit, result_before_taxes, annual_result, total_assets, company_id)
                 VALUES ($1, $2, $3, $4, $5, $6, $7)
                 `, [dataPoint.queried_year, dataPoint.operating_income, dataPoint.operating_profit, dataPoint.result_before_taxes, dataPoint.annual_result, dataPoint.total_assets, companyId]);
-                dbQueryArray.push(economicInsertion);
+                const statusInsertion = await db.query(`
+                INSERT INTO company_status_relationship(company_id, status, queried_year)
+                VALUES ($1, '${dataPoint.status}', $3)
+                `, [companyId, dataPoint.queried_year]);
+                dbQueryArray.push([economicInsertion, statusInsertion]);
             }
             catch (error) {
                 dbQueryArray.push(error);
@@ -40,27 +36,23 @@ const insertComparisonData = async (dataArray) => {
     const dbQueryArray = [];
     try {
         const userInsertion = await db.query(`
-        INSERT INTO comparison_company_names (company_name, company_org_nr)
-        VALUES ($1, $2)
+        INSERT INTO comparison_company_names (company_name, company_org_nr, company_field)
+        VALUES ($1, $2, $3)
         RETURNING company_id
-        `, [dataArray[0].name, dataArray[0].org_nr]);
+        `, [dataArray[0].name, dataArray[0].org_nr, dataArray[0].field]);
         dbQueryArray.push(userInsertion);
         const companyId = userInsertion.rows[0].company_id;
         console.log(companyId);
-        for (let tag of dataArray[0].tags) {
-            const tagRelation = await db.query(`
-                    INSERT INTO comparison_company_tag_relationship (company_id, tagname)
-                    VALUES ($1, '${tag}')
-                    RETURNING * 
-                    `, [companyId]);
-            dbQueryArray.push(tagRelation);
-        }
         for (let dataPoint of dataArray) {
             try {
                 const economicInsertion = await db.query(`
                 INSERT INTO comparison_economic_data (queried_year, operating_income, operating_profit, result_before_taxes, annual_result, total_assets, company_id)
                 VALUES ($1, $2, $3, $4, $5, $6, $7)
                 `, [dataPoint.queried_year, dataPoint.operating_income, dataPoint.operating_profit, dataPoint.result_before_taxes, dataPoint.annual_result, dataPoint.total_assets, companyId]);
+                const statusInsertion = await db.query(`
+                INSERT INTO comparison_company_status_relationship(company_id, status, queried_year)
+                VALUES ($1, '${dataPoint.status}', $3)
+                `, [companyId, dataPoint.queried_year]);
                 dbQueryArray.push(economicInsertion);
             }
             catch (error) {
@@ -141,12 +133,12 @@ export const searchByTagSpesific = async (tagArray, startYear = 0, endYear = new
             INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
             WHERE company_names.company_id IN (
                 SELECT company_id
-                FROM company_tag_relationship
-                WHERE tagname = ANY($1)
+                FROM company_status_relationship
+                WHERE status = ANY($1)
+                AND queried_year BETWEEN ${startYear} AND ${endYear}
                 GROUP BY company_id
-                HAVING COUNT(DISTINCT tagname) = ${tagArray.length}
+                HAVING COUNT(DISTINCT status) = ${tagArray.length}
             )
-            AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
             GROUP BY company_names.company_name, company_names.company_id, economic_data.queried_year
             ORDER BY company_names.company_name, economic_data.queried_year
         ), aggregated_data AS (
@@ -296,8 +288,8 @@ export const searchByOrgNr = async (companyOrgNr, startYear = 0, endYear = new D
 export const getTagsFromCompanyId = async (companyId) => {
     try {
         const data = await db.query(`
-        SELECT tagName
-        FROM company_tag_relationship
+        SELECT status
+        FROM company_status_relationship
         WHERE company_id = $1
         `, [companyId]);
         return { success: true, error: null, result: data.rows };
@@ -324,12 +316,12 @@ export const searchByComparisonTagSpesific = async (tagArray, startYear = 0, end
             INNER JOIN comparison_economic_data ON comparison_economic_data.company_id = comparison_company_names.company_id
             WHERE comparison_company_names.company_id IN (
                 SELECT company_id
-                FROM comparison_company_tag_relationship
-                WHERE tagname = ANY($1)
+                FROM comparison_company_status_relationship
+                WHERE status = ANY($1)
+                AND queried_year BETWEEN ${startYear} AND ${endYear}
                 GROUP BY company_id
-                HAVING COUNT(DISTINCT tagname) = ${tagArray.length}
+                HAVING COUNT(DISTINCT status) = ${tagArray.length}
             )
-            AND comparison_economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
             ORDER BY comparison_company_names.company_name
         ), aggregated_data AS (
             SELECT 

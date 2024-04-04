@@ -7,7 +7,7 @@ import fs from "fs"
 
 /* Chatgpt made this, and it worked! (had to add typing, but it works.) I'll add some parameters to change how many years, and how many companies i want it to generate.
 Then i'll add a fs function at the end to update my mockData.json file.*/ 
-function generateDynamicMockEconomicData(companyCount: number, startYear: number, endYear: number) {
+function generateDynamicMockEconomicData(companyCount: number, startYear: number = 2013, endYear: number = new Date().getFullYear()) {
   // Prefixes and suffixes for dynamic company name generation
  const prefixes = [
   "Eco",
@@ -96,30 +96,25 @@ function generateDynamicMockEconomicData(companyCount: number, startYear: number
   "Horizons",
   "Networks"
 ];
-  const baseTags = ["marin", "helse", "teknologi", "samfunn"];
-  const additionalTags = [
-  "bærekraft", 
-  "forskning", 
-  "innovasjon", 
-  "infrastruktur", 
-  "miljøvennlig",
-  "digitalisering",
-  "kunstig intelligens",
-  "ren energi",
-  "sirkulærøkonomi",
-  "folkehelse",
-  "mobilitetsløsninger",
-  "datasikkerhet",
-  "skytjenester",
-  "robotikk",
-  "virtual reality",
-  "augmented reality",
-  "e-helse",
-  "matproduksjon",
-  "velferdsteknologi",
-  "smartbyer",
-  "avfallshåndtering",
-  "vannrensing"
+  const status = [
+    "Forr.messig Innovasjon",
+    "preinkubasjon",
+    "inkubatorbedrift",
+    "Skalering",
+    "postinkubasjon",
+    "alumni"
+  ];
+  const fields = [
+    "Annet",
+    "Energi",
+    "FoU/Undervisning",
+    "Helse",
+    "IKT",
+    "Industri",
+    "Kultur",
+    "Mat og Natur",
+    "Reiseliv",
+    "Tjenesteytring"
 ];
 
   // Helper function to generate a random company name
@@ -134,18 +129,8 @@ function generateDynamicMockEconomicData(companyCount: number, startYear: number
 
   // Helper function to generate tags, ensuring at least one base tag and adding atleast one additional tag
   //This originally only added one tag for each, but i rewrote it to add a random amount of tags, which feels more organic. 
-  const generateTags = () => {
-    const tagArray: string[] = []
-    const baseTag = baseTags[Math.floor(Math.random() * baseTags.length)];
-    tagArray.push(baseTag)
-    const potentialAdditionalTagAmount = Math.ceil(Math.random() * 4)
-    for (let i = 0; i<=potentialAdditionalTagAmount; i++){
-      const randomTag = Math.floor(Math.random() * additionalTags.length)
-      if (!tagArray.includes(additionalTags[randomTag])){
-        tagArray.push(additionalTags[randomTag])
-      }
-    }
-    return tagArray;
+  const generatefield = () => {
+    return fields[Math.floor(Math.random()*fields.length)]
   };
 
   //Chatgpt forgot org nrs should be unique for each company, but only generated once, so had to add this:
@@ -154,16 +139,17 @@ function generateDynamicMockEconomicData(companyCount: number, startYear: number
   }
 
   // Generate yearly data with randomized financial stats and consistent company and tag information
-  const generateYearlyData = (name: string, tags: string[], year: number, orgNr: string) => ({
+  const generateYearlyData = (name: string, year: number, field: string, orgNr: string, startIndex: number) => ({
     name,
     org_nr: orgNr,
+    field: field,
     operating_income: Math.floor(Math.random() * 1000000 + 500000),
     operating_profit: Math.floor(Math.random() * 500000 + 250000),
     result_before_taxes: Math.floor(Math.random() * 400000 + 200000),
     annual_result: Math.floor(Math.random() * 300000 + 150000),
     total_assets: Math.floor(Math.random() * 2000000 + 1000000),
-    tags,
-    queried_year: year
+    queried_year: year,
+    status: status[startIndex]
   });
 
   // Create mock data for five companies with data for three years each
@@ -171,12 +157,18 @@ function generateDynamicMockEconomicData(companyCount: number, startYear: number
   const data = [];
   for (let i = 0; i < companyCount; i++) {
     const companyName = generateCompanyName();
-    const companyTags = generateTags();
     const orgNr = generateOrgNr();
-    const companyStartYear  = startYear - Math.floor(Math.random()*11)
+    const field = generatefield();
+    const companyStartYear  = startYear - Math.floor(Math.random()*(endYear-startYear))
+    const companyEndYear = companyStartYear + Math.ceil(Math.random()*(endYear-startYear))
     const yearlyData = [];
-    for (let year = companyStartYear; year <= endYear; year++) {
-      yearlyData.push(generateYearlyData(companyName, companyTags, year, orgNr));
+    let startIndex = 0
+    for (let year = companyStartYear; year <= companyEndYear; year++) {
+      const updateStatus = Math.floor(Math.random()*10)
+      if (updateStatus > 7 && startIndex < status.length){
+        startIndex++
+      }
+      yearlyData.push(generateYearlyData(companyName, year, field, orgNr, startIndex));
     }
     data.push(yearlyData);
   }
