@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { verifiyBaseQuery, verifyNameQueryType, verifyOrgNrQueryType, verifyTagQueryType } from "./db/verifierFuncs/queryVerifier.js"
-import { getTagsFromCompanyId, searchByComparisonTagSpesific, searchByName, searchByOrgNr, searchByTagSpesific } from "./db/dbfuncs/dbFuncs.js"
+import { searchByComparisonTagSpesific, searchByName, searchByOrgNr, searchByTagSpesific } from "./db/dbfuncs/dbFuncs.js"
 
 
 const server = express()
