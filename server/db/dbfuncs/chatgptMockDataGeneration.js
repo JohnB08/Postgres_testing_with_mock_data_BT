@@ -5,91 +5,34 @@ Then i'll add a fs function at the end to update my mockData.json file.*/
 function generateDynamicMockEconomicData(companyCount, startYear = 2013, endYear = new Date().getFullYear()) {
     // Prefixes and suffixes for dynamic company name generation
     const prefixes = [
-        "Eco",
-        "Bio",
-        "Tech",
-        "Innovate",
-        "Global",
-        "Hav",
-        "Ocean",
-        "Health",
-        "Future",
-        "Fremtid",
-        "Bergen",
-        "Bjørgvin",
-        "Norge",
-        "Norway",
-        "Nord",
-        "North",
-        "Cyber",
-        "Green",
-        "Smart",
-        "NextGen",
-        "Urban",
-        "Solar",
-        "Grønn",
-        "Sol",
-        "Fornybar",
-        "Vann",
-        "Skog",
-        "Fjell",
-        "Aegir",
-        "Freyr",
-        "Idunn",
-        "Njord",
-        "Galdhøpiggen",
-        "Trolltunga",
-        "Lofoten",
-        "Svalbard",
-        "Preikestolen",
-        "Panacea",
-        "Vitalis",
-        "Hygieia",
-        "Asclepius",
-        "Neptune",
-        "Poseidon",
-        "Thalassa",
-        "Maris",
-        "Cypher",
-        "Quantum",
-        "Aether",
-        "Tesla",
-        "Agora",
-        "Harmonia",
-        "Civitas",
-        "Utopia"
+        // Norwegian cultural and natural elements
+        "Nord", "Fjell", "Frost", "Skog", "Hav", "Lys", "Viking", "Draum", "Troll",
+        // English imaginative elements
+        "Quantum", "Galactic", "Epic", "Mystic", "Vision", "Aurora", "Nova",
+        // Combining Norwegian and English for a universal appeal
+        "FjordLight", "NordicVision", "VinterDream", "MidnightSun", "PolarStar"
     ];
     const suffixes = [
-        "Solutions",
-        "Marine",
-        "Health",
-        "Tech",
-        "Industries",
-        "Innovations",
-        "Enterprises",
-        "Dynamics",
-        "Systems",
-        "Logistics",
-        "Consulting",
-        "Analytics",
-        "Teknologi",
-        "Helse",
-        "Energi",
-        "Design",
-        "Utvikling",
-        "Produkter",
-        "Innsikt",
-        "Fremgang",
-        "Kraft",
-        "Vekst",
-        "Helbred",
-        "Oppdagelse",
-        "Styrke",
-        "Visjon",
-        "Architects",
-        "Frontiers",
-        "Horizons",
-        "Networks"
+        // Annet (General)
+        "Solutions", "Innovations", "Concepts", "Creations",
+        // Energi
+        "Energi", "Power", "Renewables", "Solar",
+        // FoU/Undervisning
+        "Lab", "Research", "Academy", "Studies",
+        // Helse
+        "Health", "Wellness", "Med", "Care",
+        // IKT
+        "Tech", "Digital", "Net", "Systems",
+        // Industri
+        "Factory", "Machines", "Industri", "Production",
+        // Kultur
+        "Arts", "Culture", "Heritage", "Crafts",
+        // Mat og Natur
+        "Foods", "Nature", "Harvest", "Greens",
+        // Reiseliv
+        "Travel", "Voyage", "Expeditions", "Destinations",
+        // Tjenesteytring
+        "Services", "Solutions", "Professionals", "Experts"
     ];
     const status = [
         "Forr.messig Innovasjon",
@@ -167,7 +110,7 @@ function generateDynamicMockEconomicData(companyCount, startYear = 2013, endYear
     }
     return data;
 }
-const generatedMockData = generateDynamicMockEconomicData(1000, 2010, 2023);
+const generatedMockData = generateDynamicMockEconomicData(1000);
 console.log(generatedMockData);
 const path = "../mockData/comparisonMockData.json";
 fs.writeFileSync(path, JSON.stringify(generatedMockData));
