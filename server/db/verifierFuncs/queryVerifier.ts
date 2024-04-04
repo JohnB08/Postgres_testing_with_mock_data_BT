@@ -6,7 +6,7 @@ type queryType = {
     id: "statusQuery" | "nameQuery" | "orgNrQuery"
     to?: string,
     from?: string
-    comparewith?: string
+    compareWith?: string
 }
 
 

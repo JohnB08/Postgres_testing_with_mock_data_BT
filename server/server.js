@@ -16,8 +16,8 @@ server.get("/", async (req, res) => {
                 message: "Bad Request, missing Query."
             }
         });
-    if (query.comparewith && typeof query.comparewith === "string") {
-        const compareStringCheck = /^(\p{L}+,)*\p{L}+$/u.test(query.comparewith);
+    if (query.compareWith && typeof query.compareWith === "string") {
+        const compareStringCheck = /^(\p{L}+,)*\p{L}+$/u.test(query.compareWith);
         if (!compareStringCheck) {
             return res.status(400).json({
                 result: {
@@ -43,8 +43,8 @@ server.get("/", async (req, res) => {
                     message: "Internal Server Error"
                 }
             });
-        if (query.comparewith) {
-            const comparisonStatusArray = query.comparewith.split(",");
+        if (query.compareWith) {
+            const comparisonStatusArray = query.compareWith.split(",");
             const comparisonData = await searchByComparisonTagSpesific(comparisonStatusArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
             if (comparisonData.success === false && comparisonData.result === null) {
                 return res.status(500).json({
@@ -63,12 +63,14 @@ server.get("/", async (req, res) => {
                 });
             }
         }
-        if (queryNameSnippet.success && queryNameSnippet.result != null) {
-            return res.status(200).json({
-                result: {
-                    data: queryNameSnippet.result
-                }
-            });
+        else {
+            if (queryNameSnippet.success && queryNameSnippet.result != null) {
+                return res.status(200).json({
+                    result: {
+                        data: queryNameSnippet.result
+                    }
+                });
+            }
         }
     }
     if (query.id === "statusQuery") {
@@ -95,7 +97,7 @@ server.get("/", async (req, res) => {
                 }
             });
         }
-        const comparisonArray = query.comparewith ? query.comparewith.split(",") : queryTagArray;
+        const comparisonArray = query.compareWith ? query.compareWith.split(",") : queryTagArray;
         const comparisonData = await searchByComparisonTagSpesific(comparisonArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
         console.log(comparisonData);
         if (comparisonData.success === false || comparisonData.result === null) {
@@ -147,8 +149,8 @@ server.get("/", async (req, res) => {
             });
         }
         if (queryOrgNr.success === true && queryOrgNr.result !== null) {
-            if (query.comparewith) {
-                const tags = query.comparewith.split(",");
+            if (query.compareWith) {
+                const tags = query.compareWith.split(",");
                 const comparisonData = await searchByComparisonTagSpesific(tags, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
                 if (comparisonData.success === false && comparisonData.error != null) {
                     return res.status(500).json({
@@ -174,11 +176,13 @@ server.get("/", async (req, res) => {
                     }
                 });
             }
-            return res.status(200).json({
-                result: {
-                    data: queryOrgNr.result
-                }
-            });
+            else {
+                return res.status(200).json({
+                    result: {
+                        data: queryOrgNr.result
+                    }
+                });
+            }
         }
     }
 });
