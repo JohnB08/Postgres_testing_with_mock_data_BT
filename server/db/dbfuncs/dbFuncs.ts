@@ -3,6 +3,9 @@ import { db } from "../dbConfig/dbConfig.js";
 import mockData from "../mockData/mockData.json" assert {type: "json"}
 import comparisonMockData from "../mockData/comparisonMockData.json" assert {type: "json"}
 
+
+/* RESTRUKTURER TIL Å VÆRE TILPASSET INKUBATORSTATUS! */
+
 type dataType = {
     name: string,
     org_nr: string,
@@ -424,7 +427,7 @@ for (let companyData of comparisonMockData){
     }
 }
 
-console.log(insertingCompanyNames, insertingComparisonCompanyNames) */
+console.log(insertingCompanyNames, insertingComparisonCompanyNames)  */
 /* 
 const searchResults = await searchByTagSpesific(['marin', 'innovasjon', 'skytjenester'], 2016, 2024)
 

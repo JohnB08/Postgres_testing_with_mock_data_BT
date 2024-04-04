@@ -382,7 +382,7 @@ for (let companyData of comparisonMockData){
     }
 }
 
-console.log(insertingCompanyNames, insertingComparisonCompanyNames) */
+console.log(insertingCompanyNames, insertingComparisonCompanyNames)  */
 /*
 const searchResults = await searchByTagSpesific(['marin', 'innovasjon', 'skytjenester'], 2016, 2024)
 

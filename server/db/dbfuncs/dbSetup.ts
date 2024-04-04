@@ -5,7 +5,10 @@ import { db } from "../dbConfig/dbConfig.js";
 const createCompanyNameTable = async() =>{
 try{
     const data = await db.query(`
-    CREATE TABLE IF NOT EXISTS company_names (company_name VARCHAR(255) NOT NULL, company_id SERIAL PRIMARY KEY, company_org_nr VARCHAR(255) UNIQUE NOT NULL)`)
+    CREATE TABLE IF NOT EXISTS company_names (
+        company_name VARCHAR(255) NOT NULL,
+        company_id SERIAL PRIMARY KEY,
+        company_org_nr VARCHAR(255) UNIQUE NOT NULL)`)
     return {success: true, data}
 } catch (error){
     return {success: false, error}
@@ -37,18 +40,17 @@ Eller bør de gjøres på frontend siden? Undersøkes senere. Ikke viktig nå.*/
 const createYearlyTable = async(startYearLowerLimit: number, startYearUpperLimit: number)=>{
     try{
         const data = await db.query(`
-        CREATE TABLE IF NOT EXISTS economic_data (queried_year INTEGER, operating_income INTEGER, operating_profit INTEGER, result_before_taxes INTEGER, annual_result INTEGER, total_assets INTEGER, company_id INTEGER REFERENCES company_names(company_id)) PARTITION BY RANGE (queried_year)
-        PRIMARY KEY (company_id, queried_year)
+        CREATE TABLE IF NOT EXISTS economic_data (
+            queried_year INTEGER,
+            operating_income INTEGER,
+            operating_profit INTEGER,
+            result_before_taxes INTEGER,
+            annual_result INTEGER,
+            total_assets INTEGER,
+            company_id INTEGER REFERENCES company_names(company_id),
+            PRIMARY KEY (company_id, queried_year))
         `)
-        const subTableArray = []
-        for (let startYear = startYearLowerLimit; startYear <= startYearUpperLimit; startYear+=5){
-            const subTableData = await db.query(`
-            CREATE TABLE economic_data_${startYear}_${startYear+4} PARTITION OF economic_data
-            FOR VALUES FROM (${startYear}) TO (${startYear+5})
-            `)
-            subTableArray.push(subTableData)
-        }
-        return {success: true, data: [data, subTableArray]}
+        return {success: true, data: [data]}
     } catch (error){
         return {success: false, error}
     }
@@ -84,14 +86,15 @@ const createComparisonTagRelationship = async()=>{
 
 const createEconomicComparisonTable = async(startYearLowerLimit: number, startYearUpperLimit: number)=>{
     const data = await db.query(`
-        CREATE TABLE IF NOT EXISTS comparison_economic_data (queried_year INTEGER, operating_income INTEGER, operating_profit INTEGER, result_before_taxes INTEGER, annual_result INTEGER, total_assets INTEGER, company_id INTEGER REFERENCES comparison_company_names(company_id)) PARTITION BY RANGE (queried_year)
-        PRIMARY KEY (company_id, queried_year)
+        CREATE TABLE IF NOT EXISTS comparison_economic_data (queried_year INTEGER, operating_income INTEGER, operating_profit INTEGER, result_before_taxes INTEGER, annual_result INTEGER, total_assets INTEGER, company_id INTEGER REFERENCES comparison_company_names(company_id), PRIMARY KEY (company_id, queried_year)) PARTITION BY RANGE (queried_year)
+        
         `)
         const subTableArray = []
         for (let startYear = startYearLowerLimit; startYear <= startYearUpperLimit; startYear+=5){
             const subTableData = await db.query(`
             CREATE TABLE comparison_economic_data_${startYear}_${startYear+4} PARTITION OF comparison_economic_data
             FOR VALUES FROM (${startYear}) TO (${startYear+5})
+            
             `)
             subTableArray.push(subTableData)
         }
