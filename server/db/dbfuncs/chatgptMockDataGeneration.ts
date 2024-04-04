@@ -40,10 +40,10 @@ const prefixes = [
     "Services", "Solutions", "Professionals", "Experts"
 ];
   const status = [
-    "Forr.messig Innovasjon",
+    "forr_messig_innovasjon",
     "preinkubasjon",
     "inkubatorbedrift",
-    "Skalering",
+    "skalering",
     "postinkubasjon",
     "alumni"
   ];
@@ -65,8 +65,8 @@ const prefixes = [
     const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
     const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
     const coinFlip = Math.floor(Math.random()*3)
-    if (coinFlip === 1) return `${prefix}${suffix} AS`;
-    if (coinFlip === 2) return `${prefix}${suffix} and ${suffixes[Math.floor(Math.random() * suffixes.length)]}`
+    if (coinFlip === 1) return `${prefix} ${suffix} AS`;
+    if (coinFlip === 2) return `${prefix} ${suffix} and ${suffixes[Math.floor(Math.random() * suffixes.length)]}`
     else return `${prefix}${suffix}`
   };
 
@@ -102,13 +102,14 @@ const prefixes = [
     const companyName = generateCompanyName();
     const orgNr = generateOrgNr();
     const field = generatefield();
-    const companyStartYear  = startYear - Math.floor(Math.random()*(endYear-startYear))
+    const companyStartYear  = startYear + Math.floor(Math.random()*(endYear-startYear))
     const companyEndYear = companyStartYear + Math.ceil(Math.random()*(endYear-startYear))
+    console.log(companyStartYear, companyEndYear)
     const yearlyData = [];
     let startIndex = 0
     for (let year = companyStartYear; year <= companyEndYear; year++) {
       const updateStatus = Math.floor(Math.random()*10)
-      if (updateStatus > 7 && startIndex < status.length){
+      if (updateStatus > 6 && startIndex < status.length){
         startIndex++
       }
       yearlyData.push(generateYearlyData(companyName, year, field, orgNr, startIndex));
@@ -118,11 +119,16 @@ const prefixes = [
 
   return data;
 }
+const mockDataPath = "../mockData/mockData.json"
+const comparisonMockDataPath = "../mockData/comparisonMockData.json"
+
+const generateMockData = (path:string)=>{
+  const generatedMockData = generateDynamicMockEconomicData(1000);
+  console.log(generatedMockData);
+  fs.writeFileSync(path, JSON.stringify(generatedMockData))
+  return console.log("Generating complete!")
+}
 
 
-const generatedMockData = generateDynamicMockEconomicData(1000);
-console.log(generatedMockData);
-
-const path = "../mockData/comparisonMockData.json"
-
-fs.writeFileSync(path, JSON.stringify(generatedMockData))
+generateMockData(mockDataPath);
+generateMockData(comparisonMockDataPath);

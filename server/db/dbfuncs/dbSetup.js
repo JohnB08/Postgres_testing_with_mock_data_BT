@@ -44,8 +44,8 @@ const createYearlyTable = async () => {
             result_before_taxes INTEGER,
             annual_result INTEGER,
             total_assets INTEGER,
-            company_id INTEGER,
-            PRIMARY KEY (company_id, queried_year) REFERENCES company_status_relationship(company_id, queried_year))
+            company_id INTEGER REFERENCES company_names(company_id),
+            PRIMARY KEY (company_id, queried_year))
         `);
         return { success: true, data: [data] };
     }
@@ -75,7 +75,7 @@ const createComparisonTagRelationship = async () => {
                 company_id INTEGER REFERENCES comparison_company_names(company_id),
                 status VARCHAR(255),
                 queried_year INTEGER,
-                PRIMARY KEY (company_id, tagName)
+                PRIMARY KEY (company_id, queried_year)
             )
         `);
         return { success: true, data };
@@ -93,8 +93,8 @@ const createEconomicComparisonTable = async () => {
             result_before_taxes INTEGER,
             annual_result INTEGER,
             total_assets INTEGER,
-            company_id INTEGER,
-            PRIMARY KEY (company_id, queried_year) REFERENCES company_status_relationship(company_id, queried_year)
+            company_id INTEGER REFERENCES comparison_company_names(company_id),
+            PRIMARY KEY (company_id, queried_year)
             )
         
         `);

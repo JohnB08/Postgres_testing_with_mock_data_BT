@@ -29,18 +29,17 @@ type statusObject = {
 type queryReturnType = {
             company_name: string,
             company_id: number,
+            company_field: string,
             data: [
                     {
                     queried_year: number,
-                    queried_data: [
-                            {
+                    queried_data: {
                             operating_income: number,
                             operating_profit: number,
                             result_before_taxes: number,
                             annual_result: number,
                             total_assets: number
                         }
-                    ]
                 }
             ]
 
@@ -64,14 +63,14 @@ const insertData = async(dataArray: dataType[]) =>{
         console.log(companyId)
         for (let dataPoint of dataArray){
             try{
+                const statusInsertion = await db.query(`
+                INSERT INTO company_status_relationship(company_id, status, queried_year)
+                VALUES ($1, '${dataPoint.status}', $2)
+                `, [companyId, dataPoint.queried_year])
                 const economicInsertion = await db.query(`
                 INSERT INTO economic_data (queried_year, operating_income, operating_profit, result_before_taxes, annual_result, total_assets, company_id)
                 VALUES ($1, $2, $3, $4, $5, $6, $7)
                 `, [dataPoint.queried_year, dataPoint.operating_income, dataPoint.operating_profit, dataPoint.result_before_taxes, dataPoint.annual_result, dataPoint.total_assets, companyId])
-                const statusInsertion = await db.query(`
-                INSERT INTO company_status_relationship(company_id, status, queried_year)
-                VALUES ($1, '${dataPoint.status}', $3)
-                `, [companyId, dataPoint.queried_year])
                 dbQueryArray.push([economicInsertion, statusInsertion])
             } catch(error){
                 dbQueryArray.push(error)
@@ -95,15 +94,16 @@ const insertComparisonData = async(dataArray: dataType[]) =>{
         console.log(companyId)
         for (let dataPoint of dataArray){
             try{
+                const statusInsertion = await db.query(`
+                INSERT INTO comparison_company_status_relationship(company_id, status, queried_year)
+                VALUES ($1, '${dataPoint.status}', $2)
+                `, [companyId, dataPoint.queried_year])
                 const economicInsertion = await db.query(`
                 INSERT INTO comparison_economic_data (queried_year, operating_income, operating_profit, result_before_taxes, annual_result, total_assets, company_id)
                 VALUES ($1, $2, $3, $4, $5, $6, $7)
                 `, [dataPoint.queried_year, dataPoint.operating_income, dataPoint.operating_profit, dataPoint.result_before_taxes, dataPoint.annual_result, dataPoint.total_assets, companyId])
-                const statusInsertion = await db.query(`
-                INSERT INTO comparison_company_status_relationship(company_id, status, queried_year)
-                VALUES ($1, '${dataPoint.status}', $3)
-                `, [companyId, dataPoint.queried_year])
                 dbQueryArray.push(economicInsertion)
+                dbQueryArray.push(statusInsertion)
             } catch(error){
                 dbQueryArray.push(error)
             }
@@ -160,6 +160,10 @@ try{
  * Passer på at vi bare får tilbake resultater for bedrifter hvor alle tags i arrayet matcher.
  * F.eks hvis bedriften bare har 2 av 3 tags, er COUNT(DISTINCT tagname) mindre enn tagArray.length og bedriften blir ikke tatt med. 
  * 
+ * 
+ * REWORKES FOR Å GÅ ETTER STATUS I STEDEN! Må endre på måten den querier status table.
+ * 
+ * 
  * HUSK Å VERIFIE START YEAR OG END YEAR FØR DU BRUKER DENNE FUNKSJONEN.
  *  
  * )
@@ -168,37 +172,35 @@ try{
  */
 export const searchByTagSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
     try {
+        console.log(tagArray)
         const data = await db.query<queryReturnType>(`
         WITH company_data AS (
             SELECT
                 company_names.company_name,
                 company_names.company_id,
+                company_names.company_field,
                 economic_data.queried_year,
-                json_agg(
-                        json_build_object(
-                            'operating_income', economic_data.operating_income,
-                            'operating_profit', economic_data.operating_profit,
-                            'result_before_taxes', economic_data.result_before_taxes,
-                            'annual_result', economic_data.annual_result,
-                            'total_assets', economic_data.total_assets
-                        )
-                    ) AS queried_data
+                json_build_object(
+                    'operating_income', economic_data.operating_income,
+                    'operating_profit', economic_data.operating_profit,
+                    'result_before_taxes', economic_data.result_before_taxes,
+                    'annual_result', economic_data.annual_result,
+                    'total_assets', economic_data.total_assets,
+                    'current_status', company_status_relationship.status
+                ) AS queried_data
             FROM company_names
             INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
-            WHERE company_names.company_id IN (
-                SELECT company_id
-                FROM company_status_relationship
-                WHERE status = ANY($1)
-                AND queried_year BETWEEN ${startYear} AND ${endYear}
-                GROUP BY company_id
-                HAVING COUNT(DISTINCT status) = ${tagArray.length}
-            )
-            GROUP BY company_names.company_name, company_names.company_id, economic_data.queried_year
+            INNER JOIN company_status_relationship ON company_status_relationship.company_id = company_names.company_id
+            AND company_status_relationship.queried_year = economic_data.queried_year
+            WHERE 
+                company_status_relationship.status = any($1)
+            AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
             ORDER BY company_names.company_name, economic_data.queried_year
         ), aggregated_data AS (
             SELECT 
                 company_name,
                 company_id,
+                company_field,
                 json_agg(
                     json_build_object(
                         'queried_year', queried_year,
@@ -208,7 +210,7 @@ export const searchByTagSpesific = async(tagArray: string[], startYear: number= 
             FROM
                 company_data
             GROUP BY
-                company_name, company_id
+                company_name, company_id, company_field
             ORDER BY
                 company_name
         )
@@ -230,26 +232,30 @@ export const searchByName = async(companyNameSnippet: string, startYear: number 
                 SELECT 
                     company_names.company_name,
                     company_names.company_id,
+                    company_names.company_field,
+                    company_names.company_org_nr,
                     economic_data.queried_year,
-                    json_agg(
-                        json_build_object(
-                            'operating_income', economic_data.operating_income,
-                            'operating_profit', economic_data.operating_profit,
-                            'result_before_taxes', economic_data.result_before_taxes,
-                            'annual_result', economic_data.annual_result,
-                            'total_assets', economic_data.total_assets
-                        )
+                    json_build_object(
+                        'operating_income', economic_data.operating_income,
+                        'operating_profit', economic_data.operating_profit,
+                        'result_before_taxes', economic_data.result_before_taxes,
+                        'annual_result', economic_data.annual_result,
+                        'total_assets', economic_data.total_assets,
+                        'current_status', company_status_relationship.status
                     ) AS queried_data
                 FROM company_names
                 INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
+                INNER JOIN company_status_relationship ON company_status_relationship.company_id = company_names.company_id
                 WHERE company_names.company_name ILIKE '%' || $1 || '%'
+                AND company_status_relationship.queried_year = economic_data.queried_year
                 AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
-                GROUP BY company_names.company_name, company_names.company_id, economic_data.queried_year
                 ORDER BY company_names.company_name, economic_data.queried_year
             ), aggregated_data AS (
                 SELECT
                     company_name,
                     company_id,
+                    company_field,
+                    company_org_nr,
                     json_agg(
                         json_build_object(
                             'queried_year', queried_year,
@@ -259,7 +265,7 @@ export const searchByName = async(companyNameSnippet: string, startYear: number 
                 FROM
                     company_data
                 GROUP BY
-                    company_name, company_id
+                    company_name, company_id, company_field, company_org_nr
                 ORDER BY
                     company_name
             )
@@ -282,26 +288,28 @@ export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, 
             SELECT
                 company_names.company_name,
                 company_names.company_id,
+                company_names.company_field,
                 economic_data.queried_year,
-                json_agg(
-                    json_build_object(
-                        'operating_income', economic_data.operating_income,
-                        'operating_profit', economic_data.operating_profit,
-                        'result_before_taxes', economic_data.result_before_taxes,
-                        'annual_result', economic_data.annual_result,
-                        'total_assets', economic_data.total_assets
-                    )
+                json_build_object(
+                    'operating_income', economic_data.operating_income,
+                    'operating_profit', economic_data.operating_profit,
+                    'result_before_taxes', economic_data.result_before_taxes,
+                    'annual_result', economic_data.annual_result,
+                    'total_assets', economic_data.total_assets,
+                    'current_status', company_status_relationship.status
                 ) AS queried_data
             FROM company_names
             INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
+            INNER JOIN company_status_relationship ON company_status_relationship.company_id = company_names.company_id
             WHERE company_names.company_org_nr = $1
+            AND company_status_relationship.queried_year = economic_data.queried_year
             AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
-            GROUP BY company_names.company_name, company_names.company_id, economic_data.queried_year
             ORDER BY company_names.company_name, economic_data.queried_year
         ), aggregated_data AS (
                 SELECT
                     company_name,
                     company_id,
+                    company_field,
                     json_agg(
                         json_build_object(
                             'queried_year', queried_year,
@@ -311,7 +319,7 @@ export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, 
                 FROM
                     company_data
                 GROUP BY
-                    company_name, company_id
+                    company_name, company_id, company_field
                 ORDER BY
                     company_name
             )
@@ -362,17 +370,21 @@ export const searchByComparisonTagSpesific = async(tagArray: string[], startYear
     try {
         const data = await db.query(`
         WITH company_data AS (
-            SELECT DISTINCT comparison_company_names.company_name, comparison_economic_data.queried_year, comparison_economic_data.operating_income, comparison_economic_data.operating_profit, comparison_economic_data.result_before_taxes, comparison_economic_data.annual_result, comparison_economic_data.total_assets
+            SELECT 
+                comparison_company_names.company_name,
+                comparison_economic_data.queried_year,
+                comparison_economic_data.operating_income,
+                comparison_economic_data.operating_profit,
+                comparison_economic_data.result_before_taxes,
+                comparison_economic_data.annual_result,
+                comparison_economic_data.total_assets
             FROM comparison_company_names
             INNER JOIN comparison_economic_data ON comparison_economic_data.company_id = comparison_company_names.company_id
-            WHERE comparison_company_names.company_id IN (
-                SELECT company_id
-                FROM comparison_company_status_relationship
-                WHERE status = ANY($1)
-                AND queried_year BETWEEN ${startYear} AND ${endYear}
-                GROUP BY company_id
-                HAVING COUNT(DISTINCT status) = ${tagArray.length}
-            )
+            INNER JOIN comparison_company_status_relationship ON comparison_company_status_relationship.company_id = comparison_company_names.company_id
+            AND comparison_company_status_relationship.queried_year = comparison_economic_data.queried_year
+            WHERE 
+                comparison_company_status_relationship.status = ANY($1)
+            AND comparison_economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
             ORDER BY comparison_company_names.company_name
         ), aggregated_data AS (
             SELECT 
@@ -425,7 +437,7 @@ for (let companyData of comparisonMockData){
     }
 }
 
-console.log(insertingCompanyNames, insertingComparisonCompanyNames)  */
+console.log(insertingCompanyNames, insertingComparisonCompanyNames) */
 /* 
 const searchResults = await searchByTagSpesific(['marin', 'innovasjon', 'skytjenester'], 2016, 2024)
 
