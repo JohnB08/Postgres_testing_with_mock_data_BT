@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { verifiyBaseQuery, verifyNameQueryType, verifyOrgNrQueryType, verifyTagQueryType } from "./db/verifierFuncs/queryVerifier.js"
-import { searchByComparisonTagSpesific, searchByName, searchByOrgNr, searchByTagSpesific } from "./db/dbfuncs/dbFuncs.js"
+import { searchByComparisonStatusSpesific, searchByName, searchByOrgNr, searchByStatusSpesific } from "./db/dbfuncs/dbFuncs.js"
 
 
 const server = express()
@@ -49,7 +49,7 @@ server.get("/", async (req, res)=>{
         })
         if (query.compareWith){
             const comparisonStatusArray = query.compareWith.split(",")
-            const comparisonData = await searchByComparisonTagSpesific(comparisonStatusArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
+            const comparisonData = await searchByComparisonStatusSpesific(comparisonStatusArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
             if (comparisonData.success === false && comparisonData.result === null){
                 return res.status(500).json({
                     result: {
@@ -84,7 +84,7 @@ server.get("/", async (req, res)=>{
             }
         })
         const queryTagArray = query.status.split(",")
-        const queryTags = await searchByTagSpesific(queryTagArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+        const queryTags = await searchByStatusSpesific(queryTagArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
         if (queryTags.success === false || queryTags.result === null) return res.status(500).json({
             result: {
                 error: queryTags.error,
@@ -99,7 +99,7 @@ server.get("/", async (req, res)=>{
             })
         }
         const comparisonArray = query.compareWith ? query.compareWith.split(",") : queryTagArray
-        const comparisonData = await searchByComparisonTagSpesific(comparisonArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+        const comparisonData = await searchByComparisonStatusSpesific(comparisonArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
         console.log(comparisonData)
         if (comparisonData.success === false || comparisonData.result === null){
             return res.status(500).json({
@@ -150,7 +150,7 @@ server.get("/", async (req, res)=>{
         if (queryOrgNr.success === true && queryOrgNr.result !== null){
             if (query.compareWith){
                 const tags = query.compareWith.split(",")
-                const comparisonData = await searchByComparisonTagSpesific(tags, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+                const comparisonData = await searchByComparisonStatusSpesific(tags, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
                 if (comparisonData.success === false && comparisonData.error != null){
                     return res.status(500).json({
                         result: {

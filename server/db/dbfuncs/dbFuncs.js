@@ -97,16 +97,9 @@ try{
 }
 } */
 /**
- * En mer spesifikk søkefunksjon for tags.
+ * Spesifikk søkefunksjon for å søke gjennom og finne data for bedrifter basert på status.
  *
- *
- * Subquery WHERE company_names.company_id IN (
- * ...
- * ...
- * HAVING COUNT(DISTINCT tagname) = ${tagArray.length}
- * Passer på at vi bare får tilbake resultater for bedrifter hvor alle tags i arrayet matcher.
- * F.eks hvis bedriften bare har 2 av 3 tags, er COUNT(DISTINCT tagname) mindre enn tagArray.length og bedriften blir ikke tatt med.
- *
+ * Gjør to Inner Joins for å finne gyldig id basert på om ønsket status er innenfor gjeldene søkeår, default år er alle gyldige årstall.
  *
  * REWORKES FOR Å GÅ ETTER STATUS I STEDEN! Må endre på måten den querier status table.
  *
@@ -117,7 +110,7 @@ try{
  * @param tagArray Et array av tags.
  * @returns Array av data av typen dataType
  */
-export const searchByTagSpesific = async (tagArray, startYear = 0, endYear = new Date().getFullYear()) => {
+export const searchByStatusSpesific = async (tagArray, startYear = 0, endYear = new Date().getFullYear()) => {
     try {
         console.log(tagArray);
         const data = await db.query(`
@@ -309,14 +302,14 @@ export const getTagsFromCompanyId = async (companyId) => {
 };
 /**
  * searchbytag for comparison data.
- * Lager company_data som orginal tag søk, så aggrigerer data i Aggregate_data
+ * Lager company_data som orginal status søk, så aggrigerer data i Aggregate_data
  * Som leverer AVG og MEDIAN values for hver bit for hvert år.
  *
  * )
  * @param tagArray Et array av tags.
  * @returns Array av data av typen dataType
  */
-export const searchByComparisonTagSpesific = async (tagArray, startYear = 0, endYear = new Date().getFullYear()) => {
+export const searchByComparisonStatusSpesific = async (tagArray, startYear = 0, endYear = new Date().getFullYear()) => {
     try {
         const data = await db.query(`
         WITH company_data AS (

@@ -1,4 +1,19 @@
 services:
+  client:
+    build: 
+      context: ./client/React-Bedrifttracker-prototype
+      dockerfile: dockerfile
+    ports:
+      - 8080:8080
+    develop:
+      watch:
+        - action: sync
+          path: ./client/React-Bedrifttracker-prototype
+          target: /src/
+          ignore:
+            - node_modules
+        - action: rebuild
+          path: ./client/React-Bedrifttracker-prototype/package.json
   server: 
     image: node:20-bookworm-slim
     command: ["node", "./app/server.js"]
