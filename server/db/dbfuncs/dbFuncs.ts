@@ -19,10 +19,6 @@ type dataType = {
     queried_year: number
 }
 
-type statusObject = {
-    status: string,
-    year: number
-}
 
 /* company_names.company_id, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets, */
 
