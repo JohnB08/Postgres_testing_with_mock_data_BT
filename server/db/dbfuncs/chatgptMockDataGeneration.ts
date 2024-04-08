@@ -1,4 +1,5 @@
 import fs from "fs"
+import { economicCodes } from "../mockData/responseConstructor.js";
 
 
 /* DROPP TAGS, RESTRUKTURER TIL INKUBATORSTATUS ISTEDEN */
@@ -7,7 +8,6 @@ import fs from "fs"
 
 /* Chatgpt made this, and it worked! (had to add typing, but it works.) I'll add some parameters to change how many years, and how many companies i want it to generate.
 Then i'll add a fs function at the end to update my mockData.json file.*/ 
-function generateDynamicMockEconomicData(companyCount: number, startYear: number = 2013, endYear: number = new Date().getFullYear()) {
   // Prefixes and suffixes for dynamic company name generation
 const prefixes = [
     // Norwegian cultural and natural elements
@@ -47,18 +47,7 @@ const prefixes = [
     "postinkubasjon",
     "alumni"
   ];
-  const fields = [
-    "Annet",
-    "Energi",
-    "FoU/Undervisning",
-    "Helse",
-    "IKT",
-    "Industri",
-    "Kultur",
-    "Mat og Natur",
-    "Reiseliv",
-    "Tjenesteytring"
-];
+  
 
   // Helper function to generate a random company name
   const generateCompanyName = () => {
@@ -70,11 +59,6 @@ const prefixes = [
     else return `${prefix}${suffix}`
   };
 
-  // Helper function to generate tags, ensuring at least one base tag and adding atleast one additional tag
-  //This originally only added one tag for each, but i rewrote it to add a random amount of tags, which feels more organic. 
-  const generatefield = () => {
-    return fields[Math.floor(Math.random()*fields.length)]
-  };
 
   //Chatgpt forgot org nrs should be unique for each company, but only generated once, so had to add this:
   const generateOrgNr = () =>{
@@ -82,53 +66,81 @@ const prefixes = [
   }
 
   // Generate yearly data with randomized financial stats and consistent company and tag information
-  const generateYearlyData = (name: string, year: number, field: string, orgNr: string, startIndex: number) => ({
-    name,
-    org_nr: orgNr,
-    field: field,
-    operating_income: Math.floor(Math.random() * 1000000 + 500000),
-    operating_profit: Math.floor(Math.random() * 500000 + 250000),
-    result_before_taxes: Math.floor(Math.random() * 400000 + 200000),
-    annual_result: Math.floor(Math.random() * 300000 + 150000),
-    total_assets: Math.floor(Math.random() * 2000000 + 1000000),
-    queried_year: year,
-    status: status[startIndex]
-  });
+  function generateRandomCompanies(numCompanies: number) {
+    const companyTypes = ['AS', 'ASA', 'ENK', 'ANS', 'DA'];
+    const naceCategories = [
+    "Annet",
+    "Energi",
+    "FoU/Undervisning",
+    "Helse",
+    "IKT",
+    "Industri",
+    "Kultur",
+    "Mat og Natur",
+    "Reiseliv",
+    "Tjenesteytring"
+];;
 
-  // Create mock data for five companies with data for three years each
-  // I added some randomness to startYear to make it more organic looking. 
-  const data = [];
-  for (let i = 0; i < companyCount; i++) {
-    const companyName = generateCompanyName();
-    const orgNr = generateOrgNr();
-    const field = generatefield();
-    const companyStartYear  = startYear + Math.floor(Math.random()*(endYear-startYear))
-    const companyEndYear = companyStartYear + Math.ceil(Math.random()*(endYear-startYear))
-    console.log(companyStartYear, companyEndYear)
-    const yearlyData = [];
-    let startIndex = 0
-    for (let year = companyStartYear; year <= companyEndYear; year++) {
-      const updateStatus = Math.floor(Math.random()*10)
-      if (updateStatus > 6 && startIndex < status.length){
-        startIndex++
-      }
-      yearlyData.push(generateYearlyData(companyName, year, field, orgNr, startIndex));
+    function getRandomDate(startYear: number, endYear: number) {
+        const randomYear = Math.floor(Math.random() * (endYear - startYear)) + startYear;
+        const randomMonth = Math.ceil(Math.random() * 12);
+        const randomDay = Math.ceil(Math.random() * 28);
+        return {year: randomYear, month: randomMonth, day: randomDay};
     }
-    data.push(yearlyData);
-  }
 
-  return data;
+    function getRandomCompany() {
+        const companyType = companyTypes[Math.floor(Math.random() * companyTypes.length)];
+        const endYear = new Date().getFullYear();
+        const registrationDate = getRandomDate(2013, endYear);
+        const yearsInOperation = Math.ceil(Math.random() * (endYear - registrationDate.year));
+        const accounts = [];
+        let statusIndex = 0;
+        for (let i = 0; i < yearsInOperation; i++) {
+            const year = (endYear - yearsInOperation + i).toString();
+            const statusChangeCoinflip = Math.floor(Math.random()*10);
+            statusIndex = statusChangeCoinflip > 6 ? statusIndex += 1 : statusIndex
+            const annualAccounts = {
+                currency: 'NOK',
+                year: year.toString(),
+                current_status: status[statusIndex],
+                accounts: Object.keys(economicCodes).map(key=>{
+                  return {
+                    code: key,
+                    amount: Math.floor(Math.random()*10000).toString()
+                  }
+                })
+            };
+            accounts.push(annualAccounts);
+        }
+
+        const naceCategory = naceCategories[Math.floor(Math.random() * naceCategories.length)];
+
+        return {
+            companyType: companyType,
+            companyTypeName: `${companyType} Company`,
+            companyName: generateCompanyName(),
+            organisationNumber: generateOrgNr(),
+            registrationDate: `${registrationDate.year}.${registrationDate.month}.${registrationDate.day}`,
+            yearsInOperation: yearsInOperation,
+            annualAccounts: accounts,
+            naceCategories: [naceCategory]
+        };
+    }
+
+    const companies = [];
+    for (let i = 0; i < numCompanies; i++) {
+        companies.push(getRandomCompany());
+    }
+
+    return companies;
 }
+
+
 const mockDataPath = "../mockData/mockData.json"
-const comparisonMockDataPath = "../mockData/comparisonMockData.json"
-
-const generateMockData = (path:string)=>{
-  const generatedMockData = generateDynamicMockEconomicData(1000);
-  console.log(generatedMockData);
-  fs.writeFileSync(path, JSON.stringify(generatedMockData))
-  return console.log("Generating complete!")
-}
 
 
-generateMockData(mockDataPath);
-generateMockData(comparisonMockDataPath);
+const generatedCompanies = generateRandomCompanies(200)
+
+export type CompanyType = typeof generatedCompanies
+
+fs.writeFileSync(mockDataPath, JSON.stringify(generatedCompanies))

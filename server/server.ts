@@ -94,13 +94,19 @@ server.get("/", async (req, res)=>{
         if (queryTags.success === true && typeof queryTags.result === "string") {
             return res.status(200).json({
                 result: {
-                    result: queryTags.result,
+                    data: queryTags.result,
                 }
             })
         }
-        const comparisonArray = query.compareWith ? query.compareWith.split(",") : queryTagArray
-        const comparisonData = await searchByComparisonStatusSpesific(comparisonArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+        const comparisonData = query.compareWith ? await searchByComparisonStatusSpesific(query.compareWith.split(","), query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear()) : null
         console.log(comparisonData)
+        if (comparisonData === null){
+            return res.status(200).json({
+                result: {
+                    data: queryTags.result
+                }
+            })
+        }
         if (comparisonData.success === false || comparisonData.result === null){
             return res.status(500).json({
                 result: {

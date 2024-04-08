@@ -1,13 +1,15 @@
 import { db } from "../dbConfig/dbConfig.js";
-
+import { economicTables, isKey } from "./regexTest.js";
+import { economicCodes } from "../mockData/responseConstructor.js";
+import { QueryResult } from "pg";
 
 
 const createCompanyNameTable = async() =>{
 try{
     const data = await db.query(`
     CREATE TABLE IF NOT EXISTS company_names (
-        company_name VARCHAR(255) NOT NULL,
         company_id SERIAL PRIMARY KEY,
+        company_name VARCHAR(255) NOT NULL,
         company_org_nr VARCHAR(255) UNIQUE NOT NULL,
         company_field VARCHAR(255)
         )`)
@@ -18,15 +20,15 @@ try{
 
 }
 
-const createTagTable = async()=>{
+const createStatusTable = async()=>{
     const testArray = []
         try{
             const data = await db.query(`
             CREATE TABLE IF NOT EXISTS company_status_relationship (
                 company_id INTEGER REFERENCES company_names(company_id),
                 queried_year INTEGER,
-                status VARCHAR(255),
-                PRIMARY KEY (company_id, queried_year)
+                PRIMARY KEY (company_id, queried_year),
+                status VARCHAR(255)
             )
             `)
             testArray.push({success: true, data})
@@ -37,19 +39,18 @@ const createTagTable = async()=>{
 }
 
 
-/* Kan det lages funksjoner basert på denne? kanskje vi kan lage en funksjon som kan regne ut levlighetsgrad basert på data over tid for bransje?
-Eller bør de gjøres på frontend siden? Undersøkes senere. Ikke viktig nå.*/
 
+/**
+ * Hver ØKO_KODE fra proff er lagret som CODE_<kode>, for å gå rundt protected keywords i postgres.
+ *  
+ * @returns 
+ */
 const createYearlyTable = async()=>{
     try{
         const data = await db.query(`
         CREATE TABLE IF NOT EXISTS economic_data (
             queried_year INTEGER,
-            operating_income INTEGER,
-            operating_profit INTEGER,
-            result_before_taxes INTEGER,
-            annual_result INTEGER,
-            total_assets INTEGER,
+            ${economicTables}
             company_id INTEGER REFERENCES company_names(company_id),
             PRIMARY KEY (company_id, queried_year))
         `)
@@ -59,8 +60,39 @@ const createYearlyTable = async()=>{
     }
 }
 
+/**
+ * Hver kode husk at hver kode er satt opp som CODE_<kodenavn>, for å unngå protected keyword konflikt.
+ * @returns 
+ */
+const createCodeLookUpTable = async()=>{
+    try{
+        const insertArray: QueryResult<any>[] = []
+        const data = await db.query(`
+        CREATE TABLE IF NOT EXISTS code_lookup (
+            code_id SERIAL PRIMARY KEY,
+            economic_code VARCHAR(255),
+            code_description VARCHAR(255)
+        )
+        `)
+        insertArray.push(data)
+        const keyArray = Object.keys(economicCodes)
+        
+        for (let code of keyArray){
+            if (isKey(economicCodes, code)){
+                const codeInsert = await db.query(`
+                INSERT INTO code_lookup(economic_code, code_description)
+                VALUES ('CODE_${code}', '${economicCodes[code]}')
+                `)
+                insertArray.push(codeInsert)
+            }
+        }
+        return {success: true, data: insertArray}
+    } catch (error){
+        return {success: false, error}
+    }
+}
 
-const createComparisonCompanyTable = async() =>{
+/* const createComparisonCompanyTable = async() =>{
     try{
         const data = db.query(`
         CREATE TABLE IF NOT EXISTS comparison_company_names (
@@ -107,17 +139,15 @@ const createEconomicComparisonTable = async()=>{
         
         `)
         return {success: true, data: data}
-}
+} */
 
 
 const setupDatabase = async()=>{
     const companyTable = await createCompanyNameTable();
-    const relTable = await createTagTable();
+    const relTable = await createStatusTable();
     const yearTable = await createYearlyTable();
-    const comparisonCompanyTable = await createComparisonCompanyTable();
-    const comparisonRelTable = await createComparisonTagRelationship();
-    const comparisonYearTable = await createEconomicComparisonTable();
-    return [companyTable, relTable, yearTable, comparisonCompanyTable, comparisonRelTable, comparisonYearTable]
+    const codeLookupTable = await createCodeLookUpTable();
+    return [companyTable, relTable, yearTable, codeLookupTable]
 }
 
 const testRun = await setupDatabase()

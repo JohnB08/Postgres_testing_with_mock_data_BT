@@ -1,23 +1,11 @@
+import { QueryResult } from "pg";
 import { db } from "../dbConfig/dbConfig.js";
 //brukes bare for insert av mockData til local database
 import mockData from "../mockData/mockData.json" assert {type: "json"}
-import comparisonMockData from "../mockData/comparisonMockData.json" assert {type: "json"}
-
+import { economicCodes } from "../mockData/responseConstructor.js";
+import { CompanyType } from "./chatgptMockDataGeneration.js";
 
 /* RESTRUKTURER TIL Å VÆRE TILPASSET INKUBATORSTATUS! */
-
-type dataType = {
-    name: string,
-    org_nr: string,
-    field: string,
-    operating_income: number,
-    operating_profit: number,
-    result_before_taxes: number,
-    annual_result: number,
-    total_assets: number,
-    status: string,
-    queried_year: number
-}
 
 
 /* company_names.company_id, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets, */
@@ -30,11 +18,7 @@ type queryReturnType = {
                     {
                     queried_year: number,
                     queried_data: {
-                            operating_income: number,
-                            operating_profit: number,
-                            result_before_taxes: number,
-                            annual_result: number,
-                            total_assets: number
+                            [key: string]: number
                         }
                 }
             ]
@@ -46,38 +30,47 @@ type tagnameQueryType = {
 }
 
 
-const insertData = async(dataArray: dataType[]) =>{
-    const dbQueryArray = []
+const insertData = async(dataArray: CompanyType) =>{
+    const dataInsertionArray: QueryResult<any>[] = []
     try{
-        const userInsertion = await db.query(`
-        INSERT INTO company_names (company_name, company_org_nr, company_field)
-        VALUES ($1, $2, $3)
-        RETURNING company_id
-        `, [dataArray[0].name, dataArray[0].org_nr, dataArray[0].field])
-        dbQueryArray.push(userInsertion)
-        const companyId = userInsertion.rows[0].company_id as number
-        console.log(companyId)
-        for (let dataPoint of dataArray){
-            try{
-                const statusInsertion = await db.query(`
-                INSERT INTO company_status_relationship(company_id, status, queried_year)
-                VALUES ($1, '${dataPoint.status}', $2)
-                `, [companyId, dataPoint.queried_year])
-                const economicInsertion = await db.query(`
-                INSERT INTO economic_data (queried_year, operating_income, operating_profit, result_before_taxes, annual_result, total_assets, company_id)
-                VALUES ($1, $2, $3, $4, $5, $6, $7)
-                `, [dataPoint.queried_year, dataPoint.operating_income, dataPoint.operating_profit, dataPoint.result_before_taxes, dataPoint.annual_result, dataPoint.total_assets, companyId])
-                dbQueryArray.push([economicInsertion, statusInsertion])
-            } catch(error){
-                dbQueryArray.push(error)
+        for (let company of dataArray){
+            console.log(`inserting companydata for ${company.companyName}`)
+            const insertIntoCompanyName = await db.query(`
+            INSERT INTO company_names (company_name, company_org_nr, company_field)
+            VALUES ($1, $2, $3)
+            RETURNING company_id
+            `, [company.companyName, company.organisationNumber, company.naceCategories[0]])
+            dataInsertionArray.push(insertIntoCompanyName)
+            const companyId = insertIntoCompanyName.rows[0].company_id as number
+            for (let year of company.annualAccounts){
+                console.log(`Inserting data for year ${year.year}`)
+                const insertIntoCompanyStatus = await db.query(`
+                INSERT INTO company_status_relationship (company_id, queried_year, status)
+                VALUES ($1, $2, '${year.current_status}')
+                `, [companyId, Number(year.year)])
+                dataInsertionArray.push(insertIntoCompanyStatus)
+                const insertIntoEconomicTable = await db.query(`
+                INSERT INTO economic_data (queried_year, company_id)
+                VALUES ($1, $2)
+                `, [Number(year.year), companyId])
+                dataInsertionArray.push(insertIntoEconomicTable)
+                for (let accountData of year.accounts){
+                    const insertAccountData = await db.query(`
+                    UPDATE economic_data 
+                    SET CODE_${accountData.code} = $1
+                    WHERE queried_year = $2
+                    AND company_id = $3
+                    `, [Number(accountData.amount), Number(year.year), companyId])
+                    dataInsertionArray.push(insertAccountData)
+                }
             }
         }
+        return {success: true, dataInsertionArray}
     } catch (error){
-        dbQueryArray.push(error)
+        return {success: false, error}
     }
-    return dbQueryArray
 }
-const insertComparisonData = async(dataArray: dataType[]) =>{
+/* const insertComparisonData = async(dataArray: dataType[]) =>{
     const dbQueryArray = []
     try{
         const userInsertion = await db.query(`
@@ -109,7 +102,7 @@ const insertComparisonData = async(dataArray: dataType[]) =>{
     }
     return dbQueryArray
 }
-
+ */
 
 /* SEARCHBYTAG. Ikke sikker på om beste gjennomføringsmåte. Usikker på om tagname in ANY er for lite spesifikt. Kanskje en inverse tag search, Not In? når brukeren velger en tag, så excluderer searchen alt annet? */
 
@@ -146,14 +139,13 @@ try{
 } */
 
 /**
- * Spesifikk søkefunksjon for å søke gjennom og finne data for bedrifter basert på status.
+ * Spesifikk søkefunksjon basert på status. 
  * 
- * Gjør to Inner Joins for å finne gyldig id basert på om ønsket status er innenfor gjeldene søkeår, default år er alle gyldige årstall. 
+ * Henter ut økonomisk data. Returnerer som queryReturnType.
  * 
- * REWORKES FOR Å GÅ ETTER STATUS I STEDEN! Må endre på måten den querier status table.
- * 
- * 
- * HUSK Å VERIFIE START YEAR OG END YEAR FØR DU BRUKER DENNE FUNKSJONEN.
+ * Økonomisk data = {
+ *  "beskrivelse" : number
+ * }
  *  
  * )
  * @param tagArray Et array av tags.
@@ -168,14 +160,15 @@ export const searchByStatusSpesific = async(tagArray: string[], startYear: numbe
                 company_names.company_name,
                 company_names.company_id,
                 company_names.company_field,
+                company_names.company_org_nr,
                 economic_data.queried_year,
-                json_build_object(
-                    'operating_income', economic_data.operating_income,
-                    'operating_profit', economic_data.operating_profit,
-                    'result_before_taxes', economic_data.result_before_taxes,
-                    'annual_result', economic_data.annual_result,
-                    'total_assets', economic_data.total_assets,
-                    'current_status', company_status_relationship.status
+                (
+                SELECT jsonb_object_agg(code_lookup.code_description, economic_data_kv.ed_value)
+                    FROM (
+                        SELECT key, value AS ed_value
+                        FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year' )
+                    ) AS economic_data_kv
+                    JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
                 ) AS queried_data
             FROM company_names
             INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
@@ -190,6 +183,7 @@ export const searchByStatusSpesific = async(tagArray: string[], startYear: numbe
                 company_name,
                 company_id,
                 company_field,
+                company_org_nr,
                 json_agg(
                     json_build_object(
                         'queried_year', queried_year,
@@ -199,7 +193,7 @@ export const searchByStatusSpesific = async(tagArray: string[], startYear: numbe
             FROM
                 company_data
             GROUP BY
-                company_name, company_id, company_field
+                company_name, company_id, company_field, company_org_nr
             ORDER BY
                 company_name
         )
@@ -224,13 +218,10 @@ export const searchByName = async(companyNameSnippet: string, startYear: number 
                     company_names.company_field,
                     company_names.company_org_nr,
                     economic_data.queried_year,
-                    json_build_object(
-                        'operating_income', economic_data.operating_income,
-                        'operating_profit', economic_data.operating_profit,
-                        'result_before_taxes', economic_data.result_before_taxes,
-                        'annual_result', economic_data.annual_result,
-                        'total_assets', economic_data.total_assets,
-                        'current_status', company_status_relationship.status
+                    (
+                        SELECT jsonb_object_agg(code_lookup.code_description, ed_value)
+                        FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year') AS economic_data_kv(key, ed_value)
+                        JOIN code_lookup ON code_lookup.economic_code = economic_data_kv.key
                     ) AS queried_data
                 FROM company_names
                 INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
@@ -278,14 +269,13 @@ export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, 
                 company_names.company_name,
                 company_names.company_id,
                 company_names.company_field,
+                company_names.company_org_nr,
                 economic_data.queried_year,
-                json_build_object(
-                    'operating_income', economic_data.operating_income,
-                    'operating_profit', economic_data.operating_profit,
-                    'result_before_taxes', economic_data.result_before_taxes,
-                    'annual_result', economic_data.annual_result,
-                    'total_assets', economic_data.total_assets,
-                    'current_status', company_status_relationship.status
+                (
+                    SELECT jsonb_object_agg(code_lookup.code_description, ed_value)
+                    FROM 
+                    jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year') AS economic_data_kv(key, ed_value)
+                    JOIN code_lookup ON code_lookup.economic_code = economic_data_kv.key
                 ) AS queried_data
             FROM company_names
             INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
@@ -299,6 +289,7 @@ export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, 
                     company_name,
                     company_id,
                     company_field,
+                    company_org_nr,
                     json_agg(
                         json_build_object(
                             'queried_year', queried_year,
@@ -308,7 +299,7 @@ export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, 
                 FROM
                     company_data
                 GROUP BY
-                    company_name, company_id, company_field
+                    company_name, company_id, company_field, company_org_nr
                 ORDER BY
                     company_name
             )
@@ -407,31 +398,15 @@ export const searchByComparisonStatusSpesific = async(tagArray: string[], startY
 
 
 /* TESTING FUNCTIONS */
-/* const insertingCompanyNames = []
-for (let companyData of mockData){
-    try{
-        const data = await insertData(companyData)
-        insertingCompanyNames.push(data)
-    } catch (error){
-        insertingCompanyNames.push(error)
-    }
-}
-const insertingComparisonCompanyNames = []
-for (let companyData of comparisonMockData){
-    try{
-        const data = await insertComparisonData(companyData)
-        insertingComparisonCompanyNames.push(data)
-    } catch (error){
-        insertingComparisonCompanyNames.push(error)
-    }
-}
-
-console.log(insertingCompanyNames, insertingComparisonCompanyNames) */
 /* 
-const searchResults = await searchByTagSpesific(['marin', 'innovasjon', 'skytjenester'], 2016, 2024)
+const insertingCompanyNames = await insertData(mockData as CompanyType)
 
-console.log(searchResults) */
+console.log(insertingCompanyNames) */
 
+/* const searchResults = await searchByStatusSpesific(['preinkubasjon'], 2020, 2024)
+
+console.log(searchResults) 
+ */
 /* const searchResults = await searchByName("hav")
 console.log(searchResults) */
 

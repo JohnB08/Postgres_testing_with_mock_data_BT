@@ -1,1 +1,13 @@
-console.log(/^([a-zA-ZæøåÆØÅ]+,)*[a-zA-ZæøåÆØÅ]+$/.test("abc,efg,ølm,æk"))
+import { economicCodes } from "../mockData/responseConstructor.js";
+
+/**
+ * A function to check if a key is indeed a key of an object in typescript. 
+ * Typesafe version to use Object.keys()
+ * @param object, the object you want to check.
+ * @param key, the key you want to check
+ * @returns boolean
+ */
+export const isKey = <T extends object>(object: T, key: PropertyKey): key is keyof T =>{
+    return  key in object
+}
+export const economicTables = Object.keys(economicCodes).map(key=>`CODE_${key} INTEGER, `).join("")
