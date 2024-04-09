@@ -126,9 +126,13 @@ export const searchByStatusSpesific = async (tagArray, startYear = 0, endYear = 
                 company_names.company_id,
                 company_names.company_field,
                 company_names.company_org_nr,
+                company_status_relationship.status,
                 economic_data.queried_year,
                 (
-                SELECT jsonb_object_agg(code_lookup.code_description, economic_data_kv.ed_value)
+                SELECT jsonb_object_agg(split_part(economic_data_kv.key, '_', 2), jsonb_build_object(
+                    'description', code_lookup.code_description,
+                    'value', economic_data_kv.ed_value
+                ))
                     FROM (
                         SELECT key, value AS ed_value
                         FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year' )
@@ -152,6 +156,7 @@ export const searchByStatusSpesific = async (tagArray, startYear = 0, endYear = 
                 json_agg(
                     json_build_object(
                         'queried_year', queried_year,
+                        'status', status,
                         'queried_data', queried_data
                     )
                 ) AS data
@@ -185,10 +190,17 @@ export const searchByName = async (companyNameSnippet, startYear = 0, endYear = 
                     company_names.company_field,
                     company_names.company_org_nr,
                     economic_data.queried_year,
+                    economic_data.queried_year,
                     (
-                        SELECT jsonb_object_agg(code_lookup.code_description, ed_value)
-                        FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year') AS economic_data_kv(key, ed_value)
-                        JOIN code_lookup ON code_lookup.economic_code = economic_data_kv.key
+                    SELECT jsonb_object_agg(split_part(economic_data_kv.key, '_', 2), jsonb_build_object(
+                        'description', code_lookup.code_description,
+                        'value', economic_data_kv.ed_value
+                    ))
+                        FROM (
+                            SELECT key, value AS ed_value
+                            FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year' )
+                        ) AS economic_data_kv
+                        JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
                     ) AS queried_data
                 FROM company_names
                 INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
@@ -206,6 +218,7 @@ export const searchByName = async (companyNameSnippet, startYear = 0, endYear = 
                     json_agg(
                         json_build_object(
                             'queried_year', queried_year,
+                            'status', status,
                             'queried_data', queried_data
                         )
                     ) AS data
@@ -240,11 +253,17 @@ export const searchByOrgNr = async (companyOrgNr, startYear = 0, endYear = new D
                 company_names.company_field,
                 company_names.company_org_nr,
                 economic_data.queried_year,
+                economic_data.queried_year,
                 (
-                    SELECT jsonb_object_agg(code_lookup.code_description, ed_value)
-                    FROM 
-                    jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year') AS economic_data_kv(key, ed_value)
-                    JOIN code_lookup ON code_lookup.economic_code = economic_data_kv.key
+                SELECT jsonb_object_agg(split_part(economic_data_kv.key, '_', 2), jsonb_build_object(
+                    'description', code_lookup.code_description,
+                    'value', economic_data_kv.ed_value
+                ))
+                    FROM (
+                        SELECT key, value AS ed_value
+                        FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year' )
+                    ) AS economic_data_kv
+                    JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
                 ) AS queried_data
             FROM company_names
             INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
@@ -262,6 +281,7 @@ export const searchByOrgNr = async (companyOrgNr, startYear = 0, endYear = new D
                     json_agg(
                         json_build_object(
                             'queried_year', queried_year,
+                            'status', status,
                             'queried_data', queried_data
                         )
                     ) AS data
