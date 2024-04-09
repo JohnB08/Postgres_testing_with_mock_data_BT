@@ -96,10 +96,14 @@ function generateRandomCompanies(numCompanies) {
                 year: year.toString(),
                 current_status: status[statusIndex],
                 accounts: Object.keys(economicCodes).map(key => {
-                    return {
-                        code: key,
-                        amount: Math.floor(Math.random() * 10000).toString()
-                    };
+                    if (Math.floor(Math.random() * 10) > 3) {
+                        return {
+                            code: key,
+                            amount: Math.floor(Math.random() * 10000).toString()
+                        };
+                    }
+                    else
+                        return null;
                 })
             };
             accounts.push(annualAccounts);

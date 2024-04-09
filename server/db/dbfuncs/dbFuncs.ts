@@ -55,13 +55,15 @@ const insertData = async(dataArray: CompanyType) =>{
                 `, [Number(year.year), companyId])
                 dataInsertionArray.push(insertIntoEconomicTable)
                 for (let accountData of year.accounts){
-                    const insertAccountData = await db.query(`
-                    UPDATE economic_data 
-                    SET CODE_${accountData.code} = $1
-                    WHERE queried_year = $2
-                    AND company_id = $3
-                    `, [Number(accountData.amount), Number(year.year), companyId])
-                    dataInsertionArray.push(insertAccountData)
+                    if (accountData != null){
+                        const insertAccountData = await db.query(`
+                        UPDATE economic_data 
+                        SET CODE_${accountData.code} = $1
+                        WHERE queried_year = $2
+                        AND company_id = $3
+                        `, [Number(accountData.amount), Number(year.year), companyId])
+                        dataInsertionArray.push(insertAccountData)
+                    }
                 }
             }
         }
@@ -169,8 +171,9 @@ export const searchByStatusSpesific = async(tagArray: string[], startYear: numbe
                     'value', economic_data_kv.ed_value
                 ))
                     FROM (
-                        SELECT key, value AS ed_value
+                        SELECT key, value::numeric AS ed_value
                         FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year' )
+                        WHERE value IS NOT NULL
                     ) AS economic_data_kv
                     JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
                 ) AS queried_data
@@ -230,8 +233,9 @@ export const searchByName = async(companyNameSnippet: string, startYear: number 
                         'value', economic_data_kv.ed_value
                     ))
                         FROM (
-                            SELECT key, value AS ed_value
+                            SELECT key, value::numeric AS ed_value
                             FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year' )
+                            WHERE value IS NOT NULL
                         ) AS economic_data_kv
                         JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
                     ) AS queried_data
@@ -291,8 +295,9 @@ export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, 
                     'value', economic_data_kv.ed_value
                 ))
                     FROM (
-                        SELECT key, value AS ed_value
+                        SELECT key, value::numeric AS ed_value
                         FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year' )
+                        WHERE value IS NOT NULL
                     ) AS economic_data_kv
                     JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
                 ) AS queried_data
@@ -369,44 +374,48 @@ export const getTagsFromCompanyId = async(companyId:number) =>{
 export const searchByComparisonStatusSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
     try {
         const data = await db.query(`
-        WITH company_data AS (
-            SELECT 
-                comparison_company_names.company_name,
-                comparison_economic_data.queried_year,
-                comparison_economic_data.operating_income,
-                comparison_economic_data.operating_profit,
-                comparison_economic_data.result_before_taxes,
-                comparison_economic_data.annual_result,
-                comparison_economic_data.total_assets
-            FROM comparison_company_names
-            INNER JOIN comparison_economic_data ON comparison_economic_data.company_id = comparison_company_names.company_id
-            INNER JOIN comparison_company_status_relationship ON comparison_company_status_relationship.company_id = comparison_company_names.company_id
-            AND comparison_company_status_relationship.queried_year = comparison_economic_data.queried_year
+         WITH company_data AS (
+            SELECT
+                company_status_relationship.status,
+                economic_data.queried_year,
+                    (
+                    SELECT jsonb_object_agg(split_part(aggregated_data.key_name, '_', 2), 
+                        jsonb_build_object(
+                        'description', aggregated_data.code_description,
+                        'average_value', aggregated_data.avg_value
+                    ))
+                    FROM (
+                        SELECT 
+                            economic_data_kv.key as key_name,
+                            MAX(code_lookup.code_description) AS code_description,
+                            AVG(economic_data_kv.value::numeric) AS avg_value
+                        FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year') AS economic_data_kv
+                        JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
+                        GROUP BY key
+                    ) AS aggregated_data
+                ) AS queried_data
+            FROM company_status_relationship
+            INNER JOIN economic_data ON economic_data.company_id = company_status_relationship.company_id
+            AND company_status_relationship.queried_year = economic_data.queried_year
             WHERE 
-                comparison_company_status_relationship.status = ANY($1)
-            AND comparison_economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
-            ORDER BY comparison_company_names.company_name
-        ), aggregated_data AS (
+                company_status_relationship.status = any($1)
+            AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
+            ORDER BY economic_data.queried_year
+            ), aggregated_data AS (
+                SELECT 
+                    json_agg(
+                        json_build_object(
+                            'queried_year', queried_year,
+                            'status', status,
+                            'queried_data', queried_data
+                        )
+                    ) AS data
+                FROM
+                    company_data
+            )
             SELECT 
-                queried_year,
-                AVG(operating_income) AS mean_operating_income,
-                PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY operating_income) AS median_operating_income,
-                AVG(operating_profit) AS mean_operating_profit,
-                PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY operating_profit) AS median_operating_profit,
-                AVG(result_before_taxes) AS mean_result_before_taxes,
-                PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY result_before_taxes) AS median_result_before_taxes,
-                AVG(annual_result) AS mean_annual_result,
-                PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY annual_result) AS median_annual_result,
-                AVG(total_assets) AS mean_total_assets,
-                PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY total_assets) AS median_total_assets
-            FROM
-                company_data
-            GROUP BY
-                queried_year
-            ORDER BY
-                queried_year
-        )
-        SELECT * FROM aggregated_data
+                *
+            FROM aggregated_data
         `, [tagArray])
         if (data.rowCount != null && data.rowCount > 0) return { success: true, error: null, result: data.rows }
         else return {success: true, error: null, result: `No Company Found Containing The Tags: ${tagArray.join(", ")}`}
@@ -418,10 +427,10 @@ export const searchByComparisonStatusSpesific = async(tagArray: string[], startY
 
 
 /* TESTING FUNCTIONS */
-/* 
-const insertingCompanyNames = await insertData(mockData as CompanyType)
 
-console.log(insertingCompanyNames) */
+/* const insertingCompanyNames = await insertData(mockData as CompanyType)
+
+console.log(insertingCompanyNames)  */
 
 /* const searchResults = await searchByStatusSpesific(['preinkubasjon'], 2020, 2024)
 

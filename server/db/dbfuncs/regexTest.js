@@ -9,4 +9,4 @@ import { economicCodes } from "../mockData/responseConstructor.js";
 export const isKey = (object, key) => {
     return key in object;
 };
-export const economicTables = Object.keys(economicCodes).map(key => `CODE_${key} INTEGER, `).join("");
+export const economicTables = Object.keys(economicCodes).map(key => `CODE_${key} INTEGER DEFAULT NULL, `).join("");
