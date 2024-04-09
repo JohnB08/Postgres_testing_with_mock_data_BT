@@ -3,10 +3,12 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/pg": "^8.11.3",
+    "@types/xlsx": "^0.0.36",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "pg": "^8.11.3",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "xlsx": "^0.18.5"
   },
   "name": "postgres_testing_with_mock_data_bt",
   "version": "1.0.0",
