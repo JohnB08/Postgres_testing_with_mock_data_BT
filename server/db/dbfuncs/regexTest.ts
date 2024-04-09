@@ -1,5 +1,4 @@
 import { economicCodes } from "../mockData/responseConstructor.js";
-
 /**
  * A function to check if a key is indeed a key of an object in typescript. 
  * Typesafe version to use Object.keys()

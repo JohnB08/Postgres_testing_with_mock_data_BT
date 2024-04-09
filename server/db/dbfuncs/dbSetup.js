@@ -4,11 +4,15 @@ import { economicCodes } from "../mockData/responseConstructor.js";
 const createCompanyNameTable = async () => {
     try {
         const data = await db.query(`
-    CREATE TABLE IF NOT EXISTS company_names (
-        company_id SERIAL PRIMARY KEY,
-        company_name VARCHAR(255) NOT NULL,
-        company_org_nr VARCHAR(255) UNIQUE NOT NULL,
-        company_field VARCHAR(255)
+    CREATE TABLE IF NOT EXISTS bedrift_info (
+        bedrift_id SERIAL PRIMARY KEY,
+        målbedrift TEXT NOT NULL,
+        orgnummer TEXT UNIQUE NOT NULL,
+        bransje TEXT,
+        idekilde TEXT,
+        beskrivelse TEXT,
+        kvinneliggrunder BOOLEAN,
+        ung_grunder BOOLEAN,
         )`);
         return { success: true, data };
     }
@@ -20,11 +24,13 @@ const createStatusTable = async () => {
     const testArray = [];
     try {
         const data = await db.query(`
-            CREATE TABLE IF NOT EXISTS company_status_relationship (
-                company_id INTEGER REFERENCES company_names(company_id),
-                queried_year INTEGER,
+            CREATE TABLE IF NOT EXISTS lokal_årlig_bedrift_fase_rapport (
+                bedrift_id INTEGER REFERENCES bedrift_info(bedrift_id),
+                rapportår INTEGER,
                 PRIMARY KEY (company_id, queried_year),
-                status VARCHAR(255)
+                fase VARCHAR(255),
+                fylke VARCHAR (255),
+
             )
             `);
         testArray.push({ success: true, data });
@@ -42,7 +48,7 @@ const createStatusTable = async () => {
 const createYearlyTable = async () => {
     try {
         const data = await db.query(`
-        CREATE TABLE IF NOT EXISTS economic_data (
+        CREATE TABLE IF NOT EXISTS økonomisk_data (
             queried_year INTEGER,
             ${economicTables}
             company_id INTEGER REFERENCES company_names(company_id),
