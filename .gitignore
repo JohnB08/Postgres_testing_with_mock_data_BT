@@ -1,4 +1,4 @@
 node_modules
 mockData
-.env
+*.env
 LocalData

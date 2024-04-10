@@ -5,6 +5,7 @@ import { db } from "../dbConfig/dbConfig.js";
 import { economicCodes } from "../mockData/responseConstructor.js";
 import { CompanyType } from "./chatgptMockDataGeneration.js"; */
 import { cleanedData } from "../excelReader/excelReader.js";
+import fs from "fs"
 
 /* RESTRUKTURER TIL Å VÆRE TILPASSET INKUBATORSTATUS! */
 
@@ -26,10 +27,86 @@ type queryReturnType = {
 
 }
 
+type referenceDataType = {
+    result: {
+        bedrift_data: [
+            {
+            bedrift_id: number,
+            orgnummer: number,
+            'gyldige_rapportår': number[]
+            },
+        ],
+        'distinct_orgnummer': number[]
+    }
+}
+
+type ProffQueryReturn = {
+  "companyType": string,
+  "companyTypeName": string, 
+  "registrationDate": string,
+  "yearsInOperation": string,
+  "annualAccounts": [
+        {
+        "currency": string,
+        "year": string,
+        "accounts": [
+            {
+            "code": string,
+            "amount": string
+            }
+        ]
+        }
+    ],
+"naceCategories": [
+    string
+  ]
+}
+
+type QueryPackage<T> = {
+    success: boolean,
+    data: T | string,
+    error: undefined
+} | {
+    success: boolean,
+    data: undefined,
+    error: unknown
+}
+
+type UnsuccessfulQueryPackage = QueryPackage<any> & {
+    success: false,
+    data: undefined,
+    error: unknown
+}
+type SuccessfullQueryPackage<T> = QueryPackage<T> & {
+    success: true,
+    data: T,
+    error: undefined
+}
+
 type tagnameQueryType = {
     tagname: string
 }
 
+const verifyErrorExists = (object: QueryPackage<any>): object is UnsuccessfulQueryPackage => {
+    return (
+        typeof object === "object" &&
+        (object as UnsuccessfulQueryPackage).success === false
+    )
+}
+
+const verifySuccessQuery = <T>(object: QueryPackage<T>): object is SuccessfullQueryPackage<T> =>{
+    return (
+        typeof object === "object" &&
+        (object as SuccessfullQueryPackage<T>).success === true && 
+        typeof (object as SuccessfullQueryPackage<T>).data != "string"
+    )
+}
+
+const awaitPromise = async(ms: number)=>{
+    await new Promise(resolve=>{
+        setTimeout(resolve, ms)
+    })
+}
 
 /* 
 Current Schema
@@ -67,6 +144,93 @@ const insertInitialCleanedData = async() =>{
     } catch (error){
         return {success: false, error}
     }
+}
+
+const fetchApi = async<T>(url: string)=>{
+    const key = process.env.PROFF_AUTH_TOKEN
+    try {
+        const options: RequestInit = {
+            method: "GET",
+            headers: {
+                'Authorization': `Token ${key}`
+            }
+        }
+        const response = await fetch(url, options)
+        const result: T = await response.json()
+        return {success: true, data: result, error: undefined}
+    } catch (error) {
+        return {success: false, data: undefined, error: error}
+    }
+}
+
+const fetchReferenceFromDb: ()=>Promise<QueryPackage<referenceDataType>> = async() =>{
+    try{
+        const data = await db.query<referenceDataType>(`
+        WITH DistinctOrgNummer AS (
+            SELECT ARRAY_AGG(DISTINCT orgnummer) AS distinct_orgnummer
+            FROM bedrift_info
+        ),
+        BedriftData AS (
+            SELECT
+                b.bedrift_id,
+                b.orgnummer,
+                ARRAY_AGG(r.rapportår) AS gyldige_rapportår
+            FROM 
+                bedrift_info b
+            JOIN 
+                lokal_årlig_bedrift_fase_rapport r 
+            ON 
+                b.bedrift_id = r.bedrift_id
+            GROUP BY 
+                b.bedrift_id, 
+                b.orgnummer
+        )
+        SELECT
+            json_build_object(
+                'bedrift_data', (SELECT json_agg(json_build_object('bedrift_id', bedrift_id, 'orgnummer', orgnummer, 'gyldige_rapportår', gyldige_rapportår)) FROM BedriftData),
+                'distinct_orgnummer', (SELECT distinct_orgnummer FROM DistinctOrgNummer)
+            ) AS result;
+        `)
+        return {success: true, data: data.rowCount === 0 ? "Nothing Found" : data.rows[0], error: undefined}
+    } catch (error) {
+        return {success: false, data: undefined, error: error}
+    }
+}
+
+
+const fetchCurrentDataFromProff = async()=>{
+    const dbReference = await fetchReferenceFromDb()
+    if (verifyErrorExists(dbReference)){
+        return console.log(`Something went wrong: ${dbReference.error}`)
+    }
+    if (typeof dbReference.data === "string"){
+        return console.log(dbReference.data)
+    }
+    if (verifySuccessQuery(dbReference)){
+        const referenceArray = dbReference.data.result.bedrift_data
+        console.log("Saving reference array")
+        fs.writeFileSync("../LocalData/ReferenceBackUp.json", JSON.stringify(referenceArray))
+        const orgNrArray = dbReference.data.result.distinct_orgnummer
+        const dataArray: ProffQueryReturn[] = []
+        const errorArray: unknown[] = []
+        for (let nr of orgNrArray){
+            await awaitPromise(100)
+            console.log(`fetching data for ${nr}`)
+            const url = `https://api.proff.no/api/companies/register/NO/${nr}`
+            const proffResponse = await fetchApi<ProffQueryReturn>(url)
+            if (verifyErrorExists(proffResponse)){
+                errorArray.push(proffResponse.error)
+            }
+            if (verifySuccessQuery(proffResponse)) {
+                dataArray.push(proffResponse.data)
+            }
+        }
+        console.log("Backing up proff data")
+        fs.writeFileSync("../LocalData/ProffBackUp.json", JSON.stringify(dataArray))
+        console.log("Backing up errors")
+        fs.writeFileSync("../LocalData/ErrorBackUp.json", JSON.stringify(errorArray))
+    }
+
 }
 /* const insertComparisonData = async(dataArray: dataType[]) =>{
     const dbQueryArray = []
@@ -423,11 +587,16 @@ export const searchByComparisonStatusSpesific = async(tagArray: string[], startY
 
 
 /* TESTING FUNCTIONS */
-
+/* 
  const insertingCompanyNames = await insertInitialCleanedData();
 
 console.log(insertingCompanyNames)
+ */
 
+/* 
+const fetchedData = await fetchOrgNrFromDb()
+
+console.log(fetchedData) */
 /* const searchResults = await searchByStatusSpesific(['preinkubasjon'], 2020, 2024)
 
 console.log(searchResults) 
@@ -440,3 +609,4 @@ console.log(searchResults) */
 /* 
 const searchResults = await getTagsFromCompanyId(20)
 console.log(searchResults) */
+/* await fetchCurrentDataFromProff() */

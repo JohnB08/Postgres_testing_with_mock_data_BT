@@ -4,6 +4,21 @@ import { db } from "../dbConfig/dbConfig.js";
 import { economicCodes } from "../mockData/responseConstructor.js";
 import { CompanyType } from "./chatgptMockDataGeneration.js"; */
 import { cleanedData } from "../excelReader/excelReader.js";
+import fs from "fs";
+const verifyErrorExists = (object) => {
+    return (typeof object === "object" &&
+        object.success === false);
+};
+const verifySuccessQuery = (object) => {
+    return (typeof object === "object" &&
+        object.success === true &&
+        typeof object.data != "string");
+};
+const awaitPromise = async (ms) => {
+    await new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+};
 /*
 Current Schema
 
@@ -39,6 +54,90 @@ const insertInitialCleanedData = async () => {
     }
     catch (error) {
         return { success: false, error };
+    }
+};
+const fetchApi = async (url) => {
+    const key = process.env.PROFF_AUTH_TOKEN;
+    try {
+        const options = {
+            method: "GET",
+            headers: {
+                'Authorization': `Token ${key}`
+            }
+        };
+        const response = await fetch(url, options);
+        const result = await response.json();
+        return { success: true, data: result, error: undefined };
+    }
+    catch (error) {
+        return { success: false, data: undefined, error: error };
+    }
+};
+const fetchReferenceFromDb = async () => {
+    try {
+        const data = await db.query(`
+        WITH DistinctOrgNummer AS (
+            SELECT ARRAY_AGG(DISTINCT orgnummer) AS distinct_orgnummer
+            FROM bedrift_info
+        ),
+        BedriftData AS (
+            SELECT
+                b.bedrift_id,
+                b.orgnummer,
+                ARRAY_AGG(r.rapportår) AS gyldige_rapportår
+            FROM 
+                bedrift_info b
+            JOIN 
+                lokal_årlig_bedrift_fase_rapport r 
+            ON 
+                b.bedrift_id = r.bedrift_id
+            GROUP BY 
+                b.bedrift_id, 
+                b.orgnummer
+        )
+        SELECT
+            json_build_object(
+                'bedrift_data', (SELECT json_agg(json_build_object('bedrift_id', bedrift_id, 'orgnummer', orgnummer, 'gyldige_rapportår', gyldige_rapportår)) FROM BedriftData),
+                'distinct_orgnummer', (SELECT distinct_orgnummer FROM DistinctOrgNummer)
+            ) AS result;
+        `);
+        return { success: true, data: data.rowCount === 0 ? "Nothing Found" : data.rows[0], error: undefined };
+    }
+    catch (error) {
+        return { success: false, data: undefined, error: error };
+    }
+};
+const fetchCurrentDataFromProff = async () => {
+    const dbReference = await fetchReferenceFromDb();
+    if (verifyErrorExists(dbReference)) {
+        return console.log(`Something went wrong: ${dbReference.error}`);
+    }
+    if (typeof dbReference.data === "string") {
+        return console.log(dbReference.data);
+    }
+    if (verifySuccessQuery(dbReference)) {
+        const referenceArray = dbReference.data.result.bedrift_data;
+        console.log("Saving reference array");
+        fs.writeFileSync("../LocalData/ReferenceBackUp.json", JSON.stringify(referenceArray));
+        const orgNrArray = dbReference.data.result.distinct_orgnummer;
+        const dataArray = [];
+        const errorArray = [];
+        for (let nr of orgNrArray) {
+            await awaitPromise(100);
+            console.log(`fetching data for ${nr}`);
+            const url = `https://api.proff.no/api/companies/register/NO/${nr}`;
+            const proffResponse = await fetchApi(url);
+            if (verifyErrorExists(proffResponse)) {
+                errorArray.push(proffResponse.error);
+            }
+            if (verifySuccessQuery(proffResponse)) {
+                dataArray.push(proffResponse.data);
+            }
+        }
+        console.log("Backing up proff data");
+        fs.writeFileSync("../LocalData/ProffBackUp.json", JSON.stringify(dataArray));
+        console.log("Backing up errors");
+        fs.writeFileSync("../LocalData/ErrorBackUp.json", JSON.stringify(errorArray));
     }
 };
 /* const insertComparisonData = async(dataArray: dataType[]) =>{
@@ -394,8 +493,15 @@ export const searchByComparisonStatusSpesific = async (tagArray, startYear = 0, 
     }
 };
 /* TESTING FUNCTIONS */
-const insertingCompanyNames = await insertInitialCleanedData();
-console.log(insertingCompanyNames);
+/*
+ const insertingCompanyNames = await insertInitialCleanedData();
+
+console.log(insertingCompanyNames)
+ */
+/*
+const fetchedData = await fetchOrgNrFromDb()
+
+console.log(fetchedData) */
 /* const searchResults = await searchByStatusSpesific(['preinkubasjon'], 2020, 2024)
 
 console.log(searchResults)
@@ -406,4 +512,5 @@ console.log(searchResults) */
 console.log(searchResults) */
 /*
 const searchResults = await getTagsFromCompanyId(20)
-console.log(searchResults) */ 
+console.log(searchResults) */
+/* await fetchCurrentDataFromProff() */ 
