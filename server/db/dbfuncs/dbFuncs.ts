@@ -34,14 +34,12 @@ type tagnameQueryType = {
 /* 
 Current Schema
 
-CREATE TABLE IF NOT EXISTS bedrift_info (
-        bedrift_id SERIAL PRIMARY KEY,
-        orgnummer INTEGER UNIQUE NOT NULL,
-        målbedrift TEXT NOT NULL,
-        bransje TEXT,
-        beskrivelse TEXT,
-        idekilde TEXT,
-        )`
+CREATE TABLE IF NOT EXISTS lokal_årlig_bedrift_fase_rapport (
+                bedrift_id INTEGER REFERENCES bedrift_info(bedrift_id),
+                rapportår INTEGER,
+                PRIMARY KEY (company_id, queried_year),
+                fase VARCHAR(255),
+            )
  */
 
 const insertInitialCleanedData = async() =>{
@@ -50,16 +48,16 @@ const insertInitialCleanedData = async() =>{
         for (let company of cleanedData){
             console.log(`inserting companydata for ${company.målbedrift}`)
             const insertIntoCompanyName = await db.query(`
-            INSERT INTO company_names (orgnummer, målbedrift${company.bransje != undefined ? ", bransje" : ""}${company.beskrivelse != undefined ? ", beskrivelse" : ""}${company.idekilde != undefined ? ", idekilde" : ""})
+            INSERT INTO bedrift_info (orgnummer, målbedrift${company.bransje != undefined ? ", bransje" : ""}${company.beskrivelse != undefined ? ", beskrivelse" : ""}${company.idekilde != undefined ? ", idekilde" : ""})
             VALUES (${company.orgnummer}, $1${company.bransje != undefined ? `, '${company.bransje}'` : ""}${company.beskrivelse != undefined ? `, '${company.beskrivelse}'` : ""}${company.idekilde != undefined ? `, '${company.idekilde}'` : ""})
-            RETURNING company_id
+            RETURNING bedrift_id
             `, [company.målbedrift])
             dataInsertionArray.push(insertIntoCompanyName)
-            const companyId = insertIntoCompanyName.rows[0].company_id as number
+            const companyId = insertIntoCompanyName.rows[0].bedrift_id as number
             for (let year of company.data){
                 console.log(`Inserting data for year ${year.rapportår}`)
                 const insertIntoCompanyStatus = await db.query(`
-                INSERT INTO company_status_relationship (company_id, queried_year, status)
+                INSERT INTO lokal_årlig_bedrift_fase_rapport (bedrift_id, rapportår, fase)
                 VALUES ($1, $2, '${year.fase}')
                 `, [companyId, year.rapportår])
                 dataInsertionArray.push(insertIntoCompanyStatus)
@@ -426,9 +424,9 @@ export const searchByComparisonStatusSpesific = async(tagArray: string[], startY
 
 /* TESTING FUNCTIONS */
 
-/* const insertingCompanyNames = await insertData(mockData as CompanyType)
+ const insertingCompanyNames = await insertInitialCleanedData();
 
-console.log(insertingCompanyNames)  */
+console.log(insertingCompanyNames)
 
 /* const searchResults = await searchByStatusSpesific(['preinkubasjon'], 2020, 2024)
 

@@ -6,11 +6,11 @@ const createCompanyNameTable = async () => {
         const data = await db.query(`
     CREATE TABLE IF NOT EXISTS bedrift_info (
         bedrift_id SERIAL PRIMARY KEY,
-        orgnummer INTEGER UNIQUE NOT NULL,
+        orgnummer INTEGER NOT NULL,
         målbedrift TEXT NOT NULL,
-        bransje TEXT,
-        beskrivelse TEXT,
-        idekilde TEXT,
+        bransje TEXT DEFAULT NULL,
+        beskrivelse TEXT DEFAULT NULL,
+        idekilde TEXT DEFAULT NULL
         )`);
         return { success: true, data };
     }
@@ -25,8 +25,8 @@ const createStatusTable = async () => {
             CREATE TABLE IF NOT EXISTS lokal_årlig_bedrift_fase_rapport (
                 bedrift_id INTEGER REFERENCES bedrift_info(bedrift_id),
                 rapportår INTEGER,
-                PRIMARY KEY (company_id, queried_year),
                 fase VARCHAR(255),
+                PRIMARY KEY (bedrift_id, rapportår)
             )
             `);
         testArray.push({ success: true, data });
@@ -45,10 +45,11 @@ const createYearlyTable = async () => {
     try {
         const data = await db.query(`
         CREATE TABLE IF NOT EXISTS økonomisk_data (
-            queried_year INTEGER,
+            rapportår INTEGER,
             ${economicTables}
-            company_id INTEGER REFERENCES company_names(company_id),
-            PRIMARY KEY (company_id, queried_year))
+            bedrift_id INTEGER REFERENCES bedrift_info(bedrift_id),
+            PRIMARY KEY (bedrift_id, rapportår)
+            )
         `);
         return { success: true, data: [data] };
     }

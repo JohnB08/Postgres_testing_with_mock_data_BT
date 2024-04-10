@@ -45,25 +45,29 @@ const strippedData = data.map(row => {
 const convertToWorkableObject = () => {
     const restructuredData = {};
     strippedData.forEach(row => {
-        const grouped_key = `${row.Målbedrift}_${row.Orgnummer}`;
+        const grouped_key = `${row.Målbedrift.toLocaleUpperCase()}_${row.Orgnummer}`;
         if (!restructuredData[grouped_key]) {
             restructuredData[grouped_key] = {
                 målbedrift: row['Målbedrift'],
                 orgnummer: row['Orgnummer'],
                 bransje: row['Bransje'],
-                beskrivelse: row['Beskrivelse'],
+                beskrivelse: row['Beskrivelse'] === undefined ? row['Beskrivelse'] : row['Beskrivelse'].replace(/'/g, '’'),
                 idekilde: row['Idekilde'],
                 data: [{
-                        rapportår: row['Rapportår'],
+                        rapportår: row['RapportÅr'],
                         fase: row['Fase']
                     }]
             };
         }
-        else
-            restructuredData[grouped_key].data.push({
-                rapportår: row['Rapportår'],
-                fase: row['Fase']
-            });
+        else {
+            const exists = restructuredData[grouped_key].data.some(el => el.rapportår === row['RapportÅr']);
+            if (!exists) {
+                restructuredData[grouped_key].data.push({
+                    rapportår: row['RapportÅr'],
+                    fase: row['Fase']
+                });
+            }
+        }
     });
     return Object.values(restructuredData);
 };
