@@ -1,9 +1,10 @@
 import { QueryResult } from "pg";
 import { db } from "../dbConfig/dbConfig.js";
 //brukes bare for insert av mockData til local database
-import mockData from "../mockData/mockData.json" assert {type: "json"}
+/* import mockData from "../mockData/mockData.json" assert {type: "json"}
 import { economicCodes } from "../mockData/responseConstructor.js";
-import { CompanyType } from "./chatgptMockDataGeneration.js";
+import { CompanyType } from "./chatgptMockDataGeneration.js"; */
+import { cleanedData } from "../excelReader/excelReader.js";
 
 /* RESTRUKTURER TIL Å VÆRE TILPASSET INKUBATORSTATUS! */
 
@@ -30,41 +31,38 @@ type tagnameQueryType = {
 }
 
 
-const insertData = async(dataArray: CompanyType) =>{
+/* 
+Current Schema
+
+CREATE TABLE IF NOT EXISTS bedrift_info (
+        bedrift_id SERIAL PRIMARY KEY,
+        orgnummer INTEGER UNIQUE NOT NULL,
+        målbedrift TEXT NOT NULL,
+        bransje TEXT,
+        beskrivelse TEXT,
+        idekilde TEXT,
+        )`
+ */
+
+const insertInitialCleanedData = async() =>{
     const dataInsertionArray: QueryResult<any>[] = []
     try{
-        for (let company of dataArray){
-            console.log(`inserting companydata for ${company.companyName}`)
+        for (let company of cleanedData){
+            console.log(`inserting companydata for ${company.målbedrift}`)
             const insertIntoCompanyName = await db.query(`
-            INSERT INTO company_names (company_name, company_org_nr, company_field)
-            VALUES ($1, $2, $3)
+            INSERT INTO company_names (orgnummer, målbedrift${company.bransje != undefined ? ", bransje" : ""}${company.beskrivelse != undefined ? ", beskrivelse" : ""}${company.idekilde != undefined ? ", idekilde" : ""})
+            VALUES (${company.orgnummer}, $1${company.bransje != undefined ? `, '${company.bransje}'` : ""}${company.beskrivelse != undefined ? `, '${company.beskrivelse}'` : ""}${company.idekilde != undefined ? `, '${company.idekilde}'` : ""})
             RETURNING company_id
-            `, [company.companyName, company.organisationNumber, company.naceCategories[0]])
+            `, [company.målbedrift])
             dataInsertionArray.push(insertIntoCompanyName)
             const companyId = insertIntoCompanyName.rows[0].company_id as number
-            for (let year of company.annualAccounts){
-                console.log(`Inserting data for year ${year.year}`)
+            for (let year of company.data){
+                console.log(`Inserting data for year ${year.rapportår}`)
                 const insertIntoCompanyStatus = await db.query(`
                 INSERT INTO company_status_relationship (company_id, queried_year, status)
-                VALUES ($1, $2, '${year.current_status}')
-                `, [companyId, Number(year.year)])
+                VALUES ($1, $2, '${year.fase}')
+                `, [companyId, year.rapportår])
                 dataInsertionArray.push(insertIntoCompanyStatus)
-                const insertIntoEconomicTable = await db.query(`
-                INSERT INTO economic_data (queried_year, company_id)
-                VALUES ($1, $2)
-                `, [Number(year.year), companyId])
-                dataInsertionArray.push(insertIntoEconomicTable)
-                for (let accountData of year.accounts){
-                    if (accountData != null){
-                        const insertAccountData = await db.query(`
-                        UPDATE economic_data 
-                        SET CODE_${accountData.code} = $1
-                        WHERE queried_year = $2
-                        AND company_id = $3
-                        `, [Number(accountData.amount), Number(year.year), companyId])
-                        dataInsertionArray.push(insertAccountData)
-                    }
-                }
             }
         }
         return {success: true, dataInsertionArray}

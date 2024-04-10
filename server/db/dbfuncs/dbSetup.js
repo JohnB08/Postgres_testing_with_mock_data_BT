@@ -6,13 +6,11 @@ const createCompanyNameTable = async () => {
         const data = await db.query(`
     CREATE TABLE IF NOT EXISTS bedrift_info (
         bedrift_id SERIAL PRIMARY KEY,
+        orgnummer INTEGER UNIQUE NOT NULL,
         målbedrift TEXT NOT NULL,
-        orgnummer TEXT UNIQUE NOT NULL,
         bransje TEXT,
-        idekilde TEXT,
         beskrivelse TEXT,
-        kvinneliggrunder BOOLEAN,
-        ung_grunder BOOLEAN,
+        idekilde TEXT,
         )`);
         return { success: true, data };
     }
@@ -29,8 +27,6 @@ const createStatusTable = async () => {
                 rapportår INTEGER,
                 PRIMARY KEY (company_id, queried_year),
                 fase VARCHAR(255),
-                fylke VARCHAR (255),
-
             )
             `);
         testArray.push({ success: true, data });
