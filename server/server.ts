@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { verifiyBaseQuery, verifyNameQueryType, verifyOrgNrQueryType, verifyTagQueryType } from "./db/verifierFuncs/queryVerifier.js"
-import { searchByComparisonStatusSpesific, searchByName, searchByOrgNr, searchByStatusSpesific } from "./db/dbfuncs/dbFuncs.js"
+import { searchByComparisonfaseSpesific, searchByName, searchByOrgNr, searchByfaseSpesific } from "./db/dbfuncs/dbFuncs.js"
 
 
 const server = express()
@@ -48,8 +48,10 @@ server.get("/", async (req, res)=>{
             }
         })
         if (query.compareWith){
-            const comparisonStatusArray = query.compareWith.split(",")
-            const comparisonData = await searchByComparisonStatusSpesific(comparisonStatusArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
+            const comparisonStatusArray = query.compareWith.split(",").map(el=>{
+                return `${el[0].toLocaleUpperCase()}${el.slice(1)}`
+            })
+            const comparisonData = await searchByComparisonfaseSpesific(comparisonStatusArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
             if (comparisonData.success === false && comparisonData.result === null){
                 return res.status(500).json({
                     result: {
@@ -83,8 +85,12 @@ server.get("/", async (req, res)=>{
                 message: "Bad Request, Could Not Validate Query Tags"
             }
         })
-        const queryTagArray = query.status.split(",")
-        const queryTags = await searchByStatusSpesific(queryTagArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+        const queryArray = query.status.split(",")
+        const queryTagArray = queryArray.map(el=>{
+            return `${el[0].toLocaleUpperCase()}${el.slice(1)}`
+        })
+        
+        const queryTags = await searchByfaseSpesific(queryTagArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
         if (queryTags.success === false || queryTags.result === null) return res.status(500).json({
             result: {
                 error: queryTags.error,
@@ -98,7 +104,12 @@ server.get("/", async (req, res)=>{
                 }
             })
         }
-        const comparisonData = query.compareWith ? await searchByComparisonStatusSpesific(query.compareWith.split(","), query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear()) : null
+        /* query.compareWith ? await searchByComparisonfaseSpesific(query.compareWith.split(",").map(el=>{
+            return `${el[0].toLocaleUpperCase()}${el.slice(1)}`
+        }), query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear()) : null */
+        const comparisonData = query.compareWith ? await searchByComparisonfaseSpesific(query.compareWith.split(",").map(el=>{
+            return `${el[0].toLocaleUpperCase()}${el.slice(1)}`
+        }), query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear()) : null
         console.log(comparisonData)
         if (comparisonData === null){
             return res.status(200).json({
@@ -155,8 +166,10 @@ server.get("/", async (req, res)=>{
         }
         if (queryOrgNr.success === true && queryOrgNr.result !== null){
             if (query.compareWith){
-                const tags = query.compareWith.split(",")
-                const comparisonData = await searchByComparisonStatusSpesific(tags, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+                const tags = query.compareWith.split(",").map(el=>{
+                    return `${el[0].toLocaleUpperCase()}${el.slice(1)}`
+                })
+                const comparisonData = await searchByComparisonfaseSpesific(tags, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
                 if (comparisonData.success === false && comparisonData.error != null){
                     return res.status(500).json({
                         result: {

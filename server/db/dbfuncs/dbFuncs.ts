@@ -2,23 +2,28 @@ import { QueryResult } from "pg";
 import { db } from "../dbConfig/dbConfig.js";
 //brukes bare for insert av mockData til local database
 /* import mockData from "../mockData/mockData.json" assert {type: "json"}
-import { economicCodes } from "../mockData/responseConstructor.js";
+
 import { CompanyType } from "./chatgptMockDataGeneration.js"; */
-import { cleanedData } from "../excelReader/excelReader.js";
-import fs from "fs"
+/* import { cleanedData } from "../excelReader/excelReader.js";  */
 
-/* RESTRUKTURER TIL Å VÆRE TILPASSET INKUBATORSTATUS! */
+/* !! Når du jobber med store json filer ser det ut som du må bruke typeassertion for å fortelle typescript hva du jobber med. Det er for stort for Intellisense. */
+/* import referenceData from "../LocalData/ReferenceBackUp.json" assert {type: "json"}
+import proffData from "../LocalData/ProffBackUp.json" assert {type: "json"}  */
+/* import { economicCodes } from "../mockData/responseConstructor.js"; */
+/* import fs from "fs" */
+import { economickeys } from "../mockData/responseConstructor.js";
+/* RESTRUKTURER TIL Å VÆRE TILPASSET INKUBATORfase! */
 
 
-/* company_names.company_id, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets, */
+/* bedrift_info.bedrift_id, økonomisk_data.rapportår, økonomisk_data.operating_income, økonomisk_data.operating_profit, økonomisk_data.result_before_taxes, økonomisk_data.annual_result, økonomisk_data.total_assets, */
 
 type queryReturnType = {
-            company_name: string,
-            company_id: number,
-            company_field: string,
+            målbedrift: string,
+            bedrift_id: number,
+            bransje: string,
             data: [
                     {
-                    queried_year: number,
+                    rapportår: number,
                     queried_data: {
                             [key: string]: number
                         }
@@ -27,39 +32,46 @@ type queryReturnType = {
 
 }
 
+type tagnameQueryType = {
+    tagname: string
+}
+/* 
 type referenceDataType = {
     result: {
-        bedrift_data: [
-            {
-            bedrift_id: number,
-            orgnummer: number,
-            'gyldige_rapportår': number[]
-            },
-        ],
+        bedrift_data: jsonReferenceData[]
         'distinct_orgnummer': number[]
     }
 }
 
-type ProffQueryReturn = {
-  "companyType": string,
-  "companyTypeName": string, 
-  "registrationDate": string,
-  "yearsInOperation": string,
-  "annualAccounts": [
-        {
-        "currency": string,
-        "year": string,
-        "accounts": [
+type jsonReferenceData = {
+            bedrift_id: number,
+            orgnummer: number,
+            'gyldige_rapportår': number[]
+}
+
+type unifiedData = jsonReferenceData & {
+    årsrapporter: ÅrsRapporter[]
+        
+}
+
+type ÅrsRapporter = {
+        "currency": any,
+        "year": any,
+        "accounts":
             {
-            "code": string,
-            "amount": string
-            }
-        ]
-        }
-    ],
-"naceCategories": [
-    string
-  ]
+            "code": any,
+            "amount": any
+            }[]
+        }[]
+
+type ProffQueryReturn = {
+  "companyType": any,
+  "companyTypeName": any,
+  "companyId": any,
+  "registrationDate": any,
+  "yearsInOperation": any,
+  "annualAccounts": ÅrsRapporter[],
+  "naceCategories": any[]
 }
 
 type QueryPackage<T> = {
@@ -83,9 +95,6 @@ type SuccessfullQueryPackage<T> = QueryPackage<T> & {
     error: undefined
 }
 
-type tagnameQueryType = {
-    tagname: string
-}
 
 const verifyErrorExists = (object: QueryPackage<any>): object is UnsuccessfulQueryPackage => {
     return (
@@ -101,12 +110,27 @@ const verifySuccessQuery = <T>(object: QueryPackage<T>): object is SuccessfullQu
         typeof (object as SuccessfullQueryPackage<T>).data != "string"
     )
 }
+ */
+
+/**
+ * Funksjon som tar in et datasett, og ser om det passer med det vi er ute etter fra proff, basert på proff json struktur.
+ * @param data 
+ * @returns 
+ */
+/* const verifyProffData = (data: any): data is ProffQueryReturn =>{
+    return (
+        typeof data === "object" &&
+        Array.isArray((data as ProffQueryReturn).annualAccounts) &&
+        (data as ProffQueryReturn).annualAccounts.length > 0 &&
+        (data as ProffQueryReturn).companyId
+    )
+}
 
 const awaitPromise = async(ms: number)=>{
     await new Promise(resolve=>{
         setTimeout(resolve, ms)
     })
-}
+} */
 
 /* 
 Current Schema
@@ -114,12 +138,14 @@ Current Schema
 CREATE TABLE IF NOT EXISTS lokal_årlig_bedrift_fase_rapport (
                 bedrift_id INTEGER REFERENCES bedrift_info(bedrift_id),
                 rapportår INTEGER,
-                PRIMARY KEY (company_id, queried_year),
+                PRIMARY KEY (bedrift_id, rapportår),
                 fase VARCHAR(255),
             )
  */
 
-const insertInitialCleanedData = async() =>{
+
+            /* PREFILLING DATA FROM EXSISTING EXCEL */
+/* const insertInitialCleanedData = async() =>{
     const dataInsertionArray: QueryResult<any>[] = []
     try{
         for (let company of cleanedData){
@@ -133,19 +159,19 @@ const insertInitialCleanedData = async() =>{
             const companyId = insertIntoCompanyName.rows[0].bedrift_id as number
             for (let year of company.data){
                 console.log(`Inserting data for year ${year.rapportår}`)
-                const insertIntoCompanyStatus = await db.query(`
+                const insertIntoCompanyfase = await db.query(`
                 INSERT INTO lokal_årlig_bedrift_fase_rapport (bedrift_id, rapportår, fase)
                 VALUES ($1, $2, '${year.fase}')
                 `, [companyId, year.rapportår])
-                dataInsertionArray.push(insertIntoCompanyStatus)
+                dataInsertionArray.push(insertIntoCompanyfase)
             }
         }
         return {success: true, dataInsertionArray}
     } catch (error){
         return {success: false, error}
     }
-}
-
+} */
+/* 
 const fetchApi = async<T>(url: string)=>{
     const key = process.env.PROFF_AUTH_TOKEN
     try {
@@ -196,8 +222,8 @@ const fetchReferenceFromDb: ()=>Promise<QueryPackage<referenceDataType>> = async
         return {success: false, data: undefined, error: error}
     }
 }
-
-
+ */
+/* 
 const fetchCurrentDataFromProff = async()=>{
     const dbReference = await fetchReferenceFromDb()
     if (verifyErrorExists(dbReference)){
@@ -231,30 +257,114 @@ const fetchCurrentDataFromProff = async()=>{
         fs.writeFileSync("../LocalData/ErrorBackUp.json", JSON.stringify(errorArray))
     }
 
+} */
+
+/**
+ * Tar inn resultatet fra proff data query, verifiserer at dataen har det vi vil, og returnerer renset data.
+ * Ignorerer også calls hvor Ingen rapporter om økonomi finnes. De vil fremdeles være null i databasen og blir tatt med i avg calls, men bare for årene de er registrert. 
+ * @param proffData Query result fra proff data query. 
+ * @returns 
+ */
+/* const cleanProffData = (proffData: any[]) => {
+    let cleanedData: ProffQueryReturn[] = []
+    for (let data of proffData){
+        if (verifyProffData(data)){
+            cleanedData.push(data)
+        }
+    }
+    return cleanedData
 }
+
+const combineReferenceAndProff = (proffData: any[])=>{
+    const cleanedData = cleanProffData(proffData)
+    const newData: unifiedData[] = []
+    for (let data of cleanedData){
+        referenceData.forEach((el)=>{
+           if (el.orgnummer === Number(data.companyId)){
+            const newEl: unifiedData = {
+                orgnummer: el.orgnummer,
+                bedrift_id: el.bedrift_id,
+                gyldige_rapportår: el.gyldige_rapportår,
+                årsrapporter: []
+            }
+            for (let i = 0; i<el.gyldige_rapportår.length; i++){
+                for (let rapportår of data.annualAccounts){
+                    if(el.gyldige_rapportår[i] === Number(rapportår.year)){
+                        newEl.årsrapporter.push(rapportår)
+                    }
+                }
+            }
+            newData.push(newEl)
+            }
+        })
+    }
+    return newData
+} */
+
+
+
+/* Gjeldende query:
+CREATE TABLE IF NOT EXISTS økonomisk_data (
+            rapportår INTEGER,
+            ${economicTables}
+            bedrift_id INTEGER REFERENCES bedrift_info(bedrift_id),
+            PRIMARY KEY (bedrift_id, rapportår)
+            )
+*/
+/* 
+const insertInitialProffData = async(proffData: any[])=>{
+    const correctedData = combineReferenceAndProff(proffData);
+    const errorArray: unknown[] = []
+    for (let company of correctedData){
+        console.log(`Trying to update info for ${company.bedrift_id}`)
+        try{
+            for (let year of company.gyldige_rapportår){
+                await db.query(`
+                INSERT INTO økonomisk_data (rapportår, bedrift_id)
+                VALUES ($1, $2)
+                `, [year, company.bedrift_id])
+            }
+            for (let year of company.årsrapporter){
+                for (let code of year.accounts){
+                    await db.query(`
+                    UPDATE økonomisk_data
+                    SET code_${code.code} = $1
+                    WHERE rapportår = $2
+                    AND bedrift_id = $3
+                    `, [Number(code.amount), Number(year.year), company.bedrift_id ])
+                }
+            }
+            console.log("write successfull")
+        } catch (error){
+            console.log(`It failed, check log.`)
+            errorArray.push(error)
+        }
+    }
+    console.log(errorArray)
+} */
 /* const insertComparisonData = async(dataArray: dataType[]) =>{
     const dbQueryArray = []
     try{
         const userInsertion = await db.query(`
-        INSERT INTO comparison_company_names (company_name, company_org_nr, company_field)
+        INSERT INTO comparison_bedrift_info (målbedrift, orgnummer, bransje)
         VALUES ($1, $2, $3)
-        RETURNING company_id
+        RETURNING bedrift_id
         `, [dataArray[0].name, dataArray[0].org_nr, dataArray[0].field])
         dbQueryArray.push(userInsertion)
-        const companyId = userInsertion.rows[0].company_id as number
+        const companyId = userInsertion.rows[0].bedrift_id as number
         console.log(companyId)
         for (let dataPoint of dataArray){
             try{
-                const statusInsertion = await db.query(`
-                INSERT INTO comparison_company_status_relationship(company_id, status, queried_year)
-                VALUES ($1, '${dataPoint.status}', $2)
-                `, [companyId, dataPoint.queried_year])
+                const faseInsertion = await db.query(`
+                INSERT INTO comparison_lokal_årlig_bedrift_fase_rapport(bedrift_id, fase, rapportår)
+                VALUES ($1, '${dataPoint.fase}', $2)
+                `, [companyId, dataPoint.rapportår])
                 const economicInsertion = await db.query(`
-                INSERT INTO comparison_economic_data (queried_year, operating_income, operating_profit, result_before_taxes, annual_result, total_assets, company_id)
+                INSERT INTO comparison_økonomisk_data (rapportår, operating_income, operating_profit, result_before_taxes, annual_result, total_assets, bedrift_id)
                 VALUES ($1, $2, $3, $4, $5, $6, $7)
-                `, [dataPoint.queried_year, dataPoint.operating_income, dataPoint.operating_profit, dataPoint.result_before_taxes, dataPoint.annual_result, dataPoint.total_assets, companyId])
+                `, [dataPoint.rapportår, dataPoint.operating_income, dataPoint.operating_profit, dataPoint.result_before_taxes, dataPoint.annual_result, dataPoint.total_assets, companyId])
                 dbQueryArray.push(economicInsertion)
-                dbQueryArray.push(statusInsertion)
+                dbQueryArray.push(faseInsertion)
             } catch(error){
                 dbQueryArray.push(error)
             }
@@ -283,15 +393,15 @@ const fetchCurrentDataFromProff = async()=>{
 /* const searchByTagGeneral = async(tagArray: string[], startYear: number = 0, endYear: number = new Date().getFullYear())=>{
 try{
     const data = await db.query(`
-    SELECT DISTINCT company_names.company_name, economic_data.queried_year, economic_data.operating_income, economic_data.operating_profit, economic_data.result_before_taxes, economic_data.annual_result, economic_data.total_assets
+    SELECT DISTINCT bedrift_info.målbedrift, økonomisk_data.rapportår, økonomisk_data.operating_income, økonomisk_data.operating_profit, økonomisk_data.result_before_taxes, økonomisk_data.annual_result, økonomisk_data.total_assets
     FROM companytagrelationship
-    INNER JOIN company_names 
-        ON companytagrelationship.company_id = company_names.company_id
-    INNER JOIN economic_data
-        ON economic_data.company_id = company_names.company_id
+    INNER JOIN bedrift_info 
+        ON companytagrelationship.bedrift_id = bedrift_info.bedrift_id
+    INNER JOIN økonomisk_data
+        ON økonomisk_data.bedrift_id = bedrift_info.bedrift_id
     WHERE companytagrelationship.tagname = ANY($1)
-    AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
-	ORDER BY company_names.company_name
+    AND økonomisk_data.rapportår BETWEEN ${startYear} AND ${endYear}
+	ORDER BY bedrift_info.målbedrift
     `, [tagArray])
     if (data.rowCount != null && data.rowCount > 0) return {success: true, result: data.rows}
     else return {success: true, result: `No Company Fits Any Of The Tags: ${tagArray.join(", ")}`}
@@ -301,7 +411,7 @@ try{
 } */
 
 /**
- * Spesifikk søkefunksjon basert på status. 
+ * Spesifikk søkefunksjon basert på fase. 
  * 
  * Henter ut økonomisk data. Returnerer som queryReturnType.
  * 
@@ -313,57 +423,57 @@ try{
  * @param tagArray Et array av tags.
  * @returns Array av data av typen dataType
  */
-export const searchByStatusSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
+export const searchByfaseSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
     try {
         console.log(tagArray)
         const data = await db.query<queryReturnType>(`
         WITH company_data AS (
             SELECT
-                company_names.company_name,
-                company_names.company_id,
-                company_names.company_field,
-                company_names.company_org_nr,
-                company_status_relationship.status,
-                economic_data.queried_year,
+                bedrift_info.målbedrift,
+                bedrift_info.bedrift_id,
+                bedrift_info.bransje,
+                bedrift_info.orgnummer,
+                lokal_årlig_bedrift_fase_rapport.fase,
+                økonomisk_data.rapportår,
                 (
-                SELECT jsonb_object_agg(split_part(economic_data_kv.key, '_', 2), jsonb_build_object(
+                SELECT jsonb_object_agg(split_part(økonomisk_data_kv.key, '_', 2), jsonb_build_object(
                     'description', code_lookup.code_description,
-                    'value', economic_data_kv.ed_value
+                    'value', økonomisk_data_kv.ed_value
                 ))
                     FROM (
                         SELECT key, value::numeric AS ed_value
-                        FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year' )
+                        FROM jsonb_each_text(to_jsonb(økonomisk_data.*) - 'bedrift_id' - 'rapportår' )
                         WHERE value IS NOT NULL
-                    ) AS economic_data_kv
-                    JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
+                    ) AS økonomisk_data_kv
+                    JOIN code_lookup ON code_lookup.economic_code = UPPER(økonomisk_data_kv.key)
                 ) AS queried_data
-            FROM company_names
-            INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
-            INNER JOIN company_status_relationship ON company_status_relationship.company_id = company_names.company_id
-            AND company_status_relationship.queried_year = economic_data.queried_year
+            FROM bedrift_info
+            INNER JOIN økonomisk_data ON økonomisk_data.bedrift_id = bedrift_info.bedrift_id
+            INNER JOIN lokal_årlig_bedrift_fase_rapport ON lokal_årlig_bedrift_fase_rapport.bedrift_id = bedrift_info.bedrift_id
+            AND lokal_årlig_bedrift_fase_rapport.rapportår = økonomisk_data.rapportår
             WHERE 
-                company_status_relationship.status = any($1)
-            AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
-            ORDER BY company_names.company_name, economic_data.queried_year
+                lokal_årlig_bedrift_fase_rapport.fase = any($1)
+            AND økonomisk_data.rapportår BETWEEN ${startYear} AND ${endYear}
+            ORDER BY bedrift_info.målbedrift, økonomisk_data.rapportår
         ), aggregated_data AS (
             SELECT 
-                company_name,
-                company_id,
-                company_field,
-                company_org_nr,
+                målbedrift,
+                bedrift_id,
+                bransje,
+                orgnummer,
                 json_agg(
                     json_build_object(
-                        'queried_year', queried_year,
-                        'status', status,
+                        'rapportår', rapportår,
+                        'fase', fase,
                         'queried_data', queried_data
                     )
                 ) AS data
             FROM
                 company_data
             GROUP BY
-                company_name, company_id, company_field, company_org_nr
+                målbedrift, bedrift_id, bransje, orgnummer
             ORDER BY
-                company_name
+                målbedrift
         )
         SELECT 
             *
@@ -381,50 +491,50 @@ export const searchByName = async(companyNameSnippet: string, startYear: number 
         const data = await db.query<queryReturnType>(`
             WITH company_data AS (
                 SELECT 
-                    company_names.company_name,
-                    company_names.company_id,
-                    company_names.company_field,
-                    company_names.company_org_nr,
-                    economic_data.queried_year,
-                    economic_data.queried_year,
+                    bedrift_info.målbedrift,
+                    bedrift_info.bedrift_id,
+                    bedrift_info.bransje,
+                    bedrift_info.orgnummer,
+                    lokal_årlig_bedrift_fase_rapport.fase,
+                    økonomisk_data.rapportår,
                     (
-                    SELECT jsonb_object_agg(split_part(economic_data_kv.key, '_', 2), jsonb_build_object(
+                    SELECT jsonb_object_agg(split_part(økonomisk_data_kv.key, '_', 2), jsonb_build_object(
                         'description', code_lookup.code_description,
-                        'value', economic_data_kv.ed_value
+                        'value', økonomisk_data_kv.ed_value
                     ))
                         FROM (
                             SELECT key, value::numeric AS ed_value
-                            FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year' )
+                            FROM jsonb_each_text(to_jsonb(økonomisk_data.*) - 'bedrift_id' - 'rapportår' )
                             WHERE value IS NOT NULL
-                        ) AS economic_data_kv
-                        JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
+                        ) AS økonomisk_data_kv
+                        JOIN code_lookup ON code_lookup.economic_code = UPPER(økonomisk_data_kv.key)
                     ) AS queried_data
-                FROM company_names
-                INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
-                INNER JOIN company_status_relationship ON company_status_relationship.company_id = company_names.company_id
-                WHERE company_names.company_name ILIKE '%' || $1 || '%'
-                AND company_status_relationship.queried_year = economic_data.queried_year
-                AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
-                ORDER BY company_names.company_name, economic_data.queried_year
+                FROM bedrift_info
+                INNER JOIN økonomisk_data ON økonomisk_data.bedrift_id = bedrift_info.bedrift_id
+                INNER JOIN lokal_årlig_bedrift_fase_rapport ON lokal_årlig_bedrift_fase_rapport.bedrift_id = bedrift_info.bedrift_id
+                WHERE bedrift_info.målbedrift ILIKE '%' || $1 || '%'
+                AND lokal_årlig_bedrift_fase_rapport.rapportår = økonomisk_data.rapportår
+                AND økonomisk_data.rapportår BETWEEN ${startYear} AND ${endYear}
+                ORDER BY bedrift_info.målbedrift, økonomisk_data.rapportår
             ), aggregated_data AS (
                 SELECT
-                    company_name,
-                    company_id,
-                    company_field,
-                    company_org_nr,
+                    målbedrift,
+                    bedrift_id,
+                    bransje,
+                    orgnummer,
                     json_agg(
                         json_build_object(
-                            'queried_year', queried_year,
-                            'status', status,
+                            'rapportår', rapportår,
+                            'fase', fase,
                             'queried_data', queried_data
                         )
                     ) AS data
                 FROM
                     company_data
                 GROUP BY
-                    company_name, company_id, company_field, company_org_nr
+                    målbedrift, bedrift_id, bransje, orgnummer
                 ORDER BY
-                    company_name
+                    målbedrift
             )
             SELECT 
                 *
@@ -443,50 +553,50 @@ export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, 
         const data = await db.query<queryReturnType>(`
         WITH company_data AS (
             SELECT
-                company_names.company_name,
-                company_names.company_id,
-                company_names.company_field,
-                company_names.company_org_nr,
-                economic_data.queried_year,
-                economic_data.queried_year,
+                bedrift_info.målbedrift,
+                bedrift_info.bedrift_id,
+                bedrift_info.bransje,
+                bedrift_info.orgnummer,
+                lokal_årlig_bedrift_fase_rapport.fase,
+                økonomisk_data.rapportår,
                 (
-                SELECT jsonb_object_agg(split_part(economic_data_kv.key, '_', 2), jsonb_build_object(
+                SELECT jsonb_object_agg(split_part(økonomisk_data_kv.key, '_', 2), jsonb_build_object(
                     'description', code_lookup.code_description,
-                    'value', economic_data_kv.ed_value
+                    'value', økonomisk_data_kv.ed_value
                 ))
                     FROM (
                         SELECT key, value::numeric AS ed_value
-                        FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year' )
+                        FROM jsonb_each_text(to_jsonb(økonomisk_data.*) - 'bedrift_id' - 'rapportår' )
                         WHERE value IS NOT NULL
-                    ) AS economic_data_kv
-                    JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
+                    ) AS økonomisk_data_kv
+                    JOIN code_lookup ON code_lookup.economic_code = UPPER(økonomisk_data_kv.key)
                 ) AS queried_data
-            FROM company_names
-            INNER JOIN economic_data ON economic_data.company_id = company_names.company_id
-            INNER JOIN company_status_relationship ON company_status_relationship.company_id = company_names.company_id
-            WHERE company_names.company_org_nr = $1
-            AND company_status_relationship.queried_year = economic_data.queried_year
-            AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
-            ORDER BY company_names.company_name, economic_data.queried_year
+            FROM bedrift_info
+            INNER JOIN økonomisk_data ON økonomisk_data.bedrift_id = bedrift_info.bedrift_id
+            INNER JOIN lokal_årlig_bedrift_fase_rapport ON lokal_årlig_bedrift_fase_rapport.bedrift_id = bedrift_info.bedrift_id
+            WHERE bedrift_info.orgnummer = $1
+            AND lokal_årlig_bedrift_fase_rapport.rapportår = økonomisk_data.rapportår
+            AND økonomisk_data.rapportår BETWEEN ${startYear} AND ${endYear}
+            ORDER BY bedrift_info.målbedrift, økonomisk_data.rapportår
         ), aggregated_data AS (
                 SELECT
-                    company_name,
-                    company_id,
-                    company_field,
-                    company_org_nr,
+                    målbedrift,
+                    bedrift_id,
+                    bransje,
+                    orgnummer,
                     json_agg(
                         json_build_object(
-                            'queried_year', queried_year,
-                            'status', status,
+                            'rapportår', rapportår,
+                            'fase', fase,
                             'queried_data', queried_data
                         )
                     ) AS data
                 FROM
                     company_data
                 GROUP BY
-                    company_name, company_id, company_field, company_org_nr
+                    målbedrift, bedrift_id, bransje, orgnummer
                 ORDER BY
-                    company_name
+                    målbedrift
             )
             SELECT 
                 *
@@ -503,16 +613,16 @@ export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, 
 
 
 /**
- * funksjon for å hente tagArray for gjeldene company_id
+ * funksjon for å hente tagArray for gjeldene bedrift_id
  * @param companyId 
  * @returns array of tags.
  */
 export const getTagsFromCompanyId = async(companyId:number) =>{
     try {
         const data = await db.query<tagnameQueryType>(`
-        SELECT status
-        FROM company_status_relationship
-        WHERE company_id = $1
+        SELECT fase
+        FROM lokal_årlig_bedrift_fase_rapport
+        WHERE bedrift_id = $1
         `, [companyId])
         return {success: true, error: null, result: data.rows}
     } catch (error) {
@@ -524,65 +634,101 @@ export const getTagsFromCompanyId = async(companyId:number) =>{
 
 /**
  * searchbytag for comparison data.
- * Lager company_data som orginal status søk, så aggrigerer data i Aggregate_data
+ * Lager company_data som orginal fase søk, så aggrigerer data i Aggregate_data
  * Som leverer AVG og MEDIAN values for hver bit for hvert år.
  *  
  * )
  * @param tagArray Et array av tags.
  * @returns Array av data av typen dataType
  */
-export const searchByComparisonStatusSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
+export const searchByComparisonfaseSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear(), keys: string[] = economickeys) => {
     try {
-        const data = await db.query(`
-         WITH company_data AS (
-            SELECT
-                company_status_relationship.status,
-                economic_data.queried_year,
-                    (
-                    SELECT jsonb_object_agg(split_part(aggregated_data.key_name, '_', 2), 
-                        jsonb_build_object(
-                        'description', aggregated_data.code_description,
-                        'average_value', aggregated_data.avg_value
-                    ))
-                    FROM (
-                        SELECT 
-                            economic_data_kv.key as key_name,
-                            MAX(code_lookup.code_description) AS code_description,
-                            AVG(economic_data_kv.value::numeric) AS avg_value
-                        FROM jsonb_each_text(to_jsonb(economic_data.*) - 'company_id' - 'queried_year') AS economic_data_kv
-                        JOIN code_lookup ON code_lookup.economic_code = UPPER(economic_data_kv.key)
-                        GROUP BY key
-                    ) AS aggregated_data
-                ) AS queried_data
-            FROM company_status_relationship
-            INNER JOIN economic_data ON economic_data.company_id = company_status_relationship.company_id
-            AND company_status_relationship.queried_year = economic_data.queried_year
-            WHERE 
-                company_status_relationship.status = any($1)
-            AND economic_data.queried_year BETWEEN ${startYear} AND ${endYear}
-            ORDER BY economic_data.queried_year
-            ), aggregated_data AS (
-                SELECT 
-                    json_agg(
-                        json_build_object(
-                            'queried_year', queried_year,
-                            'status', status,
-                            'queried_data', queried_data
-                        )
-                    ) AS data
-                FROM
-                    company_data
-            )
-            SELECT 
-                *
-            FROM aggregated_data
-        `, [tagArray])
-        if (data.rowCount != null && data.rowCount > 0) return { success: true, error: null, result: data.rows }
-        else return {success: true, error: null, result: `No Company Found Containing The Tags: ${tagArray.join(", ")}`}
+        const columns = await db.query(`
+        SELECT column_name
+        FROM information_schema.columns
+        WHERE table_name = 'økonomisk_data'
+        AND column_name ILIKE 'code_%'
+        `)
+        const columnNamesArray: string[] = columns.rows.map(name=>{
+            return name.column_name
+        })
+        const averageValuesArray: any[] = []
+        for (let i = startYear; i<=endYear; i++){
+            const yearlyObject = {
+                year: i,
+                fase: tagArray.join(", "),
+                averageValues: [] as any[]
+            }
+            for (let name of columnNamesArray){
+                const avgValue = await db.query(`
+                    WITH company_data AS (
+                        SELECT
+                        '${name}' AS code,
+                        cl.code_description AS description,
+                        od.${name} AS value,
+                        od.rapportår
+                    FROM
+                        økonomisk_data od
+                    JOIN
+                        lokal_årlig_bedrift_fase_rapport lbf ON od.bedrift_id = lbf.bedrift_id AND od.rapportår = lbf.rapportår
+                    JOIN
+                        code_lookup cl ON cl.economic_code = UPPER('${name}')
+                    WHERE
+                        od.rapportår = ${i}
+                    AND lbf.fase = ANY($1) 
+                    GROUP BY
+                        od.rapportår, cl.code_description, od.${name}
+                    ), aggregated_data AS (
+                        SELECT
+                            code,
+                            description,
+                            AVG(value) AS average_value
+                        FROM
+                            company_data
+                        GROUP BY
+                            code,
+                            description
+                        ORDER BY
+                            code
+                    )
+                    SELECT 
+                        * 
+                    FROM
+                        aggregated_data
+                `, [tagArray])
+                if (avgValue.rowCount != null && avgValue.rowCount > 0){
+                    yearlyObject.averageValues.push(avgValue.rows[0])
+                }
+            }
+            averageValuesArray.push(yearlyObject)
+        }
+        console.log(averageValuesArray)
+        return {success: true, result: averageValuesArray}
     } catch (error) {
         return { success: false, error: error, result: null }
     }
 }
+
+/* const avgValue = await db.query(`
+            SELECT
+                ${name} AS code,
+                cl.code_description AS description,
+                AVG(od.${name}) AS value,
+                od.rapportår
+            FROM
+                økonomisk_data od
+            JOIN
+                lokal_årlig_bedrift_fase_rapport lbf ON od.bedrift_id = lbf.bedrift_id AND od.rapportår = lbf.rapportår
+            JOIN
+                code_lookup cl ON cl.economic_code = 'CODE_DR'
+            WHERE
+                od.rapportår BETWEEN ${startYear} AND ${endYear} 
+                AND lbf.fase IN ($1) 
+            GROUP BY
+                od.rapportår, cl.code_description
+            ORDER BY
+                od.rapportår;
+        `, [tagArray]) */
 
 
 
@@ -597,7 +743,7 @@ console.log(insertingCompanyNames)
 const fetchedData = await fetchOrgNrFromDb()
 
 console.log(fetchedData) */
-/* const searchResults = await searchByStatusSpesific(['preinkubasjon'], 2020, 2024)
+/* const searchResults = await searchByfaseSpesific(['preinkubasjon'], 2020, 2024)
 
 console.log(searchResults) 
  */
@@ -610,3 +756,8 @@ console.log(searchResults) */
 const searchResults = await getTagsFromCompanyId(20)
 console.log(searchResults) */
 /* await fetchCurrentDataFromProff() */
+
+/* 
+const combinedData = combineReferenceAndProff(proffData as any[])
+console.log(combinedData[10].årsrapporter) */
+/* await insertInitialProffData(proffData as any[]); */

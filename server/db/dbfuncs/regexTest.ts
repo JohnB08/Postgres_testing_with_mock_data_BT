@@ -9,4 +9,4 @@ import { economicCodes } from "../mockData/responseConstructor.js";
 export const isKey = <T extends object>(object: T, key: PropertyKey): key is keyof T =>{
     return  key in object
 }
-export const economicTables = Object.keys(economicCodes).map(key=>`CODE_${key} INTEGER DEFAULT NULL, `).join("")
+export const economicTables = Object.keys(economicCodes).map(key=>`CODE_${key} DOUBLE PRECISION DEFAULT NULL, `).join("")
