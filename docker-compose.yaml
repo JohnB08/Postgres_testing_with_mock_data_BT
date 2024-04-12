@@ -7,7 +7,6 @@ services:
       - 8080:8080
     volumes:
       - ./client/React-Bedrifttracker-prototype:/app
-      - /app/node-modules
     command: npm run dev
   server: 
     image: node:20-bookworm-slim

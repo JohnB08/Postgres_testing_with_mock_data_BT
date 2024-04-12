@@ -24,6 +24,7 @@ server.get("/", async (req, res)=>{
     })
     if (query.compareWith && typeof query.compareWith === "string"){
             const compareStringCheck = /^(\p{L}+,)*\p{L}+$/u.test(query.compareWith)
+            console.log(compareStringCheck)
             if (!compareStringCheck){
                 return res.status(400).json({
                     result: {
@@ -40,7 +41,7 @@ server.get("/", async (req, res)=>{
                 message: "Bad Request, Could Not Validate Name Snippet."
             }
         })
-        const queryNameSnippet = await searchByName(query.nameSnippet, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+        const queryNameSnippet = await searchByName(query.nameSnippet, query.from ? Number(query.from) : 2013, query.to ? Number(query.to) : new Date().getFullYear())
         if (queryNameSnippet.success === false && typeof queryNameSnippet.result === null) return res.status(500).json({
             result: {
                 error: queryNameSnippet.error,
@@ -90,7 +91,7 @@ server.get("/", async (req, res)=>{
             return `${el[0].toLocaleUpperCase()}${el.slice(1)}`
         })
         
-        const queryTags = await searchByfaseSpesific(queryTagArray, query.from ? Number(query.from) : 213, query.to ? Number(query.to) : new Date().getFullYear())
+        const queryTags = await searchByfaseSpesific(queryTagArray, query.from ? Number(query.from) : 2013, query.to ? Number(query.to) : new Date().getFullYear())
         if (queryTags.success === false || queryTags.result === null) return res.status(500).json({
             result: {
                 error: queryTags.error,
@@ -109,7 +110,7 @@ server.get("/", async (req, res)=>{
         }), query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear()) : null */
         const comparisonData = query.compareWith ? await searchByComparisonfaseSpesific(query.compareWith.split(",").map(el=>{
             return `${el[0].toLocaleUpperCase()}${el.slice(1)}`
-        }), query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear()) : null
+        }), query.from ? Number(query.from) : 2013, query.to ? Number(query.to) : new Date().getFullYear()) : null
         console.log(comparisonData)
         if (comparisonData === null){
             return res.status(200).json({
@@ -169,7 +170,7 @@ server.get("/", async (req, res)=>{
                 const tags = query.compareWith.split(",").map(el=>{
                     return `${el[0].toLocaleUpperCase()}${el.slice(1)}`
                 })
-                const comparisonData = await searchByComparisonfaseSpesific(tags, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear())
+                const comparisonData = await searchByComparisonfaseSpesific(tags, query.from ? Number(query.from) : 2013, query.to ? Number(query.to) : new Date().getFullYear())
                 if (comparisonData.success === false && comparisonData.error != null){
                     return res.status(500).json({
                         result: {
