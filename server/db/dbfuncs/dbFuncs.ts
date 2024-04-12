@@ -663,7 +663,6 @@ export const searchByComparisonfaseSpesific = async(tagArray: string[], startYea
                 const avgValue = await db.query(`
                     WITH company_data AS (
                         SELECT
-                        '${name}' AS code,
                         cl.code_description AS description,
                         od.${name} AS value,
                         od.rapportår
@@ -680,16 +679,21 @@ export const searchByComparisonfaseSpesific = async(tagArray: string[], startYea
                         od.rapportår, cl.code_description, od.${name}
                     ), aggregated_data AS (
                         SELECT
-                            code,
-                            description,
-                            AVG(value) AS average_value
+                            json_build_object(
+                                'description', description,
+                                'average_value', AVG(value),
+                                'median_value', percentile_cont(0.5) WITHIN GROUP (ORDER BY value),
+                                'max_value', MAX(value),
+                                'min_value', MIN(value)
+                            ) AS ${name.split("_")[1]}
                         FROM
                             company_data
+                        WHERE 
+                            value IS NOT NULL
                         GROUP BY
-                            code,
                             description
                         ORDER BY
-                            code
+                            description
                     )
                     SELECT 
                         * 
@@ -708,6 +712,71 @@ export const searchByComparisonfaseSpesific = async(tagArray: string[], startYea
         return { success: false, error: error, result: null }
     }
 }
+
+/* 
+CREATE OR REPLACE FUNCTION search_by_comparisonfase_specific(
+    tag_array text[], 
+    start_year int, 
+    end_year int
+)
+RETURNS TABLE(year int, fase text, average_values jsonb) AS $$
+DECLARE
+    column_name text;
+    column_names_array text[];
+    yearly_object jsonb;
+    result_record RECORD;
+BEGIN
+    -- Fetch column names that match 'code_%' pattern
+    SELECT array_agg(column_name)
+    INTO column_names_array
+    FROM information_schema.columns
+    WHERE table_name = 'økonomisk_data' AND column_name LIKE 'code_%';
+
+    -- Loop over each year range
+    FOR year IN start_year..end_year LOOP
+        -- Initialize yearly data structure in JSON
+        yearly_object := jsonb_build_object('year', year, 'fase', array_to_string(tag_array, ', '), 'averageValues', jsonb_build_array());
+
+        -- Perform the aggregated query for all columns at once using the fetched column names
+        FOR result_record IN
+            SELECT
+                year,
+                jsonb_object_agg(column_name, column_data) AS data
+            FROM (
+                SELECT
+                    column_name,
+                    jsonb_build_object(
+                        'description', (SELECT code_description FROM code_lookup WHERE economic_code = UPPER(column_name)),
+                        'average_value', AVG(value),
+                        'median_value', percentile_cont(0.5) WITHIN GROUP (ORDER BY value),
+                        'max_value', MAX(value),
+                        'min_value', MIN(value)
+                    ) AS column_data
+                FROM
+                    økonomisk_data od
+                JOIN
+                    lokal_årlig_bedrift_fase_rapport lbf ON od.bedrift_id = lbf.bedrift_id AND od.rapportår = year
+                WHERE
+                    od.rapportår = year
+                AND
+                    lbf.fase = ANY(tag_array)
+                AND
+                    column_name = ANY(column_names_array)
+                GROUP BY column_name
+            ) AS aggregated_data
+            GROUP BY year
+        LOOP
+            -- Update yearly object with new data
+            yearly_object := jsonb_set(yearly_object, '{averageValues}', result_record.data);
+        END LOOP;
+
+        -- Return yearly data
+        RETURN QUERY SELECT year, array_to_string(tag_array, ', '), yearly_object;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+ */
+
 
 /* const avgValue = await db.query(`
             SELECT
