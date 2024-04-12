@@ -5,15 +5,10 @@ services:
       dockerfile: dockerfile
     ports:
       - 8080:8080
-    develop:
-      watch:
-        - action: sync
-          path: ./client/React-Bedrifttracker-prototype
-          target: /src/
-          ignore:
-            - node_modules
-        - action: rebuild
-          path: ./client/React-Bedrifttracker-prototype/package.json
+    volumes:
+      - ./client/React-Bedrifttracker-prototype:/app
+      - /app/node-modules
+    command: npm run dev
   server: 
     image: node:20-bookworm-slim
     command: ["node", "./app/server.js"]

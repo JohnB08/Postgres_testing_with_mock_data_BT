@@ -15,7 +15,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-setup": "node ./db/dbfuncs/dbSetup.js",
+    "run-seeding": "node --env-file=privateKeys.env ./db/dbfuncs/initialDbPop.js"
   },
   "author": "",
   "license": "ISC",

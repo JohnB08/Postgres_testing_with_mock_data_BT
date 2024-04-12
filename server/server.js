@@ -47,7 +47,7 @@ server.get("/", async (req, res) => {
             const comparisonStatusArray = query.compareWith.split(",").map(el => {
                 return `${el[0].toLocaleUpperCase()}${el.slice(1)}`;
             });
-            const comparisonData = await searchByComparisonfaseSpesific(comparisonStatusArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
+            const comparisonData = await searchByComparisonfaseSpesific(comparisonStatusArray, query.from ? Number(query.from) : 2013, query.to ? Number(query.to) : new Date().getFullYear());
             if (comparisonData.success === false && comparisonData.result === null) {
                 return res.status(500).json({
                     result: {
@@ -87,7 +87,7 @@ server.get("/", async (req, res) => {
         const queryTagArray = queryArray.map(el => {
             return `${el[0].toLocaleUpperCase()}${el.slice(1)}`;
         });
-        const queryTags = await searchByfaseSpesific(queryTagArray, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
+        const queryTags = await searchByfaseSpesific(queryTagArray, query.from ? Number(query.from) : 213, query.to ? Number(query.to) : new Date().getFullYear());
         if (queryTags.success === false || queryTags.result === null)
             return res.status(500).json({
                 result: {
@@ -148,7 +148,7 @@ server.get("/", async (req, res) => {
                     message: "Bad Request, Could Not Validate Organisation Number."
                 }
             });
-        const queryOrgNr = await searchByOrgNr(query.orgNr, query.from ? Number(query.from) : 0, query.to ? Number(query.to) : new Date().getFullYear());
+        const queryOrgNr = await searchByOrgNr(query.orgNr, query.from ? Number(query.from) : 2013, query.to ? Number(query.to) : new Date().getFullYear());
         if (queryOrgNr.success === false && queryOrgNr.error !== null)
             return res.status(500).json({
                 result: {
