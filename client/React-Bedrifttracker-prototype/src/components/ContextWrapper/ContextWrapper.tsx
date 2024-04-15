@@ -8,27 +8,30 @@ export type SearchObject = {
 type DataContextType = {
     data: any,
     urlParams: SearchObject,
-    dataset: DataSet | null,
-    currentCompany: string,
-    currentDescription: string,
+    errorState: boolean,
+    dataset: DataSet[] | null,
+    currentCompany: string | null,
+    currentDescription: string | null,
     setUrl: (param:SearchObject)=>void,
     setCurrentKey: (param:string)=>void,
     keyAutoCompleteOptionArray: AutocompleteOption
 }
 type DataSet = {
-    x: number,
-    y: number
-}[]
+    year: number,
+    companyData: number | string,
+    comparisonData?:number
+}
 
 const initialDataContext = {
     data: null,
     urlParams: {id: ""},
+    errorState: false,
     setUrl: ()=>{},
     setCurrentKey: ()=>{},
     dataset: [],
     currentDescription: "",
     currentCompany: "",
-    keyAutoCompleteOptionArray: []
+    keyAutoCompleteOptionArray: [],
 }
 const dataContext = createContext<DataContextType>(initialDataContext);
 
@@ -49,20 +52,26 @@ export const DataProvider = ({children}: ProviderProps) =>{
         id: "statusQuery"
     })
     const [currentKey, setCurrentKey] = useState<string>("eka")
-    const [dataset, setDataSet] = useState<DataSet| null>(null)
-    const [currentCompany, setCurrentCompany] = useState<string>("")
-    const [currentDescription, setCurrentDescription] = useState<string>("")
+    const [dataset, setDataSet] = useState<DataSet[] | null>(null)
+    const [currentCompany, setCurrentCompany] = useState<string | null>(null)
+    const [currentDescription, setCurrentDescription] = useState<string | null>(null)
+    const [errorState, setErrorState] = useState<boolean>(false)
     const [keyAutoCompleteOptionArray, setKeyAutoCompleteOptionArray] = useState<AutocompleteOption>([])
     useEffect(()=>{
+        setErrorState(false)
+        setKeyAutoCompleteOptionArray([])
         const params = new URLSearchParams(urlParams).toString()
         console.log(params)
         const fetchFromDataBase = async()=>{
             try{
                 const response = await fetch(`http://localhost:3000/?${params}`)
+                if(response.status===404){
+                    setErrorState(true)
+                } 
                 const result = await response.json()
                 setData(result)
             } catch (error){
-                console.log(error)
+                setErrorState(true)
             }
         }
          fetchFromDataBase();
@@ -73,6 +82,7 @@ export const DataProvider = ({children}: ProviderProps) =>{
             const currentData = data.result.data[0]
             setCurrentCompany(currentData.målbedrift)
             const makeAutocomplete: AutocompleteOption = []
+            setCurrentDescription(currentData.data[0].queried_data[currentKey].description)
             const currentKeys = Object.keys(currentData.data[0].queried_data)
             currentKeys.forEach(key=>{
                 makeAutocomplete.push({
@@ -81,12 +91,31 @@ export const DataProvider = ({children}: ProviderProps) =>{
                 })
             })
             setKeyAutoCompleteOptionArray(makeAutocomplete)
-            const graphValues:DataSet = currentData.data.map((el:any)=>{
-                setCurrentDescription(el.queried_data[currentKey].description)
-                return {
-                    x: el.rapportår,
-                    y: el.queried_data[currentKey].value
+            const graphValues:DataSet[] = currentData.data.map((el:any)=>{
+                if (!Array.isArray(data.result.comparisonData)){
+                    return {
+                        year: el.rapportår,
+                        companyData: el.queried_data[currentKey]?.value ? el.queried_data[currentKey].value : null
+                    }
                 }
+                const comparisonDataset = data.result.comparisonData
+                const values:DataSet = {
+                    year: el.rapportår,
+                    companyData: el.queried_data[currentKey]?.value ? el.queried_data[currentKey].value : null
+                }
+                const foundElement = comparisonDataset.find((compEl:any)=>{
+                    return compEl.year === el.rapportår
+                })
+                console.log(foundElement)
+                if (foundElement){
+                    const foundValue = foundElement.averageValues.find((el:any)=>{
+                        return el[currentKey]
+                    })
+                    if (foundValue){
+                        values.comparisonData = foundValue[currentKey]?.average_value ? foundValue[currentKey].average_value : null
+                    }
+                }   
+                return values
             })
             setDataSet(graphValues)
         }
@@ -94,7 +123,7 @@ export const DataProvider = ({children}: ProviderProps) =>{
        updateGraphData();
     }, [data, currentKey])
     return (
-        <dataContext.Provider value={{data, urlParams, setUrl, setCurrentKey, currentCompany, currentDescription, dataset, keyAutoCompleteOptionArray}}>
+        <dataContext.Provider value={{data, urlParams, setUrl, setCurrentKey, currentCompany, currentDescription, dataset, keyAutoCompleteOptionArray, errorState}}>
             {children}
         </dataContext.Provider>
     )

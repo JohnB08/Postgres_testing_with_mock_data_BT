@@ -158,7 +158,7 @@ server.get("/", async (req, res) => {
                 }
             });
         if (queryOrgNr.success === true && queryOrgNr.result === null || typeof queryOrgNr.result === "string") {
-            return res.status(200).json({
+            return res.status(404).json({
                 result: {
                     data: queryOrgNr.result,
                     message: `Missing data for ${query.orgNr}`
@@ -167,6 +167,7 @@ server.get("/", async (req, res) => {
         }
         if (queryOrgNr.success === true && queryOrgNr.result !== null) {
             if (query.compareWith) {
+                console.log(query.compareWith, typeof query.compareWith);
                 const tags = query.compareWith.split(",").map(el => {
                     return `${el[0].toLocaleUpperCase()}${el.slice(1)}`;
                 });
@@ -179,7 +180,6 @@ server.get("/", async (req, res) => {
                         }
                     });
                 }
-                console.log(comparisonData.result);
                 if (comparisonData.success && comparisonData.result === null || typeof comparisonData.result === "string") {
                     return res.status(200).json({
                         result: {
