@@ -12,8 +12,10 @@ type DataContextType = {
     dataset: DataSet[] | null,
     currentCompany: string | null,
     currentDescription: string | null,
+    queryType: number | null,
     setUrl: (param:SearchObject)=>void,
     setCurrentKey: (param:string)=>void,
+    setQueryType: (param:number)=>void,
     keyAutoCompleteOptionArray: AutocompleteOption
 }
 type DataSet = {
@@ -28,10 +30,12 @@ const initialDataContext = {
     errorState: false,
     setUrl: ()=>{},
     setCurrentKey: ()=>{},
+    setQueryType: ()=>{},
     dataset: [],
     currentDescription: "",
     currentCompany: "",
     keyAutoCompleteOptionArray: [],
+    queryType: null
 }
 const dataContext = createContext<DataContextType>(initialDataContext);
 
@@ -51,6 +55,7 @@ export const DataProvider = ({children}: ProviderProps) =>{
     const [ urlParams, setUrl ] = useState<SearchObject>({
         id: "statusQuery"
     })
+    const [queryType, setQueryType] = useState<number|null>(null)
     const [currentKey, setCurrentKey] = useState<string>("eka")
     const [dataset, setDataSet] = useState<DataSet[] | null>(null)
     const [currentCompany, setCurrentCompany] = useState<string | null>(null)
@@ -123,7 +128,7 @@ export const DataProvider = ({children}: ProviderProps) =>{
        updateGraphData();
     }, [data, currentKey])
     return (
-        <dataContext.Provider value={{data, urlParams, setUrl, setCurrentKey, currentCompany, currentDescription, dataset, keyAutoCompleteOptionArray, errorState}}>
+        <dataContext.Provider value={{queryType, setQueryType, data, urlParams, setUrl, setCurrentKey, currentCompany, currentDescription, dataset, keyAutoCompleteOptionArray, errorState}}>
             {children}
         </dataContext.Provider>
     )

@@ -1,26 +1,27 @@
 import { Autocomplete, TextField } from "@mui/material"
 import { SearchObject, useData } from '../ContextWrapper/ContextWrapper'
 import { useState, FormEvent} from 'react'
-import { autocompleteOptions2 } from "../../UtilJson/autocompleteHelper"
+import {autocompleteOptions2} from "../../UtilJson/autocompleteHelper"
 
 
-export const NameQueryForm = ()=>{
+export const FaseQueryForm = ()=>{
 
 const {data, setUrl, setCurrentKey, keyAutoCompleteOptionArray} = useData()
   const [inputValue, setInputValue] = useState<SearchObject>({
     id: "statusQuery"
   })
   console.log(data)
-  const handleInput = (name: string) =>{
+  const handleInput = (fase: string) =>{
     setInputValue(prev=>{
         return (
             {
                 ...prev,
-                id: "nameQuery",
-                nameSnippet: name
+                id: "statusQuery",
+                status: fase
             }
         )
     })
+    console.log(inputValue)
   }
 
   const handleAddFase = (fase: string)=>{
@@ -29,8 +30,9 @@ const {data, setUrl, setCurrentKey, keyAutoCompleteOptionArray} = useData()
       ...prev,
       compareWith: fase
     }))
-
+    console.log(inputValue)
   }
+  
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
     setUrl(inputValue)
@@ -42,7 +44,14 @@ const {data, setUrl, setCurrentKey, keyAutoCompleteOptionArray} = useData()
 return (
     <>
       <form>
-      <TextField id="text-field-name-query" label="Search for org names" value={inputValue.nameSnippet} onChange={(event)=>handleInput(event.target.value)}/>
+      <Autocomplete
+        disablePortal
+        id="auto-test-1"
+        options={autocompleteOptions2}
+        sx={{width: 300}}
+        renderInput={(params) => <TextField {...params} label="Søk i fase."/>}
+        onChange={(event, option)=>option === null ? null : handleInput(option)}
+        />
       <Autocomplete
         disablePortal
         id="auto-test-2"

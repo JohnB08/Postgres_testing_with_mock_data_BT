@@ -28,11 +28,11 @@ const {data, setUrl, setCurrentKey, keyAutoCompleteOptionArray} = useData()
     console.log(fase)
     setInputValue(prev=>({
       ...prev,
-      compareWith: prev.compareWith ? prev.compareWith.includes(fase) ? prev.compareWith : `${prev.compareWith},${fase}` : fase
+      compareWith: fase
     }))
     console.log(inputValue)
-
   }
+
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
     setUrl(inputValue)
@@ -68,7 +68,7 @@ return (
         renderInput={(params) => <TextField {...params} label="Velg dataset."/>}
         onChange={(event, option)=>option === null ? null : changeKey(option.id)}
         /> : ""}
-      <button type='submit' onClick={handleSubmit}>This is a test button</button>
+      <button type='submit' onClick={handleSubmit}>Search</button>
     </form>
     </>
 )
