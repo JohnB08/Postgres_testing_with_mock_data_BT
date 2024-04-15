@@ -42,12 +42,12 @@ const {data, setUrl, setCurrentKey, keyAutoCompleteOptionArray} = useData()
 return (
     <>
       <form>
-      <TextField id="text-field-name-query" label="Search for org names" value={inputValue.nameSnippet} onChange={(event)=>handleInput(event.target.value)}/>
+      <TextField id="text-field-name-query" label="Search for org names" value={inputValue.nameSnippet} onChange={(event)=>handleInput(event.target.value)} />
       <Autocomplete
         disablePortal
         id="auto-test-2"
         options={autocompleteOptions2}
-        sx={{width: 300}}
+        sx={{width: 400}}
         renderInput={(params) => <TextField {...params} label="Sammenlign med fase."/>}
         onChange={(event, option)=>option === null ? null : handleAddFase(option)}
         />
@@ -55,7 +55,7 @@ return (
         disablePortal
         id="auto-test-2"
         options={keyAutoCompleteOptionArray}
-        sx={{width: 300}}
+        sx={{width: 400}}
         renderInput={(params) => <TextField {...params} label="Velg dataset."/>}
         onChange={(event, option)=>option === null ? null : changeKey(option.id)}
         /> : ""}

@@ -6,9 +6,10 @@ import { GraphMaker } from '../Graph/GraphMaker'
 import { OrgQueryForm } from '../OrgNrQueryForm/OrgNrQueryForm'
 import { NameQueryForm } from '../NameQuery/NameQuery'
 import { FaseQueryForm } from '../FaseQuery/FaseQuery'
+import { OrgTable } from '../OrgTable/OrgTable'
 
 function App() {
-  const {queryType, setQueryType} = useData()
+  const {queryType, setQueryType, } = useData()
   const queryMethods = [
     {label: "Query by Name", value: 0},
     {label: "Query by Orgnumber", value: 1},
@@ -21,7 +22,7 @@ function App() {
       select
       label='Select Query Method'
       helperText='Select your query method'
-      defaultValue={0}
+      value={queryType}
       onChange={(event)=>setQueryType(Number(event.target.value))}
     >
       {queryMethods.map(option=>
@@ -32,6 +33,7 @@ function App() {
     </TextField>
     {queryType === 0 ? <NameQueryForm/> : queryType === 1 ? <OrgQueryForm/> : <FaseQueryForm/>}
     <GraphMaker/>
+    <OrgTable/>
     </>
   )
 }

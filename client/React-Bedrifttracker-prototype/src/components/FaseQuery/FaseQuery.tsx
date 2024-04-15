@@ -48,7 +48,7 @@ return (
         disablePortal
         id="auto-test-1"
         options={autocompleteOptions2}
-        sx={{width: 300}}
+        sx={{width: 400}}
         renderInput={(params) => <TextField {...params} label="Søk i fase."/>}
         onChange={(event, option)=>option === null ? null : handleInput(option)}
         />
@@ -56,7 +56,7 @@ return (
         disablePortal
         id="auto-test-2"
         options={autocompleteOptions2}
-        sx={{width: 300}}
+        sx={{width: 400}}
         renderInput={(params) => <TextField {...params} label="Sammenlign med fase."/>}
         onChange={(event, option)=>option === null ? null : handleAddFase(option)}
         />
@@ -64,7 +64,7 @@ return (
         disablePortal
         id="auto-test-2"
         options={keyAutoCompleteOptionArray}
-        sx={{width: 300}}
+        sx={{width: 400}}
         renderInput={(params) => <TextField {...params} label="Velg dataset."/>}
         onChange={(event, option)=>option === null ? null : changeKey(option.id)}
         /> : ""}

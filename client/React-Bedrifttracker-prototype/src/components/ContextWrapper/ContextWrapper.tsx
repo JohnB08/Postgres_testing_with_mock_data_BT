@@ -5,6 +5,20 @@ import { useState, createContext, useContext, useEffect, ReactNode } from "react
 export type SearchObject = {
     [key: string]: string
 }
+
+type DataSet = {
+    year: number,
+    companyData: number | string,
+    comparisonData?:number
+}
+
+type OrgTableType = {
+    name: string,
+    queriedYears: number[],
+    averageQueriedAmount: number,
+    index: number
+}
+
 type DataContextType = {
     data: any,
     urlParams: SearchObject,
@@ -16,13 +30,12 @@ type DataContextType = {
     setUrl: (param:SearchObject)=>void,
     setCurrentKey: (param:string)=>void,
     setQueryType: (param:number)=>void,
+    setCurrentOrgIndex: (param:number)=>void
     keyAutoCompleteOptionArray: AutocompleteOption
+    orgArray: OrgTableType[] | null
+    currentOrgIndex: number
 }
-type DataSet = {
-    year: number,
-    companyData: number | string,
-    comparisonData?:number
-}
+
 
 const initialDataContext = {
     data: null,
@@ -35,7 +48,10 @@ const initialDataContext = {
     currentDescription: "",
     currentCompany: "",
     keyAutoCompleteOptionArray: [],
-    queryType: null
+    queryType: null,
+    orgArray: null,
+    setCurrentOrgIndex: ()=>{},
+    currentOrgIndex: 0
 }
 const dataContext = createContext<DataContextType>(initialDataContext);
 
@@ -47,6 +63,22 @@ type AutocompleteOption = {
     label: string,
     id: string
 }[]
+
+const getAverageValues = (el:any, currentKey:string) =>{
+    if (!el.data[0].queried_data) 
+        return [0]
+    else if (!el.data[0].queried_data[currentKey])
+        return 0
+    else return el.data.map((range:any)=>{
+        if (!range.queried_data) return 0
+        if (!range.queried_data[currentKey]) return 0
+        if (!range.queried_data[currentKey].value) return 0
+        return range.queried_data[currentKey].value
+    }
+                    ).reduce((acc:number, curr:number)=>{
+                        return acc + curr
+                    }, 0)/el.data.length
+}
 
 export const DataProvider = ({children}: ProviderProps) =>{
     const [data, setData ] = useState<any>({data: {
@@ -62,6 +94,8 @@ export const DataProvider = ({children}: ProviderProps) =>{
     const [currentDescription, setCurrentDescription] = useState<string | null>(null)
     const [errorState, setErrorState] = useState<boolean>(false)
     const [keyAutoCompleteOptionArray, setKeyAutoCompleteOptionArray] = useState<AutocompleteOption>([])
+    const [currentOrgIndex, setCurrentOrgIndex] = useState<number>(0)
+    const [orgArray, setOrgArray] = useState<OrgTableType[] | null>(null)
     useEffect(()=>{
         setErrorState(false)
         setKeyAutoCompleteOptionArray([])
@@ -84,7 +118,16 @@ export const DataProvider = ({children}: ProviderProps) =>{
     useEffect(()=>{
        const updateGraphData = () =>{
         if (data.result != null && Array.isArray(data.result.data)){
-            const currentData = data.result.data[0]
+            const newOrgArray: OrgTableType[] = data.result.data.map((el:any)=>{
+                return {
+                    name: el.målbedrift,
+                    queriedYears: el.data.map((range:any)=>range.rapportår),
+                    averageQueriedAmount: getAverageValues(el, currentKey),
+                    index: data.result.data.indexOf(el)
+                }
+            })
+            setOrgArray(newOrgArray)
+            const currentData = data.result.data[currentOrgIndex]
             setCurrentCompany(currentData.målbedrift)
             const makeAutocomplete: AutocompleteOption = []
             setCurrentDescription(currentData.data[0].queried_data[currentKey].description)
@@ -106,7 +149,7 @@ export const DataProvider = ({children}: ProviderProps) =>{
                 const comparisonDataset = data.result.comparisonData
                 const values:DataSet = {
                     year: el.rapportår,
-                    companyData: el.queried_data[currentKey]?.value ? el.queried_data[currentKey].value : null
+                    companyData: el.queried_data ? el.queried_data[currentKey] ? el.queried_data[currentKey].value ? el.queried_data[currentKey].value : null : null : null
                 }
                 const foundElement = comparisonDataset.find((compEl:any)=>{
                     return compEl.year === el.rapportår
@@ -126,9 +169,9 @@ export const DataProvider = ({children}: ProviderProps) =>{
         }
     }
        updateGraphData();
-    }, [data, currentKey])
+    }, [data, currentKey, currentOrgIndex])
     return (
-        <dataContext.Provider value={{queryType, setQueryType, data, urlParams, setUrl, setCurrentKey, currentCompany, currentDescription, dataset, keyAutoCompleteOptionArray, errorState}}>
+        <dataContext.Provider value={{currentOrgIndex, queryType, setQueryType, data, urlParams, setUrl, setCurrentKey, currentCompany, currentDescription, dataset, keyAutoCompleteOptionArray, errorState, orgArray, setCurrentOrgIndex}}>
             {children}
         </dataContext.Provider>
     )
