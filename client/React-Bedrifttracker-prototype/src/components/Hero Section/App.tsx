@@ -31,7 +31,7 @@ function App() {
         </MenuItem>
       )}
     </TextField>
-    {queryType === 0 ? <NameQueryForm/> : queryType === 1 ? <OrgQueryForm/> : <FaseQueryForm/>}
+    {queryType === null ? "" : queryType === 0 ? <NameQueryForm/> : queryType === 1 ? <OrgQueryForm/> : <FaseQueryForm/>}
     <GraphMaker/>
     <OrgTable/>
     </>
