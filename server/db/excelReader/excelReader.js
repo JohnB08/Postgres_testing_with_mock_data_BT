@@ -1,5 +1,5 @@
 import xlsx from "xlsx";
-import { isKey } from "../dbfuncs/regexTest.js";
+import { isKey } from "../verifierFuncs/isKey.js";
 const options = {
     cellFormula: false,
     cellDates: true,

@@ -1,12 +1,13 @@
 
 import './App.css'
 import { SearchObject, useData } from '../ContextWrapper/ContextWrapper'
-import { useState, ChangeEvent, FormEvent, useMemo, SyntheticEvent } from 'react'
+import { useState, FormEvent} from 'react'
 import { Autocomplete, TextField } from '@mui/material'
 import {autocompleteOptions, autocompleteOptions2} from "../../UtilJson/autocompleteHelper"
+import { GraphMaker } from '../Graph/GraphMaker'
 
 function App() {
-  const {data, setUrl} = useData()
+  const {data, setUrl, setCurrentKey, keyAutoCompleteOptionArray} = useData()
   const [inputValue, setInputValue] = useState<SearchObject>({
     id: "statusQuery"
   })
@@ -31,6 +32,10 @@ function App() {
     event.preventDefault()
     setUrl(inputValue)
   }
+
+  const changeKey = (key: string) =>{
+    setCurrentKey(key)
+  }
   
   return (
     <>
@@ -52,8 +57,17 @@ function App() {
         renderInput={(params) => <TextField {...params} label="Sammenlign med fase."/>}
         onChange={(event, option)=>option === null ? null : handleAddFase(option)}
         />
+      {keyAutoCompleteOptionArray.length > 0 ? <Autocomplete
+        disablePortal
+        id="auto-test-2"
+        options={keyAutoCompleteOptionArray}
+        sx={{width: 300}}
+        renderInput={(params) => <TextField {...params} label="Velg dataset."/>}
+        onChange={(event, option)=>option === null ? null : changeKey(option.id)}
+        /> : ""}
       <button type='submit' onClick={handleSubmit}>This is a test button</button>
     </form>
+    <GraphMaker/>
     </>
   )
 }

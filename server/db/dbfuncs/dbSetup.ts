@@ -1,8 +1,9 @@
 import { db } from "../dbConfig/dbConfig.js";
-import { economicTables, isKey } from "./regexTest.js";
+import { isKey } from "../verifierFuncs/isKey.js";
 import { economicCodes } from "../mockData/responseConstructor.js";
-import { QueryResult } from "pg";
+import { QueryResult } from "pg"
 
+export const economicTables = Object.keys(economicCodes).map(key=>`CODE_${key} DOUBLE PRECISION DEFAULT NULL, `).join("")
 
 const createCompanyNameTable = async() =>{
 try{

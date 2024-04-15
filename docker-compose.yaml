@@ -10,7 +10,7 @@ services:
     command: npm run dev
   server: 
     image: node:20-bookworm-slim
-    command: ["node", "./app/server.js"]
+    command: ["node", "--watch", "./app/server.js"]
     ports:
       - 3000:3000
     volumes:

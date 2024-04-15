@@ -1,5 +1,5 @@
 import xlsx from "xlsx"
-import { isKey } from "../dbfuncs/regexTest.js";
+import { isKey } from "../verifierFuncs/isKey.js"
 const options = {
     cellFormula: false,
     cellDates: true,
@@ -77,7 +77,7 @@ const convertToWorkableObject = () =>{
                     målbedrift: row['Målbedrift'],
                     orgnummer: row['Orgnummer'],
                     bransje: row['Bransje'],
-                    beskrivelse: row['Beskrivelse'] === undefined ? row['Beskrivelse'] : row['Beskrivelse'].replace(/'/g, '’'),
+                    beskrivelse: row['Beskrivelse'] === undefined ? row['Beskrivelse'] : row['Beskrivelse'].replace(/'/g, '’'), 
                     idekilde: row['Idekilde'],
                     data: [{
                         rapportår: row['RapportÅr'],
