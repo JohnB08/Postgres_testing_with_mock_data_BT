@@ -97,6 +97,7 @@ export const DataProvider = ({children}: ProviderProps) =>{
     const [currentOrgIndex, setCurrentOrgIndex] = useState<number>(0)
     const [orgArray, setOrgArray] = useState<OrgTableType[] | null>(null)
     useEffect(()=>{
+        setCurrentOrgIndex(0)
         setErrorState(false)
         setKeyAutoCompleteOptionArray([])
         const params = new URLSearchParams(urlParams).toString()
