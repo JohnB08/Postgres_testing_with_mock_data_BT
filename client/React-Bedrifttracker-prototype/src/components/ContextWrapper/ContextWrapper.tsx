@@ -102,6 +102,7 @@ export const DataProvider = ({children}: ProviderProps) =>{
         setCurrentOrgIndex(0)
         setErrorState(false)
         setKeyAutoCompleteOptionArray([])
+        setCurrentKey("dr")
         const params = new URLSearchParams(urlParams).toString()
         console.log(params)
         const fetchFromDataBase = async()=>{
