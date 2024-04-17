@@ -2,6 +2,7 @@ import { Autocomplete, TextField } from "@mui/material"
 import { SearchObject, useData } from '../ContextWrapper/ContextWrapper'
 import { useState, FormEvent} from 'react'
 import { autocompleteOptions2 } from "../../UtilJson/autocompleteHelper"
+import style from "./NameQuery.module.css"
 
 
 export const NameQueryForm = ()=>{
@@ -41,7 +42,7 @@ const {data, setUrl, setCurrentKey, keyAutoCompleteOptionArray} = useData()
   }
 return (
     <>
-      <form>
+      <form className={'mainForm'}>
       <TextField id="text-field-name-query" label="Search for org names" value={inputValue.nameSnippet} onChange={(event)=>handleInput(event.target.value)} />
       <Autocomplete
         disablePortal
@@ -59,7 +60,7 @@ return (
         renderInput={(params) => <TextField {...params} label="Velg dataset."/>}
         onChange={(event, option)=>option === null ? null : changeKey(option.id)}
         /> : ""}
-      <button type='submit' onClick={handleSubmit}>Search</button>
+      <button type='submit' onClick={handleSubmit} className={'subBtn'}>Search</button>
     </form>
     </>
 )

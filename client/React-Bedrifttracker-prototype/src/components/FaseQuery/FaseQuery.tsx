@@ -43,7 +43,7 @@ const {data, setUrl, setCurrentKey, keyAutoCompleteOptionArray} = useData()
   }
 return (
     <>
-      <form>
+      <form className="mainForm">
       <Autocomplete
         disablePortal
         id="auto-test-1"
@@ -68,7 +68,7 @@ return (
         renderInput={(params) => <TextField {...params} label="Velg dataset."/>}
         onChange={(event, option)=>option === null ? null : changeKey(option.id)}
         /> : ""}
-      <button type='submit' onClick={handleSubmit}>Search</button>
+      <button className="subBtn" type='submit' onClick={handleSubmit}>Search</button>
     </form>
     </>
 )
