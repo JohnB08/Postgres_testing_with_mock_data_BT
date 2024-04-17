@@ -40,7 +40,7 @@ type tagnameQueryType = {
 export const searchByfaseSpesific = async(tagArray: string[], startYear: number= 0, endYear: number = new Date().getFullYear()) => {
     try {
         console.log(tagArray)
-        const data = await db.query<queryReturnType>(`
+        const data = await db.query<queryReturnType[]>(`
         SELECT * FROM fetch_data_with_fase($1, ${startYear}, ${endYear})
         `, [tagArray])
         if (data.rowCount != null && data.rowCount > 0) return { success: true, error: null, result: data.rows }
@@ -52,7 +52,7 @@ export const searchByfaseSpesific = async(tagArray: string[], startYear: number=
 
 export const searchByName = async(companyNameSnippet: string, startYear: number = 0, endYear:number = new Date().getFullYear())=>{
     try{
-        const data = await db.query<queryReturnType>(`
+        const data = await db.query<queryReturnType[]>(`
             SELECT * FROM fetch_data_based_on_name_snippet($1, ${startYear}, ${endYear})
             `, [companyNameSnippet])
             if (data.rowCount != null && data.rowCount > 0) return {success: true, error: null, result: data.rows}
@@ -64,7 +64,7 @@ export const searchByName = async(companyNameSnippet: string, startYear: number 
 
 export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, endYear: number = new Date().getFullYear())=>{
     try{
-        const data = await db.query<queryReturnType>(`
+        const data = await db.query<queryReturnType[]>(`
         SELECT * FROM fetch_data_by_org_nr($1, $2, $3)
         `, [Number(companyOrgNr), startYear, endYear])
         if (data.rowCount !== null && data.rowCount > 0 ){
