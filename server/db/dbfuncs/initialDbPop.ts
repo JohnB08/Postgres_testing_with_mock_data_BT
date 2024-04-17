@@ -3,6 +3,7 @@ import { db } from "../dbConfig/dbConfig.js";
 import { QueryResult } from "pg";
 import fs from "fs"
 import { cleanedData as excelData } from "../excelReader/excelReader.js"; 
+import { verifyErrorExists, verifySuccessQuery, QueryPackage, SuccessfullQueryPackage, UnsuccessfulQueryPackage } from "../verifierFuncs/VerifyDbQuery.js";
 
 
 type referenceDataType = {
@@ -43,42 +44,7 @@ type ProffQueryReturn = {
   naceCategories: any[]
 }
 
-type QueryPackage<T> = {
-    success: boolean,
-    data: T | string,
-    error: undefined
-} | {
-    success: boolean,
-    data: undefined,
-    error: unknown
-}
 
-type UnsuccessfulQueryPackage = QueryPackage<any> & {
-    success: false,
-    data: undefined,
-    error: unknown
-}
-type SuccessfullQueryPackage<T> = QueryPackage<T> & {
-    success: true,
-    data: T,
-    error: undefined
-}
-
-
-const verifyErrorExists = (object: QueryPackage<any>): object is UnsuccessfulQueryPackage => {
-    return (
-        typeof object === "object" &&
-        (object as UnsuccessfulQueryPackage).success === false
-    )
-}
-
-const verifySuccessQuery = <T>(object: QueryPackage<T>): object is SuccessfullQueryPackage<T> =>{
-    return (
-        typeof object === "object" &&
-        (object as SuccessfullQueryPackage<T>).success === true && 
-        typeof (object as SuccessfullQueryPackage<T>).data != "string"
-    )
-}
 
 
 /**

@@ -61,17 +61,16 @@ export const searchByOrgNr = async (companyOrgNr, startYear = 0, endYear = new D
  * @param companyId
  * @returns array of tags.
  */
-export const getTagsFromCompanyId = async (companyId) => {
+export const getAllFases = async () => {
     try {
         const data = await db.query(`
-        SELECT fase
+        SELECT DISTINCT fase
         FROM lokal_årlig_bedrift_fase_rapport
-        WHERE bedrift_id = $1
-        `, [companyId]);
-        return { success: true, error: null, result: data.rows };
+        `);
+        return { success: true, error: undefined, data: data.rows };
     }
     catch (error) {
-        return { success: false, error: error, result: null };
+        return { success: false, error: error, data: undefined };
     }
 };
 /**

@@ -4,9 +4,9 @@ import { useData } from "../ContextWrapper/ContextWrapper";
 
 export const OrgTable = () =>{
     const columns: GridColDef[] = [
-        {field: 'col1', headerName: 'Name', width: 300},
-        {field: 'col2', headerName: 'Available years', width:300},
-        {field: 'col3', headerName: 'Average Amount', width: 300}
+        {field: 'col1', headerName: 'Name', width: 200},
+        {field: 'col2', headerName: 'Available years', width:200},
+        {field: 'col3', headerName: 'Average Amount', width: 200}
     ]
     const {orgArray, setCurrentOrgIndex} = useData()
     const rows: GridRowsProp | null = orgArray ? orgArray.sort((a,b)=>{

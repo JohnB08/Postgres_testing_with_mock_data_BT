@@ -64,12 +64,14 @@ type AutocompleteOption = {
     id: string
 }[]
 
+
+
 const getAverageValues = (el:any, currentKey:string) =>{
     if (!el.data[0].queried_data) 
         return [0]
     else if (!el.data[0].queried_data[currentKey])
         return 0
-    else return el.data.map((range:any)=>{
+    else return Number.parseFloat((el.data.map((range:any)=>{
         if (!range.queried_data) return 0
         if (!range.queried_data[currentKey]) return 0
         if (!range.queried_data[currentKey].value) return 0
@@ -77,7 +79,7 @@ const getAverageValues = (el:any, currentKey:string) =>{
     }
                     ).reduce((acc:number, curr:number)=>{
                         return acc + curr
-                    }, 0)/el.data.length
+                    }, 0)/el.data.length).toFixed(4))
 }
 
 export const DataProvider = ({children}: ProviderProps) =>{
@@ -85,7 +87,7 @@ export const DataProvider = ({children}: ProviderProps) =>{
         result: null
     }})
     const [ urlParams, setUrl ] = useState<SearchObject>({
-        id: "statusQuery"
+        id: "StartupQuery",
     })
     const [queryType, setQueryType] = useState<number|null>(null)
     const [currentKey, setCurrentKey] = useState<string>("eka")
@@ -118,7 +120,12 @@ export const DataProvider = ({children}: ProviderProps) =>{
     }, [urlParams])
     useEffect(()=>{
        const updateGraphData = () =>{
-        if (data.result != null && Array.isArray(data.result.data)){
+        if (!data.result) return
+        if (!data.result.data && !data.result.comparisonData) return
+        if (!data.result.data && Array.isArray(data.result.comparisonData)){
+            
+        }
+        if (Array.isArray(data.result.data)){
             const newOrgArray: OrgTableType[] = data.result.data.map((el:any)=>{
                 return {
                     name: el.målbedrift,

@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
 import { verifiyBaseQuery, verifyNameQueryType, verifyOrgNrQueryType, verifyTagQueryType } from "./db/verifierFuncs/queryVerifier.js";
-import { searchByComparisonfaseSpesific, searchByName, searchByOrgNr, searchByfaseSpesific } from "./db/dbfuncs/dbFuncs.js";
+import { getAllFases, searchByComparisonfaseSpesific, searchByName, searchByOrgNr, searchByfaseSpesific } from "./db/dbfuncs/dbFuncs.js";
+import { verifyErrorExists, verifySuccessQuery } from "./db/verifierFuncs/VerifyDbQuery.js";
 const server = express();
 const port = 3000;
 server.use(express.json());
@@ -26,6 +27,41 @@ server.get("/", async (req, res) => {
                     message: "Could not validate comparison value."
                 }
             });
+        }
+    }
+    if (query.id === "StartupQuery") {
+        const fetchAllFases = await getAllFases();
+        if (!verifySuccessQuery(fetchAllFases)) {
+            if (verifyErrorExists(fetchAllFases)) {
+                return res.status(500).json({
+                    result: {
+                        error: fetchAllFases.error,
+                        message: "Internal Server Error"
+                    }
+                });
+            }
+        }
+        else {
+            const faseArray = fetchAllFases.data.map((el) => {
+                return el.fase;
+            });
+            const startData = await searchByComparisonfaseSpesific(faseArray);
+            if (startData.error && !startData.result) {
+                return res.status(500).json({
+                    result: {
+                        error: startData.error,
+                        message: "Internal Server Error"
+                    }
+                });
+            }
+            else {
+                return res.status(200).json({
+                    result: {
+                        data: null,
+                        comparisonData: startData.result
+                    }
+                });
+            }
         }
     }
     if (query.id === "nameQuery") {

@@ -17,24 +17,28 @@ function App() {
   ]
   return (
     <main className={style.main}>
-      <TextField
-        id='query-type-select'
-        select
-        label='Select Query Method'
-        helperText='Select your query method'
-        value={queryType}
-        className={style.textField}
-        onChange={(event)=>setQueryType(Number(event.target.value))}
-      >
-        {queryMethods.map(option=>
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        )}
-      </TextField>
-      {queryType === null ? "" : queryType === 0 ? <NameQueryForm/> : queryType === 1 ? <OrgQueryForm/> : <FaseQueryForm/>}
-      <GraphMaker/>
-      <OrgTable/>
+      <div className={style.dataContainer}>
+        <GraphMaker/>
+        <OrgTable/>
+      </div>
+      <div className={style.queryContainer}>
+        <TextField
+          id='query-type-select'
+          select
+          label='Select Query Method'
+          helperText='Select your query method'
+          value={queryType}
+          className={style.textField}
+          onChange={(event)=>setQueryType(Number(event.target.value))}
+        >
+          {queryMethods.map(option=>
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          )}
+        </TextField>
+        {queryType === null ? "" : queryType === 0 ? <NameQueryForm/> : queryType === 1 ? <OrgQueryForm/> : <FaseQueryForm/>}
+      </div>
     </main>
   )
 }

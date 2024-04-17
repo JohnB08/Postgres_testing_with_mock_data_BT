@@ -3,7 +3,7 @@
 /* Kanskje gjøre om ID til f.eks hasha uid fra f.eks supabase? EVT lage egen simpel login service. Litt mer arbeid. 
 Kan bruke andre måter å skifte mellom querymethods.*/
 type queryType = {
-    id: "statusQuery" | "nameQuery" | "orgNrQuery"
+    id: "statusQuery" | "nameQuery" | "orgNrQuery" | "StartupQuery"
     to?: string,
     from?: string
     compareWith?: string

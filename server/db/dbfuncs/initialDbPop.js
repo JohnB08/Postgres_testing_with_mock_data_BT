@@ -1,15 +1,7 @@
 import { db } from "../dbConfig/dbConfig.js";
 import fs from "fs";
 import { cleanedData as excelData } from "../excelReader/excelReader.js";
-const verifyErrorExists = (object) => {
-    return (typeof object === "object" &&
-        object.success === false);
-};
-const verifySuccessQuery = (object) => {
-    return (typeof object === "object" &&
-        object.success === true &&
-        typeof object.data != "string");
-};
+import { verifyErrorExists, verifySuccessQuery } from "../verifierFuncs/VerifyDbQuery.js";
 /**
  * Funksjon som tar in et datasett, og ser om det passer med det vi er ute etter fra proff, basert på proff json struktur.
  * @param data
