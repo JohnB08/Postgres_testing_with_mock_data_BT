@@ -6,7 +6,7 @@ import {autocompleteOptions, autocompleteOptions2} from "../../UtilJson/autocomp
 
 export const OrgQueryForm = ()=>{
 
-const {data, setUrl, setCurrentKey, keyAutoCompleteOptionArray} = useData()
+const {data, setUrl } = useData()
   const [inputValue, setInputValue] = useState<SearchObject>({
     id: "statusQuery"
   })
@@ -37,10 +37,6 @@ const {data, setUrl, setCurrentKey, keyAutoCompleteOptionArray} = useData()
     event.preventDefault()
     setUrl(inputValue)
   }
-
-  const changeKey = (key: string) =>{
-    setCurrentKey(key)
-  }
 return (
     <>
       <form className="mainForm">
@@ -60,14 +56,7 @@ return (
         renderInput={(params) => <TextField {...params} label="Sammenlign med fase."/>}
         onChange={(event, option)=>option === null ? null : handleAddFase(option)}
         />
-      {keyAutoCompleteOptionArray.length > 0 ? <Autocomplete
-        disablePortal
-        id="auto-test-2"
-        options={keyAutoCompleteOptionArray}
-        sx={{width: 400}}
-        renderInput={(params) => <TextField {...params} label="Velg dataset."/>}
-        onChange={(event, option)=>option === null ? null : changeKey(option.id)}
-        /> : ""}
+      
       <button className="subBtn" type='submit' onClick={handleSubmit}>Search</button>
     </form>
     </>

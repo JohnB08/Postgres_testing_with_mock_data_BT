@@ -90,7 +90,7 @@ export const DataProvider = ({children}: ProviderProps) =>{
         id: "StartupQuery",
     })
     const [queryType, setQueryType] = useState<number|null>(null)
-    const [currentKey, setCurrentKey] = useState<string>("eka")
+    const [currentKey, setCurrentKey] = useState<string>("dr")
     const [dataset, setDataSet] = useState<DataSet[] | null>(null)
     const [currentCompany, setCurrentCompany] = useState<string | null>(null)
     const [currentDescription, setCurrentDescription] = useState<string | null>(null)
@@ -122,9 +122,33 @@ export const DataProvider = ({children}: ProviderProps) =>{
        const updateGraphData = () =>{
         if (!data.result) return
         if (!data.result.data && !data.result.comparisonData) return
-        if (!data.result.data && Array.isArray(data.result.comparisonData)){
-            
-        }
+        if (!Array.isArray(data.result.data) && Array.isArray(data.result.comparisonData)){
+            const initialDataSet = data.result.comparisonData
+            const startValues:DataSet[] = initialDataSet.map((el:any)=>{
+                if (Array.isArray(el.averageValues)){
+                    const currentKeys: AutocompleteOption = el.averageValues.map((keyObject:any)=>{
+                        const key = Object.keys(keyObject)
+                        return {
+                            label: keyObject[key[0]].description,
+                            id: key[0]
+                        }
+                    })
+                    setKeyAutoCompleteOptionArray(currentKeys)
+                    const findValue = el.averageValues.find((value:any)=>{
+                            return value[currentKey]
+                        })
+                    setCurrentDescription(findValue[currentKey].description)
+                    return {
+                        year: el.year ? el.year : new Date().getFullYear(),
+                        companyData: findValue ? findValue[currentKey].average_value : 0,
+                        comparisonData: 0,
+                        }
+                    
+                    }
+                })
+                setCurrentCompany(`average across database`)
+               return setDataSet(startValues.filter(x=>x!=undefined))
+            }
         if (Array.isArray(data.result.data)){
             const newOrgArray: OrgTableType[] = data.result.data.map((el:any)=>{
                 return {
