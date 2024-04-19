@@ -1,5 +1,5 @@
 
-import { useData } from '../ContextWrapper/ContextWrapper'
+import {  useData } from '../ContextWrapper/ContextWrapper'
 import { MenuItem, TextField, Autocomplete } from '@mui/material'
 import { GraphMaker } from '../Graph/GraphMaker'
 import { OrgQueryForm } from '../OrgNrQueryForm/OrgNrQueryForm'
@@ -10,13 +10,14 @@ import style from "./App.module.css"
 
 
 function App() {
-  const {queryType, setQueryType, keyAutoCompleteOptionArray, setCurrentKey} = useData()
+  const {queryType, setQueryType, keyAutoCompleteOptionArray, setCurrentKey } = useData()
   const queryMethods = [
     {label: "Query by Name", value: 0},
     {label: "Query by Orgnumber", value: 1},
     {label: "Query by phase", value: 2}
   ]
-  
+
+
 const changeKey = (key: string) =>{
     setCurrentKey(key)
   }

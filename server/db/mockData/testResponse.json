@@ -1,0 +1,9257 @@
+{
+  "companyType": "AS",
+  "companyTypeName": "Aksjeselskap",
+  "estimatedTurnover": null,
+  "hasSecurity": true,
+  "previousNames": [],
+  "proffListingId": "IGJ3VZB016D",
+  "registeredAsEnterprise": true,
+  "registeredForNav": true,
+  "registeredForPayrollTax": false,
+  "registeredForVat": true,
+  "registeredForVatDescription": null,
+  "registeredForVoluntary": false,
+  "registrationDate": "19.01.2013",
+  "shareCapital": 30000,
+  "shareholdersLastUpdatedDate": "2022",
+  "subsidiariesLastUpdatedDate": null,
+  "yearsInOperation": 11,
+  "announcements": [
+    {
+      "id": "20230000773562",
+      "date": "06.11.2023",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20220000631779",
+      "date": "30.08.2022",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20220000001540",
+      "date": "03.01.2022",
+      "text": "Endring av forretningsadresse",
+      "type": "FADR"
+    },
+    {
+      "id": "20210000679772",
+      "date": "25.10.2021",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20200000650219",
+      "date": "04.07.2020",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20200000251343",
+      "date": "01.01.2020",
+      "text": "Endring av forretningsadresse",
+      "type": "FADR"
+    },
+    {
+      "id": "20190000512866",
+      "date": "15.07.2019",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20180000506637",
+      "date": "23.07.2018",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20180000499903",
+      "date": "21.07.2018",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20170000496876",
+      "date": "05.08.2017",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20160000362865",
+      "date": "20.07.2016",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20160000180973",
+      "date": "24.05.2016",
+      "text": "Endring av styre",
+      "type": "STYR"
+    },
+    {
+      "id": "20150000622005",
+      "date": "22.12.2015",
+      "text": "Endring av forretningsadresse",
+      "type": "FADR"
+    },
+    {
+      "id": "20150000359770",
+      "date": "10.08.2015",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20140000467919",
+      "date": "13.09.2014",
+      "text": "Godkjente årsregnskap",
+      "type": "ARSO"
+    },
+    {
+      "id": "20130000252225",
+      "date": "29.06.2013",
+      "text": "Endring av revisor",
+      "type": "REVI"
+    },
+    {
+      "id": "20130000019356",
+      "date": "19.01.2013",
+      "text": "Nyregistrering",
+      "type": "NYFR"
+    }
+  ],
+  "annualAccounts": [
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2022-12",
+      "year": "2022",
+      "periodStart": "2022-01-01",
+      "periodEnd": "2022-12-31",
+      "accounts": [
+        {
+          "code": "ADK",
+          "amount": "2740"
+        },
+        {
+          "code": "DR",
+          "amount": "8004"
+        },
+        {
+          "code": "SLG",
+          "amount": "2645"
+        },
+        {
+          "code": "SDI",
+          "amount": "18158"
+        },
+        {
+          "code": "SDK",
+          "amount": "10154"
+        },
+        {
+          "code": "MI",
+          "amount": "66"
+        },
+        {
+          "code": "KUF",
+          "amount": "7462"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "3265"
+        },
+        {
+          "code": "AEK",
+          "amount": "6761"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SIA",
+          "amount": "3875"
+        },
+        {
+          "code": "SOVE",
+          "amount": "5875"
+        },
+        {
+          "code": "FOU",
+          "amount": "3760"
+        },
+        {
+          "code": "VF",
+          "amount": "2557"
+        },
+        {
+          "code": "OAE",
+          "amount": "5875"
+        },
+        {
+          "code": "SED",
+          "amount": "20500"
+        },
+        {
+          "code": "ANFF",
+          "amount": "5516"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NF",
+          "amount": "-467"
+        },
+        {
+          "code": "SEK",
+          "amount": "6791"
+        },
+        {
+          "code": "KBPS",
+          "amount": "10"
+        },
+        {
+          "code": "ANF",
+          "amount": "315"
+        },
+        {
+          "code": "SAM",
+          "amount": "9457"
+        },
+        {
+          "code": "SVA",
+          "amount": "3256"
+        },
+        {
+          "code": "ORA",
+          "amount": "660"
+        },
+        {
+          "code": "SVD",
+          "amount": "66"
+        },
+        {
+          "code": "FI",
+          "amount": "399"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "399"
+        },
+        {
+          "code": "FK",
+          "amount": "867"
+        },
+        {
+          "code": "AFK",
+          "amount": "867"
+        },
+        {
+          "code": "PNKO",
+          "amount": "95"
+        },
+        {
+          "code": "LTP",
+          "amount": "4197"
+        },
+        {
+          "code": "OFA",
+          "amount": "1196"
+        },
+        {
+          "code": "SFA",
+          "amount": "5516"
+        },
+        {
+          "code": "ORS",
+          "amount": "7536"
+        },
+        {
+          "code": "BS",
+          "amount": "1621"
+        },
+        {
+          "code": "SF",
+          "amount": "7777"
+        },
+        {
+          "code": "SG",
+          "amount": "13709"
+        },
+        {
+          "code": "SI",
+          "amount": "18158"
+        },
+        {
+          "code": "KBP",
+          "amount": "10"
+        },
+        {
+          "code": "AFKK",
+          "amount": "867"
+        },
+        {
+          "code": "AKG",
+          "amount": "2543"
+        },
+        {
+          "code": "OR",
+          "amount": "5875"
+        },
+        {
+          "code": "SV",
+          "amount": "3256"
+        },
+        {
+          "code": "USF",
+          "amount": "115"
+        },
+        {
+          "code": "SKG",
+          "amount": "11064"
+        },
+        {
+          "code": "SOK",
+          "amount": "6761"
+        },
+        {
+          "code": "SGE",
+          "amount": "20500"
+        },
+        {
+          "code": "SOM",
+          "amount": "11043"
+        },
+        {
+          "code": "SKO",
+          "amount": "1662"
+        },
+        {
+          "code": "ANLG",
+          "amount": "862"
+        },
+        {
+          "code": "PG",
+          "amount": "1783"
+        },
+        {
+          "code": "LG",
+          "amount": "1641"
+        },
+        {
+          "code": "ALG",
+          "amount": "862"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "GTI",
+          "amount": "4064"
+        },
+        {
+          "code": "AARS",
+          "amount": "5875"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "8664"
+        },
+        {
+          "code": "ARKA",
+          "amount": "-21"
+        },
+        {
+          "code": "TR",
+          "amount": "51.1"
+        },
+        {
+          "code": "KOH",
+          "amount": "1.10"
+        },
+        {
+          "code": "RG",
+          "amount": "44.1"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "37.4"
+        },
+        {
+          "code": "ER",
+          "amount": "195.3"
+        },
+        {
+          "code": "ERE",
+          "amount": "152.2"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.00"
+        },
+        {
+          "code": "LGR2",
+          "amount": "0.70"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.00"
+        },
+        {
+          "code": "EKA",
+          "amount": "33.1"
+        },
+        {
+          "code": "GG",
+          "amount": "2.0"
+        },
+        {
+          "code": "VOH",
+          "amount": "0.8"
+        },
+        {
+          "code": "LLF",
+          "amount": "-0.6"
+        },
+        {
+          "code": "LT",
+          "amount": "458.4"
+        },
+        {
+          "code": "RDG",
+          "amount": "9.7"
+        },
+        {
+          "code": "FG1",
+          "amount": "1.0"
+        },
+        {
+          "code": "KGA",
+          "amount": "54.0"
+        },
+        {
+          "code": "LGA",
+          "amount": "12.9"
+        },
+        {
+          "code": "BF",
+          "amount": "85.9"
+        },
+        {
+          "code": "OG",
+          "amount": "46.3"
+        },
+        {
+          "code": "OPAV",
+          "amount": "4539.5"
+        },
+        {
+          "code": "OPLK",
+          "amount": "4.3"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2021-12",
+      "year": "2021",
+      "periodStart": "2021-01-01",
+      "periodEnd": "2021-12-31",
+      "accounts": [
+        {
+          "code": "ADK",
+          "amount": "1791"
+        },
+        {
+          "code": "DR",
+          "amount": "1547"
+        },
+        {
+          "code": "SLG",
+          "amount": "3678"
+        },
+        {
+          "code": "SDI",
+          "amount": "11769"
+        },
+        {
+          "code": "SDK",
+          "amount": "10221"
+        },
+        {
+          "code": "MI",
+          "amount": "64"
+        },
+        {
+          "code": "KUF",
+          "amount": "6268"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "2769"
+        },
+        {
+          "code": "AEK",
+          "amount": "897"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SIA",
+          "amount": "4539"
+        },
+        {
+          "code": "SOVE",
+          "amount": "908"
+        },
+        {
+          "code": "FOU",
+          "amount": "4383"
+        },
+        {
+          "code": "VF",
+          "amount": "4062"
+        },
+        {
+          "code": "OAE",
+          "amount": "897"
+        },
+        {
+          "code": "SED",
+          "amount": "12375"
+        },
+        {
+          "code": "ANFF",
+          "amount": "0"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NF",
+          "amount": "-382"
+        },
+        {
+          "code": "SEK",
+          "amount": "927"
+        },
+        {
+          "code": "ANF",
+          "amount": "893"
+        },
+        {
+          "code": "KBPS",
+          "amount": "378"
+        },
+        {
+          "code": "SAM",
+          "amount": "4603"
+        },
+        {
+          "code": "ORA",
+          "amount": "659"
+        },
+        {
+          "code": "SVA",
+          "amount": "232"
+        },
+        {
+          "code": "SVD",
+          "amount": "64"
+        },
+        {
+          "code": "FI",
+          "amount": "18"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "18"
+        },
+        {
+          "code": "FK",
+          "amount": "400"
+        },
+        {
+          "code": "AFK",
+          "amount": "400"
+        },
+        {
+          "code": "PNKO",
+          "amount": "68"
+        },
+        {
+          "code": "LTP",
+          "amount": "3709"
+        },
+        {
+          "code": "OFA",
+          "amount": "529"
+        },
+        {
+          "code": "SFA",
+          "amount": "0"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "ORS",
+          "amount": "1165"
+        },
+        {
+          "code": "SF",
+          "amount": "7161"
+        },
+        {
+          "code": "SG",
+          "amount": "11447"
+        },
+        {
+          "code": "SI",
+          "amount": "11769"
+        },
+        {
+          "code": "OAEE",
+          "amount": "10"
+        },
+        {
+          "code": "KBP",
+          "amount": "378"
+        },
+        {
+          "code": "AFKK",
+          "amount": "400"
+        },
+        {
+          "code": "AKG",
+          "amount": "2281"
+        },
+        {
+          "code": "OR",
+          "amount": "908"
+        },
+        {
+          "code": "SV",
+          "amount": "232"
+        },
+        {
+          "code": "USF",
+          "amount": "156"
+        },
+        {
+          "code": "SKG",
+          "amount": "7769"
+        },
+        {
+          "code": "SOK",
+          "amount": "897"
+        },
+        {
+          "code": "SGE",
+          "amount": "12375"
+        },
+        {
+          "code": "SOM",
+          "amount": "7771"
+        },
+        {
+          "code": "SKO",
+          "amount": "257"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1159"
+        },
+        {
+          "code": "PG",
+          "amount": "2519"
+        },
+        {
+          "code": "LG",
+          "amount": "1237"
+        },
+        {
+          "code": "ALG",
+          "amount": "1159"
+        },
+        {
+          "code": "GTI",
+          "amount": "3721"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "908"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "2206"
+        },
+        {
+          "code": "ARKA",
+          "amount": "2"
+        },
+        {
+          "code": "TR",
+          "amount": "14.0"
+        },
+        {
+          "code": "KOH",
+          "amount": "1.05"
+        },
+        {
+          "code": "RG",
+          "amount": "13.1"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "7.9"
+        },
+        {
+          "code": "ER",
+          "amount": "246.0"
+        },
+        {
+          "code": "ERE",
+          "amount": "191.8"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.00"
+        },
+        {
+          "code": "LGR2",
+          "amount": "0.97"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.05"
+        },
+        {
+          "code": "EKA",
+          "amount": "7.5"
+        },
+        {
+          "code": "GG",
+          "amount": "12.3"
+        },
+        {
+          "code": "VOH",
+          "amount": "17.5"
+        },
+        {
+          "code": "LLF",
+          "amount": "0.9"
+        },
+        {
+          "code": "LT",
+          "amount": "20.6"
+        },
+        {
+          "code": "RDG",
+          "amount": "3.9"
+        },
+        {
+          "code": "FG1",
+          "amount": "1.0"
+        },
+        {
+          "code": "KGA",
+          "amount": "62.8"
+        },
+        {
+          "code": "LGA",
+          "amount": "29.7"
+        },
+        {
+          "code": "BF",
+          "amount": "65.5"
+        },
+        {
+          "code": "OG",
+          "amount": "13.3"
+        },
+        {
+          "code": "OPAV",
+          "amount": "2353.8"
+        },
+        {
+          "code": "OPLK",
+          "amount": "3.2"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2020-12",
+      "year": "2020",
+      "periodStart": "2020-01-01",
+      "periodEnd": "2020-12-31",
+      "accounts": [
+        {
+          "code": "ADK",
+          "amount": "1571"
+        },
+        {
+          "code": "DR",
+          "amount": "-828"
+        },
+        {
+          "code": "SLG",
+          "amount": "4874"
+        },
+        {
+          "code": "SDI",
+          "amount": "8408"
+        },
+        {
+          "code": "AEKK",
+          "amount": "-10"
+        },
+        {
+          "code": "SDK",
+          "amount": "9236"
+        },
+        {
+          "code": "MI",
+          "amount": "100"
+        },
+        {
+          "code": "KUF",
+          "amount": "1495"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "2126"
+        },
+        {
+          "code": "AEK",
+          "amount": "0"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SIA",
+          "amount": "5420"
+        },
+        {
+          "code": "SOVE",
+          "amount": "-905"
+        },
+        {
+          "code": "FOU",
+          "amount": "5006"
+        },
+        {
+          "code": "VF",
+          "amount": "5040"
+        },
+        {
+          "code": "OAE",
+          "amount": "-905"
+        },
+        {
+          "code": "SED",
+          "amount": "10003"
+        },
+        {
+          "code": "ANFF",
+          "amount": "53"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "SEK",
+          "amount": "20"
+        },
+        {
+          "code": "NF",
+          "amount": "-331"
+        },
+        {
+          "code": "KBPS",
+          "amount": "312"
+        },
+        {
+          "code": "ANF",
+          "amount": "229"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "135"
+        },
+        {
+          "code": "SAM",
+          "amount": "5573"
+        },
+        {
+          "code": "SVA",
+          "amount": "2394"
+        },
+        {
+          "code": "ORA",
+          "amount": "324"
+        },
+        {
+          "code": "SVD",
+          "amount": "100"
+        },
+        {
+          "code": "FI",
+          "amount": "42"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "42"
+        },
+        {
+          "code": "FK",
+          "amount": "373"
+        },
+        {
+          "code": "AFK",
+          "amount": "373"
+        },
+        {
+          "code": "PNKO",
+          "amount": "93"
+        },
+        {
+          "code": "LTP",
+          "amount": "2301"
+        },
+        {
+          "code": "OFA",
+          "amount": "1238"
+        },
+        {
+          "code": "SFA",
+          "amount": "53"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "ORS",
+          "amount": "-1159"
+        },
+        {
+          "code": "SF",
+          "amount": "1724"
+        },
+        {
+          "code": "SG",
+          "amount": "9983"
+        },
+        {
+          "code": "REVAN",
+          "amount": "12"
+        },
+        {
+          "code": "SI",
+          "amount": "8408"
+        },
+        {
+          "code": "KBP",
+          "amount": "312"
+        },
+        {
+          "code": "AFKK",
+          "amount": "373"
+        },
+        {
+          "code": "AKG",
+          "amount": "2139"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "15"
+        },
+        {
+          "code": "SV",
+          "amount": "2394"
+        },
+        {
+          "code": "OR",
+          "amount": "-905"
+        },
+        {
+          "code": "USF",
+          "amount": "414"
+        },
+        {
+          "code": "SOK",
+          "amount": "-10"
+        },
+        {
+          "code": "SKG",
+          "amount": "5109"
+        },
+        {
+          "code": "REVHO",
+          "amount": "28"
+        },
+        {
+          "code": "SOM",
+          "amount": "4430"
+        },
+        {
+          "code": "SGE",
+          "amount": "10003"
+        },
+        {
+          "code": "SKO",
+          "amount": "-254"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1613"
+        },
+        {
+          "code": "PG",
+          "amount": "3262"
+        },
+        {
+          "code": "LL",
+          "amount": "627"
+        },
+        {
+          "code": "LG",
+          "amount": "644"
+        },
+        {
+          "code": "ALG",
+          "amount": "1613"
+        },
+        {
+          "code": "GTI",
+          "amount": "1088"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "-905"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "-504"
+        },
+        {
+          "code": "ARKA",
+          "amount": "-679"
+        },
+        {
+          "code": "TR",
+          "amount": "-8.3"
+        },
+        {
+          "code": "KOH",
+          "amount": "0.89"
+        },
+        {
+          "code": "RG",
+          "amount": "-9.8"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "0.2"
+        },
+        {
+          "code": "ER",
+          "amount": "-245.3"
+        },
+        {
+          "code": "ERE",
+          "amount": "-191.5"
+        },
+        {
+          "code": "LGR",
+          "amount": "0.87"
+        },
+        {
+          "code": "LGR2",
+          "amount": "0.40"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.06"
+        },
+        {
+          "code": "EKA",
+          "amount": "0.2"
+        },
+        {
+          "code": "GG",
+          "amount": "499.2"
+        },
+        {
+          "code": "VOH",
+          "amount": "2.1"
+        },
+        {
+          "code": "LLF",
+          "amount": "-28.4"
+        },
+        {
+          "code": "LT",
+          "amount": "171.0"
+        },
+        {
+          "code": "RDG",
+          "amount": "-2.1"
+        },
+        {
+          "code": "FG1",
+          "amount": "1.1"
+        },
+        {
+          "code": "KGA",
+          "amount": "51.1"
+        },
+        {
+          "code": "LGA",
+          "amount": "48.7"
+        },
+        {
+          "code": "BF",
+          "amount": "40.1"
+        },
+        {
+          "code": "OG",
+          "amount": "-9.3"
+        },
+        {
+          "code": "OPAV",
+          "amount": "2102.0"
+        },
+        {
+          "code": "OPLK",
+          "amount": "3.7"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2019-12",
+      "year": "2019",
+      "periodStart": "2019-01-01",
+      "periodEnd": "2019-12-31",
+      "accounts": [
+        {
+          "code": "ADK",
+          "amount": "1779"
+        },
+        {
+          "code": "DR",
+          "amount": "786"
+        },
+        {
+          "code": "SLG",
+          "amount": "5420"
+        },
+        {
+          "code": "SDI",
+          "amount": "12008"
+        },
+        {
+          "code": "SDK",
+          "amount": "11222"
+        },
+        {
+          "code": "MI",
+          "amount": "32"
+        },
+        {
+          "code": "KUF",
+          "amount": "5168"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "1113"
+        },
+        {
+          "code": "AEK",
+          "amount": "895"
+        },
+        {
+          "code": "SIA",
+          "amount": "2771"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "395"
+        },
+        {
+          "code": "FOU",
+          "amount": "2611"
+        },
+        {
+          "code": "VF",
+          "amount": "7333"
+        },
+        {
+          "code": "OAE",
+          "amount": "395"
+        },
+        {
+          "code": "SED",
+          "amount": "8897"
+        },
+        {
+          "code": "ANFF",
+          "amount": "53"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "SEK",
+          "amount": "925"
+        },
+        {
+          "code": "NF",
+          "amount": "-280"
+        },
+        {
+          "code": "KBPS",
+          "amount": "198"
+        },
+        {
+          "code": "ANF",
+          "amount": "565"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "115"
+        },
+        {
+          "code": "SAM",
+          "amount": "2856"
+        },
+        {
+          "code": "ORA",
+          "amount": "687"
+        },
+        {
+          "code": "SVA",
+          "amount": "110"
+        },
+        {
+          "code": "SVD",
+          "amount": "32"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "10"
+        },
+        {
+          "code": "AFI",
+          "amount": "10"
+        },
+        {
+          "code": "FK",
+          "amount": "290"
+        },
+        {
+          "code": "AFK",
+          "amount": "290"
+        },
+        {
+          "code": "PNKO",
+          "amount": "59"
+        },
+        {
+          "code": "LTP",
+          "amount": "1422"
+        },
+        {
+          "code": "OFA",
+          "amount": "100"
+        },
+        {
+          "code": "SFA",
+          "amount": "53"
+        },
+        {
+          "code": "ORS",
+          "amount": "506"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "SF",
+          "amount": "5734"
+        },
+        {
+          "code": "SG",
+          "amount": "7973"
+        },
+        {
+          "code": "REVAN",
+          "amount": "12"
+        },
+        {
+          "code": "SI",
+          "amount": "12008"
+        },
+        {
+          "code": "KBP",
+          "amount": "198"
+        },
+        {
+          "code": "AFKK",
+          "amount": "290"
+        },
+        {
+          "code": "AKG",
+          "amount": "398"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "0"
+        },
+        {
+          "code": "OR",
+          "amount": "395"
+        },
+        {
+          "code": "SV",
+          "amount": "110"
+        },
+        {
+          "code": "USF",
+          "amount": "160"
+        },
+        {
+          "code": "SKG",
+          "amount": "2552"
+        },
+        {
+          "code": "SOK",
+          "amount": "895"
+        },
+        {
+          "code": "REVHO",
+          "amount": "24"
+        },
+        {
+          "code": "SOM",
+          "amount": "6041"
+        },
+        {
+          "code": "SGE",
+          "amount": "8897"
+        },
+        {
+          "code": "SKO",
+          "amount": "112"
+        },
+        {
+          "code": "ANLG",
+          "amount": "3351"
+        },
+        {
+          "code": "PG",
+          "amount": "2069"
+        },
+        {
+          "code": "LL",
+          "amount": "9"
+        },
+        {
+          "code": "LG",
+          "amount": "2054"
+        },
+        {
+          "code": "ALG",
+          "amount": "3351"
+        },
+        {
+          "code": "GTI",
+          "amount": "0"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "395"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "1473"
+        },
+        {
+          "code": "ARKA",
+          "amount": "3489"
+        },
+        {
+          "code": "TR",
+          "amount": "9.7"
+        },
+        {
+          "code": "KOH",
+          "amount": "1.46"
+        },
+        {
+          "code": "RG",
+          "amount": "6.5"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "7.7"
+        },
+        {
+          "code": "ER",
+          "amount": "69.6"
+        },
+        {
+          "code": "ERE",
+          "amount": "54.3"
+        },
+        {
+          "code": "LGR",
+          "amount": "2.37"
+        },
+        {
+          "code": "LGR2",
+          "amount": "2.32"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.08"
+        },
+        {
+          "code": "EKA",
+          "amount": "10.4"
+        },
+        {
+          "code": "GG",
+          "amount": "8.6"
+        },
+        {
+          "code": "VOH",
+          "amount": "66.7"
+        },
+        {
+          "code": "LLF",
+          "amount": "3171.8"
+        },
+        {
+          "code": "LT",
+          "amount": "5.4"
+        },
+        {
+          "code": "RDG",
+          "amount": "2.7"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.5"
+        },
+        {
+          "code": "KGA",
+          "amount": "28.7"
+        },
+        {
+          "code": "LGA",
+          "amount": "60.9"
+        },
+        {
+          "code": "BF",
+          "amount": "38.9"
+        },
+        {
+          "code": "OG",
+          "amount": "6.6"
+        },
+        {
+          "code": "OPAV",
+          "amount": "6004.0"
+        },
+        {
+          "code": "OPLK",
+          "amount": "8.4"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2018-12",
+      "year": "2018",
+      "periodStart": "2017-12-31",
+      "periodEnd": "2018-12-30",
+      "accounts": [
+        {
+          "code": "ADK",
+          "amount": "1439"
+        },
+        {
+          "code": "DR",
+          "amount": "240"
+        },
+        {
+          "code": "SLG",
+          "amount": "4397"
+        },
+        {
+          "code": "SDI",
+          "amount": "2996"
+        },
+        {
+          "code": "SDK",
+          "amount": "2756"
+        },
+        {
+          "code": "MI",
+          "amount": "46"
+        },
+        {
+          "code": "KUF",
+          "amount": "3314"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "569"
+        },
+        {
+          "code": "AEK",
+          "amount": "500"
+        },
+        {
+          "code": "SIA",
+          "amount": "3535"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "26"
+        },
+        {
+          "code": "FOU",
+          "amount": "3264"
+        },
+        {
+          "code": "VF",
+          "amount": "421"
+        },
+        {
+          "code": "OAE",
+          "amount": "26"
+        },
+        {
+          "code": "SED",
+          "amount": "7504"
+        },
+        {
+          "code": "ANFF",
+          "amount": "53"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NF",
+          "amount": "-190"
+        },
+        {
+          "code": "SEK",
+          "amount": "530"
+        },
+        {
+          "code": "KBPS",
+          "amount": "0"
+        },
+        {
+          "code": "ANF",
+          "amount": "91"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "23"
+        },
+        {
+          "code": "SAM",
+          "amount": "3635"
+        },
+        {
+          "code": "ORA",
+          "amount": "26"
+        },
+        {
+          "code": "SVA",
+          "amount": "463"
+        },
+        {
+          "code": "SVD",
+          "amount": "46"
+        },
+        {
+          "code": "FI",
+          "amount": "5"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "5"
+        },
+        {
+          "code": "FK",
+          "amount": "194"
+        },
+        {
+          "code": "AFK",
+          "amount": "194"
+        },
+        {
+          "code": "PNKO",
+          "amount": "46"
+        },
+        {
+          "code": "LTP",
+          "amount": "870"
+        },
+        {
+          "code": "OFA",
+          "amount": "629"
+        },
+        {
+          "code": "SFA",
+          "amount": "53"
+        },
+        {
+          "code": "ORS",
+          "amount": "50"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "SF",
+          "amount": "3405"
+        },
+        {
+          "code": "SG",
+          "amount": "6973"
+        },
+        {
+          "code": "REVAN",
+          "amount": "30"
+        },
+        {
+          "code": "SI",
+          "amount": "2996"
+        },
+        {
+          "code": "KBP",
+          "amount": "0"
+        },
+        {
+          "code": "AFKK",
+          "amount": "194"
+        },
+        {
+          "code": "AKG",
+          "amount": "390"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "32"
+        },
+        {
+          "code": "OR",
+          "amount": "26"
+        },
+        {
+          "code": "SV",
+          "amount": "463"
+        },
+        {
+          "code": "USF",
+          "amount": "272"
+        },
+        {
+          "code": "SOK",
+          "amount": "500"
+        },
+        {
+          "code": "SKG",
+          "amount": "2576"
+        },
+        {
+          "code": "REVHO",
+          "amount": "36"
+        },
+        {
+          "code": "SGE",
+          "amount": "7504"
+        },
+        {
+          "code": "SOM",
+          "amount": "3869"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1991"
+        },
+        {
+          "code": "SKO",
+          "amount": "24"
+        },
+        {
+          "code": "PG",
+          "amount": "2406"
+        },
+        {
+          "code": "LL",
+          "amount": "738"
+        },
+        {
+          "code": "LG",
+          "amount": "694"
+        },
+        {
+          "code": "ALG",
+          "amount": "1991"
+        },
+        {
+          "code": "GTI",
+          "amount": "863"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "26"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "266"
+        },
+        {
+          "code": "ARKA",
+          "amount": "1292"
+        },
+        {
+          "code": "TR",
+          "amount": "3.2"
+        },
+        {
+          "code": "KOH",
+          "amount": "0.40"
+        },
+        {
+          "code": "RG",
+          "amount": "8.0"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "17.7"
+        },
+        {
+          "code": "ER",
+          "amount": "9.7"
+        },
+        {
+          "code": "ERE",
+          "amount": "5.0"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.50"
+        },
+        {
+          "code": "LGR2",
+          "amount": "1.32"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.00"
+        },
+        {
+          "code": "EKA",
+          "amount": "7.1"
+        },
+        {
+          "code": "GG",
+          "amount": "13.2"
+        },
+        {
+          "code": "VOH",
+          "amount": "0.9"
+        },
+        {
+          "code": "LLF",
+          "amount": "279.0"
+        },
+        {
+          "code": "LT",
+          "amount": "395.9"
+        },
+        {
+          "code": "RDG",
+          "amount": "1.3"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.7"
+        },
+        {
+          "code": "KGA",
+          "amount": "34.3"
+        },
+        {
+          "code": "LGA",
+          "amount": "58.6"
+        },
+        {
+          "code": "BF",
+          "amount": "85.9"
+        },
+        {
+          "code": "OG",
+          "amount": "8.1"
+        },
+        {
+          "code": "OPAV",
+          "amount": "1498.0"
+        },
+        {
+          "code": "OPLK",
+          "amount": "3.4"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2017-12",
+      "year": "2017",
+      "periodStart": "2017-01-01",
+      "periodEnd": "2017-12-31",
+      "accounts": [
+        {
+          "code": "IPI",
+          "amount": "0"
+        },
+        {
+          "code": "ADI",
+          "amount": "0"
+        },
+        {
+          "code": "ADK",
+          "amount": "1442"
+        },
+        {
+          "code": "IPT",
+          "amount": "0"
+        },
+        {
+          "code": "DR",
+          "amount": "90"
+        },
+        {
+          "code": "SLG",
+          "amount": "3653"
+        },
+        {
+          "code": "SDI",
+          "amount": "5246"
+        },
+        {
+          "code": "SDK",
+          "amount": "5156"
+        },
+        {
+          "code": "MI",
+          "amount": "51"
+        },
+        {
+          "code": "KUF",
+          "amount": "2107"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "2038"
+        },
+        {
+          "code": "AEK",
+          "amount": "474"
+        },
+        {
+          "code": "SIA",
+          "amount": "2716"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "-17"
+        },
+        {
+          "code": "FOU",
+          "amount": "2421"
+        },
+        {
+          "code": "VF",
+          "amount": "2743"
+        },
+        {
+          "code": "OAE",
+          "amount": "-17"
+        },
+        {
+          "code": "ANFF",
+          "amount": "53"
+        },
+        {
+          "code": "SED",
+          "amount": "7581"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NE",
+          "amount": "0"
+        },
+        {
+          "code": "ARI",
+          "amount": "0"
+        },
+        {
+          "code": "SEK",
+          "amount": "504"
+        },
+        {
+          "code": "NF",
+          "amount": "-94"
+        },
+        {
+          "code": "ANF",
+          "amount": "1766"
+        },
+        {
+          "code": "KBPS",
+          "amount": "63"
+        },
+        {
+          "code": "ARK",
+          "amount": "0"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "15"
+        },
+        {
+          "code": "SAM",
+          "amount": "2821"
+        },
+        {
+          "code": "ORA",
+          "amount": "25"
+        },
+        {
+          "code": "SVA",
+          "amount": "825"
+        },
+        {
+          "code": "SVD",
+          "amount": "51"
+        },
+        {
+          "code": "SIV",
+          "amount": "0"
+        },
+        {
+          "code": "BE",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "9"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "9"
+        },
+        {
+          "code": "FK",
+          "amount": "103"
+        },
+        {
+          "code": "AFK",
+          "amount": "103"
+        },
+        {
+          "code": "PNKO",
+          "amount": "53"
+        },
+        {
+          "code": "LTP",
+          "amount": "947"
+        },
+        {
+          "code": "OFA",
+          "amount": "154"
+        },
+        {
+          "code": "SFA",
+          "amount": "53"
+        },
+        {
+          "code": "ORS",
+          "amount": "-4"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "SF",
+          "amount": "3873"
+        },
+        {
+          "code": "REVAN",
+          "amount": "16"
+        },
+        {
+          "code": "SG",
+          "amount": "7077"
+        },
+        {
+          "code": "SI",
+          "amount": "5246"
+        },
+        {
+          "code": "KBP",
+          "amount": "63"
+        },
+        {
+          "code": "AFKK",
+          "amount": "103"
+        },
+        {
+          "code": "AKG",
+          "amount": "377"
+        },
+        {
+          "code": "EBEF",
+          "amount": "0"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "17"
+        },
+        {
+          "code": "SV",
+          "amount": "825"
+        },
+        {
+          "code": "OR",
+          "amount": "-17"
+        },
+        {
+          "code": "USF",
+          "amount": "296"
+        },
+        {
+          "code": "REVHO",
+          "amount": "22"
+        },
+        {
+          "code": "VMF",
+          "amount": "0"
+        },
+        {
+          "code": "SKG",
+          "amount": "3425"
+        },
+        {
+          "code": "SOK",
+          "amount": "474"
+        },
+        {
+          "code": "SOM",
+          "amount": "4761"
+        },
+        {
+          "code": "SGE",
+          "amount": "7581"
+        },
+        {
+          "code": "SKO",
+          "amount": "13"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1653"
+        },
+        {
+          "code": "PG",
+          "amount": "2000"
+        },
+        {
+          "code": "LL",
+          "amount": "840"
+        },
+        {
+          "code": "IPA",
+          "amount": "0"
+        },
+        {
+          "code": "SKR",
+          "amount": "0"
+        },
+        {
+          "code": "LG",
+          "amount": "2177"
+        },
+        {
+          "code": "ALG",
+          "amount": "1653"
+        },
+        {
+          "code": "GTI",
+          "amount": "717"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "-17"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "115"
+        },
+        {
+          "code": "ARKA",
+          "amount": "1336"
+        },
+        {
+          "code": "TR",
+          "amount": "1.4"
+        },
+        {
+          "code": "KOH",
+          "amount": "0.74"
+        },
+        {
+          "code": "RG",
+          "amount": "1.7"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "9.6"
+        },
+        {
+          "code": "ER",
+          "amount": "-0.8"
+        },
+        {
+          "code": "ERE",
+          "amount": "-3.3"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.39"
+        },
+        {
+          "code": "LGR2",
+          "amount": "1.15"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.02"
+        },
+        {
+          "code": "EKA",
+          "amount": "6.6"
+        },
+        {
+          "code": "GG",
+          "amount": "14.0"
+        },
+        {
+          "code": "VOH",
+          "amount": "3.3"
+        },
+        {
+          "code": "LLF",
+          "amount": "161.9"
+        },
+        {
+          "code": "LT",
+          "amount": "108.3"
+        },
+        {
+          "code": "RDG",
+          "amount": "1.0"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.7"
+        },
+        {
+          "code": "KGA",
+          "amount": "45.2"
+        },
+        {
+          "code": "LGA",
+          "amount": "48.2"
+        },
+        {
+          "code": "BF",
+          "amount": "47.7"
+        },
+        {
+          "code": "OG",
+          "amount": "1.9"
+        },
+        {
+          "code": "OPAV",
+          "amount": "1311.5"
+        },
+        {
+          "code": "OPLK",
+          "amount": "5.5"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2016-12",
+      "year": "2016",
+      "periodStart": "2016-01-01",
+      "periodEnd": "2016-12-31",
+      "accounts": [
+        {
+          "code": "IPI",
+          "amount": "0"
+        },
+        {
+          "code": "ADI",
+          "amount": "0"
+        },
+        {
+          "code": "ADK",
+          "amount": "444"
+        },
+        {
+          "code": "IPT",
+          "amount": "0"
+        },
+        {
+          "code": "DR",
+          "amount": "84"
+        },
+        {
+          "code": "SLG",
+          "amount": "2423"
+        },
+        {
+          "code": "SDI",
+          "amount": "1660"
+        },
+        {
+          "code": "SDK",
+          "amount": "1576"
+        },
+        {
+          "code": "MI",
+          "amount": "76"
+        },
+        {
+          "code": "KUF",
+          "amount": "1602"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "1093"
+        },
+        {
+          "code": "AEK",
+          "amount": "491"
+        },
+        {
+          "code": "SIA",
+          "amount": "1808"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "367"
+        },
+        {
+          "code": "FOU",
+          "amount": "1499"
+        },
+        {
+          "code": "VF",
+          "amount": "749"
+        },
+        {
+          "code": "OAE",
+          "amount": "367"
+        },
+        {
+          "code": "ANFF",
+          "amount": "53"
+        },
+        {
+          "code": "SED",
+          "amount": "6693"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NE",
+          "amount": "0"
+        },
+        {
+          "code": "ARI",
+          "amount": "0"
+        },
+        {
+          "code": "SEK",
+          "amount": "521"
+        },
+        {
+          "code": "NF",
+          "amount": "-27"
+        },
+        {
+          "code": "ANF",
+          "amount": "1541"
+        },
+        {
+          "code": "KBPS",
+          "amount": "302"
+        },
+        {
+          "code": "ARK",
+          "amount": "0"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "17"
+        },
+        {
+          "code": "SAM",
+          "amount": "1938"
+        },
+        {
+          "code": "ORA",
+          "amount": "6"
+        },
+        {
+          "code": "SVA",
+          "amount": "1310"
+        },
+        {
+          "code": "SVD",
+          "amount": "76"
+        },
+        {
+          "code": "SIV",
+          "amount": "0"
+        },
+        {
+          "code": "BE",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "3"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "3"
+        },
+        {
+          "code": "FK",
+          "amount": "31"
+        },
+        {
+          "code": "AFK",
+          "amount": "31"
+        },
+        {
+          "code": "PNKO",
+          "amount": "40"
+        },
+        {
+          "code": "LTP",
+          "amount": "376"
+        },
+        {
+          "code": "OFA",
+          "amount": "434"
+        },
+        {
+          "code": "SFA",
+          "amount": "53"
+        },
+        {
+          "code": "ORS",
+          "amount": "57"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "SF",
+          "amount": "3143"
+        },
+        {
+          "code": "REVAN",
+          "amount": "33"
+        },
+        {
+          "code": "SG",
+          "amount": "6172"
+        },
+        {
+          "code": "SI",
+          "amount": "1660"
+        },
+        {
+          "code": "KBP",
+          "amount": "302"
+        },
+        {
+          "code": "AFKK",
+          "amount": "31"
+        },
+        {
+          "code": "AKG",
+          "amount": "725"
+        },
+        {
+          "code": "EBEF",
+          "amount": "0"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "17"
+        },
+        {
+          "code": "SV",
+          "amount": "1310"
+        },
+        {
+          "code": "OR",
+          "amount": "367"
+        },
+        {
+          "code": "USF",
+          "amount": "309"
+        },
+        {
+          "code": "REVHO",
+          "amount": "33"
+        },
+        {
+          "code": "VMF",
+          "amount": "0"
+        },
+        {
+          "code": "SKG",
+          "amount": "3749"
+        },
+        {
+          "code": "SOK",
+          "amount": "491"
+        },
+        {
+          "code": "SOM",
+          "amount": "4756"
+        },
+        {
+          "code": "SGE",
+          "amount": "6693"
+        },
+        {
+          "code": "SKO",
+          "amount": "-310"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1623"
+        },
+        {
+          "code": "PG",
+          "amount": "800"
+        },
+        {
+          "code": "LL",
+          "amount": "936"
+        },
+        {
+          "code": "IPA",
+          "amount": "0"
+        },
+        {
+          "code": "SKR",
+          "amount": "0"
+        },
+        {
+          "code": "LG",
+          "amount": "2563"
+        },
+        {
+          "code": "ALG",
+          "amount": "1623"
+        },
+        {
+          "code": "GTI",
+          "amount": "27"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "367"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "90"
+        },
+        {
+          "code": "ARKA",
+          "amount": "1006"
+        },
+        {
+          "code": "TR",
+          "amount": "1.8"
+        },
+        {
+          "code": "KOH",
+          "amount": "0.33"
+        },
+        {
+          "code": "RG",
+          "amount": "5.1"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "31.4"
+        },
+        {
+          "code": "ER",
+          "amount": "16.9"
+        },
+        {
+          "code": "ERE",
+          "amount": "108.7"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.27"
+        },
+        {
+          "code": "LGR2",
+          "amount": "0.92"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.08"
+        },
+        {
+          "code": "EKA",
+          "amount": "7.8"
+        },
+        {
+          "code": "GG",
+          "amount": "11.8"
+        },
+        {
+          "code": "VOH",
+          "amount": "0.6"
+        },
+        {
+          "code": "LLF",
+          "amount": "76.8"
+        },
+        {
+          "code": "LT",
+          "amount": "629.6"
+        },
+        {
+          "code": "RDG",
+          "amount": "2.8"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.7"
+        },
+        {
+          "code": "KGA",
+          "amount": "56.0"
+        },
+        {
+          "code": "LGA",
+          "amount": "36.2"
+        },
+        {
+          "code": "BF",
+          "amount": "54.9"
+        },
+        {
+          "code": "OG",
+          "amount": "5.3"
+        },
+        {
+          "code": "OPAV",
+          "amount": "553.3"
+        },
+        {
+          "code": "OPLK",
+          "amount": "4.4"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2015-12",
+      "year": "2015",
+      "periodStart": "2015-01-01",
+      "periodEnd": "2015-12-31",
+      "accounts": [
+        {
+          "code": "IPI",
+          "amount": "0"
+        },
+        {
+          "code": "ADI",
+          "amount": "792"
+        },
+        {
+          "code": "ADK",
+          "amount": "441"
+        },
+        {
+          "code": "IPT",
+          "amount": "0"
+        },
+        {
+          "code": "DR",
+          "amount": "739"
+        },
+        {
+          "code": "SLG",
+          "amount": "1015"
+        },
+        {
+          "code": "SDI",
+          "amount": "3945"
+        },
+        {
+          "code": "SDK",
+          "amount": "3206"
+        },
+        {
+          "code": "MI",
+          "amount": "21"
+        },
+        {
+          "code": "KUF",
+          "amount": "2428"
+        },
+        {
+          "code": "US",
+          "amount": "1"
+        },
+        {
+          "code": "KLON",
+          "amount": "895"
+        },
+        {
+          "code": "AEK",
+          "amount": "124"
+        },
+        {
+          "code": "SIA",
+          "amount": "611"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "685"
+        },
+        {
+          "code": "FOU",
+          "amount": "611"
+        },
+        {
+          "code": "VF",
+          "amount": "1595"
+        },
+        {
+          "code": "OAE",
+          "amount": "132"
+        },
+        {
+          "code": "ANFF",
+          "amount": "13"
+        },
+        {
+          "code": "SED",
+          "amount": "3291"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NE",
+          "amount": "0"
+        },
+        {
+          "code": "ARI",
+          "amount": "0"
+        },
+        {
+          "code": "SEK",
+          "amount": "154"
+        },
+        {
+          "code": "NF",
+          "amount": "-9"
+        },
+        {
+          "code": "ANF",
+          "amount": "72"
+        },
+        {
+          "code": "KBPS",
+          "amount": "146"
+        },
+        {
+          "code": "ARK",
+          "amount": "0"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "19"
+        },
+        {
+          "code": "SAM",
+          "amount": "645"
+        },
+        {
+          "code": "ORA",
+          "amount": "2"
+        },
+        {
+          "code": "SVD",
+          "amount": "21"
+        },
+        {
+          "code": "SIV",
+          "amount": "0"
+        },
+        {
+          "code": "BE",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "2"
+        },
+        {
+          "code": "SAP",
+          "amount": "1"
+        },
+        {
+          "code": "AFI",
+          "amount": "2"
+        },
+        {
+          "code": "FK",
+          "amount": "11"
+        },
+        {
+          "code": "AFK",
+          "amount": "11"
+        },
+        {
+          "code": "PNKO",
+          "amount": "33"
+        },
+        {
+          "code": "LTP",
+          "amount": "1168"
+        },
+        {
+          "code": "OFA",
+          "amount": "278"
+        },
+        {
+          "code": "SFA",
+          "amount": "13"
+        },
+        {
+          "code": "ORS",
+          "amount": "731"
+        },
+        {
+          "code": "BS",
+          "amount": "44"
+        },
+        {
+          "code": "SF",
+          "amount": "2500"
+        },
+        {
+          "code": "REVAN",
+          "amount": "22"
+        },
+        {
+          "code": "SG",
+          "amount": "3137"
+        },
+        {
+          "code": "SI",
+          "amount": "3154"
+        },
+        {
+          "code": "OAEE",
+          "amount": "553"
+        },
+        {
+          "code": "KBP",
+          "amount": "146"
+        },
+        {
+          "code": "AFKK",
+          "amount": "11"
+        },
+        {
+          "code": "AKG",
+          "amount": "545"
+        },
+        {
+          "code": "EBEF",
+          "amount": "0"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "15"
+        },
+        {
+          "code": "SV",
+          "amount": "0"
+        },
+        {
+          "code": "OR",
+          "amount": "685"
+        },
+        {
+          "code": "REVHO",
+          "amount": "23"
+        },
+        {
+          "code": "VMF",
+          "amount": "0"
+        },
+        {
+          "code": "SKG",
+          "amount": "2121"
+        },
+        {
+          "code": "SOK",
+          "amount": "124"
+        },
+        {
+          "code": "SOM",
+          "amount": "2646"
+        },
+        {
+          "code": "SGE",
+          "amount": "3291"
+        },
+        {
+          "code": "SKO",
+          "amount": "45"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1014"
+        },
+        {
+          "code": "LL",
+          "amount": "832"
+        },
+        {
+          "code": "IPA",
+          "amount": "0"
+        },
+        {
+          "code": "SKR",
+          "amount": "0"
+        },
+        {
+          "code": "LG",
+          "amount": "1254"
+        },
+        {
+          "code": "ALG",
+          "amount": "1014"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "685"
+        },
+        {
+          "code": "ANT",
+          "amount": "2"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "741"
+        },
+        {
+          "code": "ARKA",
+          "amount": "524"
+        },
+        {
+          "code": "TR",
+          "amount": "30.5"
+        },
+        {
+          "code": "KOH",
+          "amount": "1.62"
+        },
+        {
+          "code": "RG",
+          "amount": "18.7"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "3.9"
+        },
+        {
+          "code": "ER",
+          "amount": "-387.8"
+        },
+        {
+          "code": "ERE",
+          "amount": "-363.4"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.25"
+        },
+        {
+          "code": "LGR2",
+          "amount": "1.25"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.07"
+        },
+        {
+          "code": "EKA",
+          "amount": "4.7"
+        },
+        {
+          "code": "GG",
+          "amount": "20.4"
+        },
+        {
+          "code": "LT",
+          "amount": "0.0"
+        },
+        {
+          "code": "RDG",
+          "amount": "67.5"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.6"
+        },
+        {
+          "code": "KGA",
+          "amount": "64.4"
+        },
+        {
+          "code": "LGA",
+          "amount": "30.8"
+        },
+        {
+          "code": "BF",
+          "amount": "49.4"
+        },
+        {
+          "code": "OG",
+          "amount": "18.8"
+        },
+        {
+          "code": "OPA",
+          "amount": "1972.5"
+        },
+        {
+          "code": "OPAV",
+          "amount": "1972.5"
+        },
+        {
+          "code": "OPLK",
+          "amount": "3.4"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2014-12",
+      "year": "2014",
+      "periodStart": "2014-01-01",
+      "periodEnd": "2014-12-31",
+      "accounts": [
+        {
+          "code": "IPI",
+          "amount": "0"
+        },
+        {
+          "code": "ADI",
+          "amount": "1431"
+        },
+        {
+          "code": "ADK",
+          "amount": "697"
+        },
+        {
+          "code": "IPT",
+          "amount": "0"
+        },
+        {
+          "code": "DR",
+          "amount": "-486"
+        },
+        {
+          "code": "SLG",
+          "amount": "1007"
+        },
+        {
+          "code": "SDI",
+          "amount": "3509"
+        },
+        {
+          "code": "AEKK",
+          "amount": "-553"
+        },
+        {
+          "code": "SDK",
+          "amount": "3995"
+        },
+        {
+          "code": "MI",
+          "amount": "0"
+        },
+        {
+          "code": "KUF",
+          "amount": "1516"
+        },
+        {
+          "code": "KLON",
+          "amount": "1875"
+        },
+        {
+          "code": "SIA",
+          "amount": "0"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "-491"
+        },
+        {
+          "code": "VF",
+          "amount": "1122"
+        },
+        {
+          "code": "ANFF",
+          "amount": "0"
+        },
+        {
+          "code": "SED",
+          "amount": "1575"
+        },
+        {
+          "code": "SIK",
+          "amount": "22"
+        },
+        {
+          "code": "NE",
+          "amount": "0"
+        },
+        {
+          "code": "ARI",
+          "amount": "0"
+        },
+        {
+          "code": "SEK",
+          "amount": "-531"
+        },
+        {
+          "code": "NF",
+          "amount": "-6"
+        },
+        {
+          "code": "ANF",
+          "amount": "33"
+        },
+        {
+          "code": "KBPS",
+          "amount": "26"
+        },
+        {
+          "code": "ARK",
+          "amount": "0"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "23"
+        },
+        {
+          "code": "SAM",
+          "amount": "0"
+        },
+        {
+          "code": "ORA",
+          "amount": "0"
+        },
+        {
+          "code": "SVD",
+          "amount": "0"
+        },
+        {
+          "code": "SIV",
+          "amount": "0"
+        },
+        {
+          "code": "BE",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "3"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "IRK",
+          "amount": "-8"
+        },
+        {
+          "code": "AFI",
+          "amount": "3"
+        },
+        {
+          "code": "FK",
+          "amount": "8"
+        },
+        {
+          "code": "AFK",
+          "amount": "8"
+        },
+        {
+          "code": "PNKO",
+          "amount": "29"
+        },
+        {
+          "code": "LTP",
+          "amount": "2175"
+        },
+        {
+          "code": "OFA",
+          "amount": "177"
+        },
+        {
+          "code": "SFA",
+          "amount": "0"
+        },
+        {
+          "code": "ORS",
+          "amount": "-491"
+        },
+        {
+          "code": "SF",
+          "amount": "1548"
+        },
+        {
+          "code": "REVAN",
+          "amount": "11"
+        },
+        {
+          "code": "SG",
+          "amount": "2106"
+        },
+        {
+          "code": "SI",
+          "amount": "2077"
+        },
+        {
+          "code": "OAEE",
+          "amount": "-491"
+        },
+        {
+          "code": "KBP",
+          "amount": "26"
+        },
+        {
+          "code": "AFKK",
+          "amount": "8"
+        },
+        {
+          "code": "AKG",
+          "amount": "454"
+        },
+        {
+          "code": "EBEF",
+          "amount": "0"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "27"
+        },
+        {
+          "code": "SV",
+          "amount": "0"
+        },
+        {
+          "code": "OR",
+          "amount": "-491"
+        },
+        {
+          "code": "REVHO",
+          "amount": "17"
+        },
+        {
+          "code": "VMF",
+          "amount": "0"
+        },
+        {
+          "code": "SKG",
+          "amount": "1099"
+        },
+        {
+          "code": "SOK",
+          "amount": "-553"
+        },
+        {
+          "code": "SOM",
+          "amount": "1575"
+        },
+        {
+          "code": "SGE",
+          "amount": "1575"
+        },
+        {
+          "code": "SKO",
+          "amount": "0"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1007"
+        },
+        {
+          "code": "LL",
+          "amount": "1500"
+        },
+        {
+          "code": "IPA",
+          "amount": "0"
+        },
+        {
+          "code": "SKR",
+          "amount": "0"
+        },
+        {
+          "code": "LG",
+          "amount": "468"
+        },
+        {
+          "code": "ALG",
+          "amount": "1007"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "-491"
+        },
+        {
+          "code": "ANT",
+          "amount": "1"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "-486"
+        },
+        {
+          "code": "ARKA",
+          "amount": "476"
+        },
+        {
+          "code": "TR",
+          "amount": "-50.9"
+        },
+        {
+          "code": "KOH",
+          "amount": "3.70"
+        },
+        {
+          "code": "RG",
+          "amount": "-13.9"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "-15.1"
+        },
+        {
+          "code": "ER",
+          "amount": "172.0"
+        },
+        {
+          "code": "ERE",
+          "amount": "172.0"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.43"
+        },
+        {
+          "code": "LGR2",
+          "amount": "1.43"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.02"
+        },
+        {
+          "code": "EKA",
+          "amount": "-33.7"
+        },
+        {
+          "code": "GG",
+          "amount": "-4.0"
+        },
+        {
+          "code": "LT",
+          "amount": "0.0"
+        },
+        {
+          "code": "RDG",
+          "amount": "-60.4"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.0"
+        },
+        {
+          "code": "KGA",
+          "amount": "69.8"
+        },
+        {
+          "code": "LGA",
+          "amount": "63.9"
+        },
+        {
+          "code": "BF",
+          "amount": "46.0"
+        },
+        {
+          "code": "OG",
+          "amount": "-13.8"
+        },
+        {
+          "code": "OPA",
+          "amount": "3509.0"
+        },
+        {
+          "code": "OPAV",
+          "amount": "3509.0"
+        },
+        {
+          "code": "OPLK",
+          "amount": "1.6"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2013-12",
+      "year": "2013",
+      "periodStart": "2013-01-01",
+      "periodEnd": "2013-12-31",
+      "accounts": [
+        {
+          "code": "IPI",
+          "amount": "0"
+        },
+        {
+          "code": "ADI",
+          "amount": "349"
+        },
+        {
+          "code": "ADK",
+          "amount": "187"
+        },
+        {
+          "code": "IPT",
+          "amount": "0"
+        },
+        {
+          "code": "DR",
+          "amount": "-61"
+        },
+        {
+          "code": "SLG",
+          "amount": "0"
+        },
+        {
+          "code": "SDI",
+          "amount": "652"
+        },
+        {
+          "code": "SDK",
+          "amount": "713"
+        },
+        {
+          "code": "KUF",
+          "amount": "306"
+        },
+        {
+          "code": "KLON",
+          "amount": "440"
+        },
+        {
+          "code": "AEK",
+          "amount": "-62"
+        },
+        {
+          "code": "SIA",
+          "amount": "0"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "-62"
+        },
+        {
+          "code": "VF",
+          "amount": "0"
+        },
+        {
+          "code": "ANFF",
+          "amount": "2"
+        },
+        {
+          "code": "SED",
+          "amount": "323"
+        },
+        {
+          "code": "SIK",
+          "amount": "22"
+        },
+        {
+          "code": "NE",
+          "amount": "0"
+        },
+        {
+          "code": "ARI",
+          "amount": "0"
+        },
+        {
+          "code": "SEK",
+          "amount": "-40"
+        },
+        {
+          "code": "NF",
+          "amount": "0"
+        },
+        {
+          "code": "ANF",
+          "amount": "14"
+        },
+        {
+          "code": "KBPS",
+          "amount": "0"
+        },
+        {
+          "code": "ARK",
+          "amount": "0"
+        },
+        {
+          "code": "SAM",
+          "amount": "2"
+        },
+        {
+          "code": "ORA",
+          "amount": "0"
+        },
+        {
+          "code": "SVA",
+          "amount": "0"
+        },
+        {
+          "code": "SVD",
+          "amount": "0"
+        },
+        {
+          "code": "SIV",
+          "amount": "0"
+        },
+        {
+          "code": "BE",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "0"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "IRK",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "0"
+        },
+        {
+          "code": "FK",
+          "amount": "0"
+        },
+        {
+          "code": "AFK",
+          "amount": "0"
+        },
+        {
+          "code": "LTP",
+          "amount": "526"
+        },
+        {
+          "code": "OFA",
+          "amount": "12"
+        },
+        {
+          "code": "SFA",
+          "amount": "2"
+        },
+        {
+          "code": "ORS",
+          "amount": "-62"
+        },
+        {
+          "code": "SF",
+          "amount": "320"
+        },
+        {
+          "code": "REVAN",
+          "amount": "4"
+        },
+        {
+          "code": "SG",
+          "amount": "363"
+        },
+        {
+          "code": "SI",
+          "amount": "303"
+        },
+        {
+          "code": "OAEE",
+          "amount": "-62"
+        },
+        {
+          "code": "KBP",
+          "amount": "1"
+        },
+        {
+          "code": "AFKK",
+          "amount": "0"
+        },
+        {
+          "code": "AKG",
+          "amount": "325"
+        },
+        {
+          "code": "EBEF",
+          "amount": "0"
+        },
+        {
+          "code": "SV",
+          "amount": "0"
+        },
+        {
+          "code": "OR",
+          "amount": "-62"
+        },
+        {
+          "code": "OKF",
+          "amount": "-8"
+        },
+        {
+          "code": "VMF",
+          "amount": "0"
+        },
+        {
+          "code": "SKG",
+          "amount": "363"
+        },
+        {
+          "code": "SOK",
+          "amount": "-62"
+        },
+        {
+          "code": "SOM",
+          "amount": "321"
+        },
+        {
+          "code": "SGE",
+          "amount": "323"
+        },
+        {
+          "code": "SKO",
+          "amount": "0"
+        },
+        {
+          "code": "LL",
+          "amount": "395"
+        },
+        {
+          "code": "IPA",
+          "amount": "0"
+        },
+        {
+          "code": "SKR",
+          "amount": "0"
+        },
+        {
+          "code": "LG",
+          "amount": "26"
+        },
+        {
+          "code": "ALG",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "-62"
+        },
+        {
+          "code": "ANT",
+          "amount": "1"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "-61"
+        },
+        {
+          "code": "ARKA",
+          "amount": "-42"
+        },
+        {
+          "code": "TR",
+          "amount": "-19.2"
+        },
+        {
+          "code": "KOH",
+          "amount": "2.02"
+        },
+        {
+          "code": "RG",
+          "amount": "-9.4"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "-6.1"
+        },
+        {
+          "code": "ER",
+          "amount": "155.0"
+        },
+        {
+          "code": "ERE",
+          "amount": "155.0"
+        },
+        {
+          "code": "LGR",
+          "amount": "0.88"
+        },
+        {
+          "code": "LGR2",
+          "amount": "0.88"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.00"
+        },
+        {
+          "code": "EKA",
+          "amount": "-12.4"
+        },
+        {
+          "code": "GG",
+          "amount": "-9.1"
+        },
+        {
+          "code": "FG1",
+          "amount": "-0.1"
+        },
+        {
+          "code": "KGA",
+          "amount": "112.4"
+        },
+        {
+          "code": "LGA",
+          "amount": "0.0"
+        },
+        {
+          "code": "BF",
+          "amount": "100.0"
+        },
+        {
+          "code": "OG",
+          "amount": "-9.5"
+        },
+        {
+          "code": "OPA",
+          "amount": "652.0"
+        },
+        {
+          "code": "OPLK",
+          "amount": "1.2"
+        }
+      ]
+    }
+  ],
+  "annualReports": [],
+  "companyAccounts": [
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2022-12",
+      "year": "2022",
+      "periodStart": "2022-01-01",
+      "periodEnd": "2022-12-31",
+      "accounts": [
+        {
+          "code": "ADK",
+          "amount": "2740"
+        },
+        {
+          "code": "DR",
+          "amount": "8004"
+        },
+        {
+          "code": "SLG",
+          "amount": "2645"
+        },
+        {
+          "code": "SDI",
+          "amount": "18158"
+        },
+        {
+          "code": "SDK",
+          "amount": "10154"
+        },
+        {
+          "code": "MI",
+          "amount": "66"
+        },
+        {
+          "code": "KUF",
+          "amount": "7462"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "3265"
+        },
+        {
+          "code": "AEK",
+          "amount": "6761"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SIA",
+          "amount": "3875"
+        },
+        {
+          "code": "SOVE",
+          "amount": "5875"
+        },
+        {
+          "code": "FOU",
+          "amount": "3760"
+        },
+        {
+          "code": "VF",
+          "amount": "2557"
+        },
+        {
+          "code": "OAE",
+          "amount": "5875"
+        },
+        {
+          "code": "SED",
+          "amount": "20500"
+        },
+        {
+          "code": "ANFF",
+          "amount": "5516"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NF",
+          "amount": "-467"
+        },
+        {
+          "code": "SEK",
+          "amount": "6791"
+        },
+        {
+          "code": "KBPS",
+          "amount": "10"
+        },
+        {
+          "code": "ANF",
+          "amount": "315"
+        },
+        {
+          "code": "SAM",
+          "amount": "9457"
+        },
+        {
+          "code": "SVA",
+          "amount": "3256"
+        },
+        {
+          "code": "ORA",
+          "amount": "660"
+        },
+        {
+          "code": "SVD",
+          "amount": "66"
+        },
+        {
+          "code": "FI",
+          "amount": "399"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "399"
+        },
+        {
+          "code": "FK",
+          "amount": "867"
+        },
+        {
+          "code": "AFK",
+          "amount": "867"
+        },
+        {
+          "code": "PNKO",
+          "amount": "95"
+        },
+        {
+          "code": "LTP",
+          "amount": "4197"
+        },
+        {
+          "code": "OFA",
+          "amount": "1196"
+        },
+        {
+          "code": "SFA",
+          "amount": "5516"
+        },
+        {
+          "code": "ORS",
+          "amount": "7536"
+        },
+        {
+          "code": "BS",
+          "amount": "1621"
+        },
+        {
+          "code": "SF",
+          "amount": "7777"
+        },
+        {
+          "code": "SG",
+          "amount": "13709"
+        },
+        {
+          "code": "SI",
+          "amount": "18158"
+        },
+        {
+          "code": "KBP",
+          "amount": "10"
+        },
+        {
+          "code": "AFKK",
+          "amount": "867"
+        },
+        {
+          "code": "AKG",
+          "amount": "2543"
+        },
+        {
+          "code": "OR",
+          "amount": "5875"
+        },
+        {
+          "code": "SV",
+          "amount": "3256"
+        },
+        {
+          "code": "USF",
+          "amount": "115"
+        },
+        {
+          "code": "SKG",
+          "amount": "11064"
+        },
+        {
+          "code": "SOK",
+          "amount": "6761"
+        },
+        {
+          "code": "SGE",
+          "amount": "20500"
+        },
+        {
+          "code": "SOM",
+          "amount": "11043"
+        },
+        {
+          "code": "SKO",
+          "amount": "1662"
+        },
+        {
+          "code": "ANLG",
+          "amount": "862"
+        },
+        {
+          "code": "PG",
+          "amount": "1783"
+        },
+        {
+          "code": "LG",
+          "amount": "1641"
+        },
+        {
+          "code": "ALG",
+          "amount": "862"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "GTI",
+          "amount": "4064"
+        },
+        {
+          "code": "AARS",
+          "amount": "5875"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "8664"
+        },
+        {
+          "code": "ARKA",
+          "amount": "-21"
+        },
+        {
+          "code": "TR",
+          "amount": "51.1"
+        },
+        {
+          "code": "KOH",
+          "amount": "1.10"
+        },
+        {
+          "code": "RG",
+          "amount": "44.1"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "37.4"
+        },
+        {
+          "code": "ER",
+          "amount": "195.3"
+        },
+        {
+          "code": "ERE",
+          "amount": "152.2"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.00"
+        },
+        {
+          "code": "LGR2",
+          "amount": "0.70"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.00"
+        },
+        {
+          "code": "EKA",
+          "amount": "33.1"
+        },
+        {
+          "code": "GG",
+          "amount": "2.0"
+        },
+        {
+          "code": "VOH",
+          "amount": "0.8"
+        },
+        {
+          "code": "LLF",
+          "amount": "-0.6"
+        },
+        {
+          "code": "LT",
+          "amount": "458.4"
+        },
+        {
+          "code": "RDG",
+          "amount": "9.7"
+        },
+        {
+          "code": "FG1",
+          "amount": "1.0"
+        },
+        {
+          "code": "KGA",
+          "amount": "54.0"
+        },
+        {
+          "code": "LGA",
+          "amount": "12.9"
+        },
+        {
+          "code": "BF",
+          "amount": "85.9"
+        },
+        {
+          "code": "OG",
+          "amount": "46.3"
+        },
+        {
+          "code": "OPAV",
+          "amount": "4539.5"
+        },
+        {
+          "code": "OPLK",
+          "amount": "4.3"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2021-12",
+      "year": "2021",
+      "periodStart": "2021-01-01",
+      "periodEnd": "2021-12-31",
+      "accounts": [
+        {
+          "code": "ADK",
+          "amount": "1791"
+        },
+        {
+          "code": "DR",
+          "amount": "1547"
+        },
+        {
+          "code": "SLG",
+          "amount": "3678"
+        },
+        {
+          "code": "SDI",
+          "amount": "11769"
+        },
+        {
+          "code": "SDK",
+          "amount": "10221"
+        },
+        {
+          "code": "MI",
+          "amount": "64"
+        },
+        {
+          "code": "KUF",
+          "amount": "6268"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "2769"
+        },
+        {
+          "code": "AEK",
+          "amount": "897"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SIA",
+          "amount": "4539"
+        },
+        {
+          "code": "SOVE",
+          "amount": "908"
+        },
+        {
+          "code": "FOU",
+          "amount": "4383"
+        },
+        {
+          "code": "VF",
+          "amount": "4062"
+        },
+        {
+          "code": "OAE",
+          "amount": "897"
+        },
+        {
+          "code": "SED",
+          "amount": "12375"
+        },
+        {
+          "code": "ANFF",
+          "amount": "0"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NF",
+          "amount": "-382"
+        },
+        {
+          "code": "SEK",
+          "amount": "927"
+        },
+        {
+          "code": "ANF",
+          "amount": "893"
+        },
+        {
+          "code": "KBPS",
+          "amount": "378"
+        },
+        {
+          "code": "SAM",
+          "amount": "4603"
+        },
+        {
+          "code": "ORA",
+          "amount": "659"
+        },
+        {
+          "code": "SVA",
+          "amount": "232"
+        },
+        {
+          "code": "SVD",
+          "amount": "64"
+        },
+        {
+          "code": "FI",
+          "amount": "18"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "18"
+        },
+        {
+          "code": "FK",
+          "amount": "400"
+        },
+        {
+          "code": "AFK",
+          "amount": "400"
+        },
+        {
+          "code": "PNKO",
+          "amount": "68"
+        },
+        {
+          "code": "LTP",
+          "amount": "3709"
+        },
+        {
+          "code": "OFA",
+          "amount": "529"
+        },
+        {
+          "code": "SFA",
+          "amount": "0"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "ORS",
+          "amount": "1165"
+        },
+        {
+          "code": "SF",
+          "amount": "7161"
+        },
+        {
+          "code": "SG",
+          "amount": "11447"
+        },
+        {
+          "code": "SI",
+          "amount": "11769"
+        },
+        {
+          "code": "OAEE",
+          "amount": "10"
+        },
+        {
+          "code": "KBP",
+          "amount": "378"
+        },
+        {
+          "code": "AFKK",
+          "amount": "400"
+        },
+        {
+          "code": "AKG",
+          "amount": "2281"
+        },
+        {
+          "code": "OR",
+          "amount": "908"
+        },
+        {
+          "code": "SV",
+          "amount": "232"
+        },
+        {
+          "code": "USF",
+          "amount": "156"
+        },
+        {
+          "code": "SKG",
+          "amount": "7769"
+        },
+        {
+          "code": "SOK",
+          "amount": "897"
+        },
+        {
+          "code": "SGE",
+          "amount": "12375"
+        },
+        {
+          "code": "SOM",
+          "amount": "7771"
+        },
+        {
+          "code": "SKO",
+          "amount": "257"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1159"
+        },
+        {
+          "code": "PG",
+          "amount": "2519"
+        },
+        {
+          "code": "LG",
+          "amount": "1237"
+        },
+        {
+          "code": "ALG",
+          "amount": "1159"
+        },
+        {
+          "code": "GTI",
+          "amount": "3721"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "908"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "2206"
+        },
+        {
+          "code": "ARKA",
+          "amount": "2"
+        },
+        {
+          "code": "TR",
+          "amount": "14.0"
+        },
+        {
+          "code": "KOH",
+          "amount": "1.05"
+        },
+        {
+          "code": "RG",
+          "amount": "13.1"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "7.9"
+        },
+        {
+          "code": "ER",
+          "amount": "246.0"
+        },
+        {
+          "code": "ERE",
+          "amount": "191.8"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.00"
+        },
+        {
+          "code": "LGR2",
+          "amount": "0.97"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.05"
+        },
+        {
+          "code": "EKA",
+          "amount": "7.5"
+        },
+        {
+          "code": "GG",
+          "amount": "12.3"
+        },
+        {
+          "code": "VOH",
+          "amount": "17.5"
+        },
+        {
+          "code": "LLF",
+          "amount": "0.9"
+        },
+        {
+          "code": "LT",
+          "amount": "20.6"
+        },
+        {
+          "code": "RDG",
+          "amount": "3.9"
+        },
+        {
+          "code": "FG1",
+          "amount": "1.0"
+        },
+        {
+          "code": "KGA",
+          "amount": "62.8"
+        },
+        {
+          "code": "LGA",
+          "amount": "29.7"
+        },
+        {
+          "code": "BF",
+          "amount": "65.5"
+        },
+        {
+          "code": "OG",
+          "amount": "13.3"
+        },
+        {
+          "code": "OPAV",
+          "amount": "2353.8"
+        },
+        {
+          "code": "OPLK",
+          "amount": "3.2"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2020-12",
+      "year": "2020",
+      "periodStart": "2020-01-01",
+      "periodEnd": "2020-12-31",
+      "accounts": [
+        {
+          "code": "ADK",
+          "amount": "1571"
+        },
+        {
+          "code": "DR",
+          "amount": "-828"
+        },
+        {
+          "code": "SLG",
+          "amount": "4874"
+        },
+        {
+          "code": "SDI",
+          "amount": "8408"
+        },
+        {
+          "code": "AEKK",
+          "amount": "-10"
+        },
+        {
+          "code": "SDK",
+          "amount": "9236"
+        },
+        {
+          "code": "MI",
+          "amount": "100"
+        },
+        {
+          "code": "KUF",
+          "amount": "1495"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "2126"
+        },
+        {
+          "code": "AEK",
+          "amount": "0"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SIA",
+          "amount": "5420"
+        },
+        {
+          "code": "SOVE",
+          "amount": "-905"
+        },
+        {
+          "code": "FOU",
+          "amount": "5006"
+        },
+        {
+          "code": "VF",
+          "amount": "5040"
+        },
+        {
+          "code": "OAE",
+          "amount": "-905"
+        },
+        {
+          "code": "SED",
+          "amount": "10003"
+        },
+        {
+          "code": "ANFF",
+          "amount": "53"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "SEK",
+          "amount": "20"
+        },
+        {
+          "code": "NF",
+          "amount": "-331"
+        },
+        {
+          "code": "KBPS",
+          "amount": "312"
+        },
+        {
+          "code": "ANF",
+          "amount": "229"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "135"
+        },
+        {
+          "code": "SAM",
+          "amount": "5573"
+        },
+        {
+          "code": "SVA",
+          "amount": "2394"
+        },
+        {
+          "code": "ORA",
+          "amount": "324"
+        },
+        {
+          "code": "SVD",
+          "amount": "100"
+        },
+        {
+          "code": "FI",
+          "amount": "42"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "42"
+        },
+        {
+          "code": "FK",
+          "amount": "373"
+        },
+        {
+          "code": "AFK",
+          "amount": "373"
+        },
+        {
+          "code": "PNKO",
+          "amount": "93"
+        },
+        {
+          "code": "LTP",
+          "amount": "2301"
+        },
+        {
+          "code": "OFA",
+          "amount": "1238"
+        },
+        {
+          "code": "SFA",
+          "amount": "53"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "ORS",
+          "amount": "-1159"
+        },
+        {
+          "code": "SF",
+          "amount": "1724"
+        },
+        {
+          "code": "SG",
+          "amount": "9983"
+        },
+        {
+          "code": "REVAN",
+          "amount": "12"
+        },
+        {
+          "code": "SI",
+          "amount": "8408"
+        },
+        {
+          "code": "KBP",
+          "amount": "312"
+        },
+        {
+          "code": "AFKK",
+          "amount": "373"
+        },
+        {
+          "code": "AKG",
+          "amount": "2139"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "15"
+        },
+        {
+          "code": "SV",
+          "amount": "2394"
+        },
+        {
+          "code": "OR",
+          "amount": "-905"
+        },
+        {
+          "code": "USF",
+          "amount": "414"
+        },
+        {
+          "code": "SOK",
+          "amount": "-10"
+        },
+        {
+          "code": "SKG",
+          "amount": "5109"
+        },
+        {
+          "code": "REVHO",
+          "amount": "28"
+        },
+        {
+          "code": "SOM",
+          "amount": "4430"
+        },
+        {
+          "code": "SGE",
+          "amount": "10003"
+        },
+        {
+          "code": "SKO",
+          "amount": "-254"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1613"
+        },
+        {
+          "code": "PG",
+          "amount": "3262"
+        },
+        {
+          "code": "LL",
+          "amount": "627"
+        },
+        {
+          "code": "LG",
+          "amount": "644"
+        },
+        {
+          "code": "ALG",
+          "amount": "1613"
+        },
+        {
+          "code": "GTI",
+          "amount": "1088"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "-905"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "-504"
+        },
+        {
+          "code": "ARKA",
+          "amount": "-679"
+        },
+        {
+          "code": "TR",
+          "amount": "-8.3"
+        },
+        {
+          "code": "KOH",
+          "amount": "0.89"
+        },
+        {
+          "code": "RG",
+          "amount": "-9.8"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "0.2"
+        },
+        {
+          "code": "ER",
+          "amount": "-245.3"
+        },
+        {
+          "code": "ERE",
+          "amount": "-191.5"
+        },
+        {
+          "code": "LGR",
+          "amount": "0.87"
+        },
+        {
+          "code": "LGR2",
+          "amount": "0.40"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.06"
+        },
+        {
+          "code": "EKA",
+          "amount": "0.2"
+        },
+        {
+          "code": "GG",
+          "amount": "499.2"
+        },
+        {
+          "code": "VOH",
+          "amount": "2.1"
+        },
+        {
+          "code": "LLF",
+          "amount": "-28.4"
+        },
+        {
+          "code": "LT",
+          "amount": "171.0"
+        },
+        {
+          "code": "RDG",
+          "amount": "-2.1"
+        },
+        {
+          "code": "FG1",
+          "amount": "1.1"
+        },
+        {
+          "code": "KGA",
+          "amount": "51.1"
+        },
+        {
+          "code": "LGA",
+          "amount": "48.7"
+        },
+        {
+          "code": "BF",
+          "amount": "40.1"
+        },
+        {
+          "code": "OG",
+          "amount": "-9.3"
+        },
+        {
+          "code": "OPAV",
+          "amount": "2102.0"
+        },
+        {
+          "code": "OPLK",
+          "amount": "3.7"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2019-12",
+      "year": "2019",
+      "periodStart": "2019-01-01",
+      "periodEnd": "2019-12-31",
+      "accounts": [
+        {
+          "code": "ADK",
+          "amount": "1779"
+        },
+        {
+          "code": "DR",
+          "amount": "786"
+        },
+        {
+          "code": "SLG",
+          "amount": "5420"
+        },
+        {
+          "code": "SDI",
+          "amount": "12008"
+        },
+        {
+          "code": "SDK",
+          "amount": "11222"
+        },
+        {
+          "code": "MI",
+          "amount": "32"
+        },
+        {
+          "code": "KUF",
+          "amount": "5168"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "1113"
+        },
+        {
+          "code": "AEK",
+          "amount": "895"
+        },
+        {
+          "code": "SIA",
+          "amount": "2771"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "395"
+        },
+        {
+          "code": "FOU",
+          "amount": "2611"
+        },
+        {
+          "code": "VF",
+          "amount": "7333"
+        },
+        {
+          "code": "OAE",
+          "amount": "395"
+        },
+        {
+          "code": "SED",
+          "amount": "8897"
+        },
+        {
+          "code": "ANFF",
+          "amount": "53"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "SEK",
+          "amount": "925"
+        },
+        {
+          "code": "NF",
+          "amount": "-280"
+        },
+        {
+          "code": "KBPS",
+          "amount": "198"
+        },
+        {
+          "code": "ANF",
+          "amount": "565"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "115"
+        },
+        {
+          "code": "SAM",
+          "amount": "2856"
+        },
+        {
+          "code": "ORA",
+          "amount": "687"
+        },
+        {
+          "code": "SVA",
+          "amount": "110"
+        },
+        {
+          "code": "SVD",
+          "amount": "32"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "10"
+        },
+        {
+          "code": "AFI",
+          "amount": "10"
+        },
+        {
+          "code": "FK",
+          "amount": "290"
+        },
+        {
+          "code": "AFK",
+          "amount": "290"
+        },
+        {
+          "code": "PNKO",
+          "amount": "59"
+        },
+        {
+          "code": "LTP",
+          "amount": "1422"
+        },
+        {
+          "code": "OFA",
+          "amount": "100"
+        },
+        {
+          "code": "SFA",
+          "amount": "53"
+        },
+        {
+          "code": "ORS",
+          "amount": "506"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "SF",
+          "amount": "5734"
+        },
+        {
+          "code": "SG",
+          "amount": "7973"
+        },
+        {
+          "code": "REVAN",
+          "amount": "12"
+        },
+        {
+          "code": "SI",
+          "amount": "12008"
+        },
+        {
+          "code": "KBP",
+          "amount": "198"
+        },
+        {
+          "code": "AFKK",
+          "amount": "290"
+        },
+        {
+          "code": "AKG",
+          "amount": "398"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "0"
+        },
+        {
+          "code": "OR",
+          "amount": "395"
+        },
+        {
+          "code": "SV",
+          "amount": "110"
+        },
+        {
+          "code": "USF",
+          "amount": "160"
+        },
+        {
+          "code": "SKG",
+          "amount": "2552"
+        },
+        {
+          "code": "SOK",
+          "amount": "895"
+        },
+        {
+          "code": "REVHO",
+          "amount": "24"
+        },
+        {
+          "code": "SOM",
+          "amount": "6041"
+        },
+        {
+          "code": "SGE",
+          "amount": "8897"
+        },
+        {
+          "code": "SKO",
+          "amount": "112"
+        },
+        {
+          "code": "ANLG",
+          "amount": "3351"
+        },
+        {
+          "code": "PG",
+          "amount": "2069"
+        },
+        {
+          "code": "LL",
+          "amount": "9"
+        },
+        {
+          "code": "LG",
+          "amount": "2054"
+        },
+        {
+          "code": "ALG",
+          "amount": "3351"
+        },
+        {
+          "code": "GTI",
+          "amount": "0"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "395"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "1473"
+        },
+        {
+          "code": "ARKA",
+          "amount": "3489"
+        },
+        {
+          "code": "TR",
+          "amount": "9.7"
+        },
+        {
+          "code": "KOH",
+          "amount": "1.46"
+        },
+        {
+          "code": "RG",
+          "amount": "6.5"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "7.7"
+        },
+        {
+          "code": "ER",
+          "amount": "69.6"
+        },
+        {
+          "code": "ERE",
+          "amount": "54.3"
+        },
+        {
+          "code": "LGR",
+          "amount": "2.37"
+        },
+        {
+          "code": "LGR2",
+          "amount": "2.32"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.08"
+        },
+        {
+          "code": "EKA",
+          "amount": "10.4"
+        },
+        {
+          "code": "GG",
+          "amount": "8.6"
+        },
+        {
+          "code": "VOH",
+          "amount": "66.7"
+        },
+        {
+          "code": "LLF",
+          "amount": "3171.8"
+        },
+        {
+          "code": "LT",
+          "amount": "5.4"
+        },
+        {
+          "code": "RDG",
+          "amount": "2.7"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.5"
+        },
+        {
+          "code": "KGA",
+          "amount": "28.7"
+        },
+        {
+          "code": "LGA",
+          "amount": "60.9"
+        },
+        {
+          "code": "BF",
+          "amount": "38.9"
+        },
+        {
+          "code": "OG",
+          "amount": "6.6"
+        },
+        {
+          "code": "OPAV",
+          "amount": "6004.0"
+        },
+        {
+          "code": "OPLK",
+          "amount": "8.4"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2018-12",
+      "year": "2018",
+      "periodStart": "2017-12-31",
+      "periodEnd": "2018-12-30",
+      "accounts": [
+        {
+          "code": "ADK",
+          "amount": "1439"
+        },
+        {
+          "code": "DR",
+          "amount": "240"
+        },
+        {
+          "code": "SLG",
+          "amount": "4397"
+        },
+        {
+          "code": "SDI",
+          "amount": "2996"
+        },
+        {
+          "code": "SDK",
+          "amount": "2756"
+        },
+        {
+          "code": "MI",
+          "amount": "46"
+        },
+        {
+          "code": "KUF",
+          "amount": "3314"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "569"
+        },
+        {
+          "code": "AEK",
+          "amount": "500"
+        },
+        {
+          "code": "SIA",
+          "amount": "3535"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "26"
+        },
+        {
+          "code": "FOU",
+          "amount": "3264"
+        },
+        {
+          "code": "VF",
+          "amount": "421"
+        },
+        {
+          "code": "OAE",
+          "amount": "26"
+        },
+        {
+          "code": "SED",
+          "amount": "7504"
+        },
+        {
+          "code": "ANFF",
+          "amount": "53"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NF",
+          "amount": "-190"
+        },
+        {
+          "code": "SEK",
+          "amount": "530"
+        },
+        {
+          "code": "KBPS",
+          "amount": "0"
+        },
+        {
+          "code": "ANF",
+          "amount": "91"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "23"
+        },
+        {
+          "code": "SAM",
+          "amount": "3635"
+        },
+        {
+          "code": "ORA",
+          "amount": "26"
+        },
+        {
+          "code": "SVA",
+          "amount": "463"
+        },
+        {
+          "code": "SVD",
+          "amount": "46"
+        },
+        {
+          "code": "FI",
+          "amount": "5"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "5"
+        },
+        {
+          "code": "FK",
+          "amount": "194"
+        },
+        {
+          "code": "AFK",
+          "amount": "194"
+        },
+        {
+          "code": "PNKO",
+          "amount": "46"
+        },
+        {
+          "code": "LTP",
+          "amount": "870"
+        },
+        {
+          "code": "OFA",
+          "amount": "629"
+        },
+        {
+          "code": "SFA",
+          "amount": "53"
+        },
+        {
+          "code": "ORS",
+          "amount": "50"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "SF",
+          "amount": "3405"
+        },
+        {
+          "code": "SG",
+          "amount": "6973"
+        },
+        {
+          "code": "REVAN",
+          "amount": "30"
+        },
+        {
+          "code": "SI",
+          "amount": "2996"
+        },
+        {
+          "code": "KBP",
+          "amount": "0"
+        },
+        {
+          "code": "AFKK",
+          "amount": "194"
+        },
+        {
+          "code": "AKG",
+          "amount": "390"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "32"
+        },
+        {
+          "code": "OR",
+          "amount": "26"
+        },
+        {
+          "code": "SV",
+          "amount": "463"
+        },
+        {
+          "code": "USF",
+          "amount": "272"
+        },
+        {
+          "code": "SOK",
+          "amount": "500"
+        },
+        {
+          "code": "SKG",
+          "amount": "2576"
+        },
+        {
+          "code": "REVHO",
+          "amount": "36"
+        },
+        {
+          "code": "SGE",
+          "amount": "7504"
+        },
+        {
+          "code": "SOM",
+          "amount": "3869"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1991"
+        },
+        {
+          "code": "SKO",
+          "amount": "24"
+        },
+        {
+          "code": "PG",
+          "amount": "2406"
+        },
+        {
+          "code": "LL",
+          "amount": "738"
+        },
+        {
+          "code": "LG",
+          "amount": "694"
+        },
+        {
+          "code": "ALG",
+          "amount": "1991"
+        },
+        {
+          "code": "GTI",
+          "amount": "863"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "26"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "266"
+        },
+        {
+          "code": "ARKA",
+          "amount": "1292"
+        },
+        {
+          "code": "TR",
+          "amount": "3.2"
+        },
+        {
+          "code": "KOH",
+          "amount": "0.40"
+        },
+        {
+          "code": "RG",
+          "amount": "8.0"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "17.7"
+        },
+        {
+          "code": "ER",
+          "amount": "9.7"
+        },
+        {
+          "code": "ERE",
+          "amount": "5.0"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.50"
+        },
+        {
+          "code": "LGR2",
+          "amount": "1.32"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.00"
+        },
+        {
+          "code": "EKA",
+          "amount": "7.1"
+        },
+        {
+          "code": "GG",
+          "amount": "13.2"
+        },
+        {
+          "code": "VOH",
+          "amount": "0.9"
+        },
+        {
+          "code": "LLF",
+          "amount": "279.0"
+        },
+        {
+          "code": "LT",
+          "amount": "395.9"
+        },
+        {
+          "code": "RDG",
+          "amount": "1.3"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.7"
+        },
+        {
+          "code": "KGA",
+          "amount": "34.3"
+        },
+        {
+          "code": "LGA",
+          "amount": "58.6"
+        },
+        {
+          "code": "BF",
+          "amount": "85.9"
+        },
+        {
+          "code": "OG",
+          "amount": "8.1"
+        },
+        {
+          "code": "OPAV",
+          "amount": "1498.0"
+        },
+        {
+          "code": "OPLK",
+          "amount": "3.4"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2017-12",
+      "year": "2017",
+      "periodStart": "2017-01-01",
+      "periodEnd": "2017-12-31",
+      "accounts": [
+        {
+          "code": "IPI",
+          "amount": "0"
+        },
+        {
+          "code": "ADI",
+          "amount": "0"
+        },
+        {
+          "code": "ADK",
+          "amount": "1442"
+        },
+        {
+          "code": "IPT",
+          "amount": "0"
+        },
+        {
+          "code": "DR",
+          "amount": "90"
+        },
+        {
+          "code": "SLG",
+          "amount": "3653"
+        },
+        {
+          "code": "SDI",
+          "amount": "5246"
+        },
+        {
+          "code": "SDK",
+          "amount": "5156"
+        },
+        {
+          "code": "MI",
+          "amount": "51"
+        },
+        {
+          "code": "KUF",
+          "amount": "2107"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "2038"
+        },
+        {
+          "code": "AEK",
+          "amount": "474"
+        },
+        {
+          "code": "SIA",
+          "amount": "2716"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "-17"
+        },
+        {
+          "code": "FOU",
+          "amount": "2421"
+        },
+        {
+          "code": "VF",
+          "amount": "2743"
+        },
+        {
+          "code": "OAE",
+          "amount": "-17"
+        },
+        {
+          "code": "ANFF",
+          "amount": "53"
+        },
+        {
+          "code": "SED",
+          "amount": "7581"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NE",
+          "amount": "0"
+        },
+        {
+          "code": "ARI",
+          "amount": "0"
+        },
+        {
+          "code": "SEK",
+          "amount": "504"
+        },
+        {
+          "code": "NF",
+          "amount": "-94"
+        },
+        {
+          "code": "ANF",
+          "amount": "1766"
+        },
+        {
+          "code": "KBPS",
+          "amount": "63"
+        },
+        {
+          "code": "ARK",
+          "amount": "0"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "15"
+        },
+        {
+          "code": "SAM",
+          "amount": "2821"
+        },
+        {
+          "code": "ORA",
+          "amount": "25"
+        },
+        {
+          "code": "SVA",
+          "amount": "825"
+        },
+        {
+          "code": "SVD",
+          "amount": "51"
+        },
+        {
+          "code": "SIV",
+          "amount": "0"
+        },
+        {
+          "code": "BE",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "9"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "9"
+        },
+        {
+          "code": "FK",
+          "amount": "103"
+        },
+        {
+          "code": "AFK",
+          "amount": "103"
+        },
+        {
+          "code": "PNKO",
+          "amount": "53"
+        },
+        {
+          "code": "LTP",
+          "amount": "947"
+        },
+        {
+          "code": "OFA",
+          "amount": "154"
+        },
+        {
+          "code": "SFA",
+          "amount": "53"
+        },
+        {
+          "code": "ORS",
+          "amount": "-4"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "SF",
+          "amount": "3873"
+        },
+        {
+          "code": "REVAN",
+          "amount": "16"
+        },
+        {
+          "code": "SG",
+          "amount": "7077"
+        },
+        {
+          "code": "SI",
+          "amount": "5246"
+        },
+        {
+          "code": "KBP",
+          "amount": "63"
+        },
+        {
+          "code": "AFKK",
+          "amount": "103"
+        },
+        {
+          "code": "AKG",
+          "amount": "377"
+        },
+        {
+          "code": "EBEF",
+          "amount": "0"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "17"
+        },
+        {
+          "code": "SV",
+          "amount": "825"
+        },
+        {
+          "code": "OR",
+          "amount": "-17"
+        },
+        {
+          "code": "USF",
+          "amount": "296"
+        },
+        {
+          "code": "REVHO",
+          "amount": "22"
+        },
+        {
+          "code": "VMF",
+          "amount": "0"
+        },
+        {
+          "code": "SKG",
+          "amount": "3425"
+        },
+        {
+          "code": "SOK",
+          "amount": "474"
+        },
+        {
+          "code": "SOM",
+          "amount": "4761"
+        },
+        {
+          "code": "SGE",
+          "amount": "7581"
+        },
+        {
+          "code": "SKO",
+          "amount": "13"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1653"
+        },
+        {
+          "code": "PG",
+          "amount": "2000"
+        },
+        {
+          "code": "LL",
+          "amount": "840"
+        },
+        {
+          "code": "IPA",
+          "amount": "0"
+        },
+        {
+          "code": "SKR",
+          "amount": "0"
+        },
+        {
+          "code": "LG",
+          "amount": "2177"
+        },
+        {
+          "code": "ALG",
+          "amount": "1653"
+        },
+        {
+          "code": "GTI",
+          "amount": "717"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "-17"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "115"
+        },
+        {
+          "code": "ARKA",
+          "amount": "1336"
+        },
+        {
+          "code": "TR",
+          "amount": "1.4"
+        },
+        {
+          "code": "KOH",
+          "amount": "0.74"
+        },
+        {
+          "code": "RG",
+          "amount": "1.7"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "9.6"
+        },
+        {
+          "code": "ER",
+          "amount": "-0.8"
+        },
+        {
+          "code": "ERE",
+          "amount": "-3.3"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.39"
+        },
+        {
+          "code": "LGR2",
+          "amount": "1.15"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.02"
+        },
+        {
+          "code": "EKA",
+          "amount": "6.6"
+        },
+        {
+          "code": "GG",
+          "amount": "14.0"
+        },
+        {
+          "code": "VOH",
+          "amount": "3.3"
+        },
+        {
+          "code": "LLF",
+          "amount": "161.9"
+        },
+        {
+          "code": "LT",
+          "amount": "108.3"
+        },
+        {
+          "code": "RDG",
+          "amount": "1.0"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.7"
+        },
+        {
+          "code": "KGA",
+          "amount": "45.2"
+        },
+        {
+          "code": "LGA",
+          "amount": "48.2"
+        },
+        {
+          "code": "BF",
+          "amount": "47.7"
+        },
+        {
+          "code": "OG",
+          "amount": "1.9"
+        },
+        {
+          "code": "OPAV",
+          "amount": "1311.5"
+        },
+        {
+          "code": "OPLK",
+          "amount": "5.5"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2016-12",
+      "year": "2016",
+      "periodStart": "2016-01-01",
+      "periodEnd": "2016-12-31",
+      "accounts": [
+        {
+          "code": "IPI",
+          "amount": "0"
+        },
+        {
+          "code": "ADI",
+          "amount": "0"
+        },
+        {
+          "code": "ADK",
+          "amount": "444"
+        },
+        {
+          "code": "IPT",
+          "amount": "0"
+        },
+        {
+          "code": "DR",
+          "amount": "84"
+        },
+        {
+          "code": "SLG",
+          "amount": "2423"
+        },
+        {
+          "code": "SDI",
+          "amount": "1660"
+        },
+        {
+          "code": "SDK",
+          "amount": "1576"
+        },
+        {
+          "code": "MI",
+          "amount": "76"
+        },
+        {
+          "code": "KUF",
+          "amount": "1602"
+        },
+        {
+          "code": "US",
+          "amount": "0"
+        },
+        {
+          "code": "KLON",
+          "amount": "1093"
+        },
+        {
+          "code": "AEK",
+          "amount": "491"
+        },
+        {
+          "code": "SIA",
+          "amount": "1808"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "367"
+        },
+        {
+          "code": "FOU",
+          "amount": "1499"
+        },
+        {
+          "code": "VF",
+          "amount": "749"
+        },
+        {
+          "code": "OAE",
+          "amount": "367"
+        },
+        {
+          "code": "ANFF",
+          "amount": "53"
+        },
+        {
+          "code": "SED",
+          "amount": "6693"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NE",
+          "amount": "0"
+        },
+        {
+          "code": "ARI",
+          "amount": "0"
+        },
+        {
+          "code": "SEK",
+          "amount": "521"
+        },
+        {
+          "code": "NF",
+          "amount": "-27"
+        },
+        {
+          "code": "ANF",
+          "amount": "1541"
+        },
+        {
+          "code": "KBPS",
+          "amount": "302"
+        },
+        {
+          "code": "ARK",
+          "amount": "0"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "17"
+        },
+        {
+          "code": "SAM",
+          "amount": "1938"
+        },
+        {
+          "code": "ORA",
+          "amount": "6"
+        },
+        {
+          "code": "SVA",
+          "amount": "1310"
+        },
+        {
+          "code": "SVD",
+          "amount": "76"
+        },
+        {
+          "code": "SIV",
+          "amount": "0"
+        },
+        {
+          "code": "BE",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "3"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "3"
+        },
+        {
+          "code": "FK",
+          "amount": "31"
+        },
+        {
+          "code": "AFK",
+          "amount": "31"
+        },
+        {
+          "code": "PNKO",
+          "amount": "40"
+        },
+        {
+          "code": "LTP",
+          "amount": "376"
+        },
+        {
+          "code": "OFA",
+          "amount": "434"
+        },
+        {
+          "code": "SFA",
+          "amount": "53"
+        },
+        {
+          "code": "ORS",
+          "amount": "57"
+        },
+        {
+          "code": "BS",
+          "amount": "0"
+        },
+        {
+          "code": "SF",
+          "amount": "3143"
+        },
+        {
+          "code": "REVAN",
+          "amount": "33"
+        },
+        {
+          "code": "SG",
+          "amount": "6172"
+        },
+        {
+          "code": "SI",
+          "amount": "1660"
+        },
+        {
+          "code": "KBP",
+          "amount": "302"
+        },
+        {
+          "code": "AFKK",
+          "amount": "31"
+        },
+        {
+          "code": "AKG",
+          "amount": "725"
+        },
+        {
+          "code": "EBEF",
+          "amount": "0"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "17"
+        },
+        {
+          "code": "SV",
+          "amount": "1310"
+        },
+        {
+          "code": "OR",
+          "amount": "367"
+        },
+        {
+          "code": "USF",
+          "amount": "309"
+        },
+        {
+          "code": "REVHO",
+          "amount": "33"
+        },
+        {
+          "code": "VMF",
+          "amount": "0"
+        },
+        {
+          "code": "SKG",
+          "amount": "3749"
+        },
+        {
+          "code": "SOK",
+          "amount": "491"
+        },
+        {
+          "code": "SOM",
+          "amount": "4756"
+        },
+        {
+          "code": "SGE",
+          "amount": "6693"
+        },
+        {
+          "code": "SKO",
+          "amount": "-310"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1623"
+        },
+        {
+          "code": "PG",
+          "amount": "800"
+        },
+        {
+          "code": "LL",
+          "amount": "936"
+        },
+        {
+          "code": "IPA",
+          "amount": "0"
+        },
+        {
+          "code": "SKR",
+          "amount": "0"
+        },
+        {
+          "code": "LG",
+          "amount": "2563"
+        },
+        {
+          "code": "ALG",
+          "amount": "1623"
+        },
+        {
+          "code": "GTI",
+          "amount": "27"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "367"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "90"
+        },
+        {
+          "code": "ARKA",
+          "amount": "1006"
+        },
+        {
+          "code": "TR",
+          "amount": "1.8"
+        },
+        {
+          "code": "KOH",
+          "amount": "0.33"
+        },
+        {
+          "code": "RG",
+          "amount": "5.1"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "31.4"
+        },
+        {
+          "code": "ER",
+          "amount": "16.9"
+        },
+        {
+          "code": "ERE",
+          "amount": "108.7"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.27"
+        },
+        {
+          "code": "LGR2",
+          "amount": "0.92"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.08"
+        },
+        {
+          "code": "EKA",
+          "amount": "7.8"
+        },
+        {
+          "code": "GG",
+          "amount": "11.8"
+        },
+        {
+          "code": "VOH",
+          "amount": "0.6"
+        },
+        {
+          "code": "LLF",
+          "amount": "76.8"
+        },
+        {
+          "code": "LT",
+          "amount": "629.6"
+        },
+        {
+          "code": "RDG",
+          "amount": "2.8"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.7"
+        },
+        {
+          "code": "KGA",
+          "amount": "56.0"
+        },
+        {
+          "code": "LGA",
+          "amount": "36.2"
+        },
+        {
+          "code": "BF",
+          "amount": "54.9"
+        },
+        {
+          "code": "OG",
+          "amount": "5.3"
+        },
+        {
+          "code": "OPAV",
+          "amount": "553.3"
+        },
+        {
+          "code": "OPLK",
+          "amount": "4.4"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2015-12",
+      "year": "2015",
+      "periodStart": "2015-01-01",
+      "periodEnd": "2015-12-31",
+      "accounts": [
+        {
+          "code": "IPI",
+          "amount": "0"
+        },
+        {
+          "code": "ADI",
+          "amount": "792"
+        },
+        {
+          "code": "ADK",
+          "amount": "441"
+        },
+        {
+          "code": "IPT",
+          "amount": "0"
+        },
+        {
+          "code": "DR",
+          "amount": "739"
+        },
+        {
+          "code": "SLG",
+          "amount": "1015"
+        },
+        {
+          "code": "SDI",
+          "amount": "3945"
+        },
+        {
+          "code": "SDK",
+          "amount": "3206"
+        },
+        {
+          "code": "MI",
+          "amount": "21"
+        },
+        {
+          "code": "KUF",
+          "amount": "2428"
+        },
+        {
+          "code": "US",
+          "amount": "1"
+        },
+        {
+          "code": "KLON",
+          "amount": "895"
+        },
+        {
+          "code": "AEK",
+          "amount": "124"
+        },
+        {
+          "code": "SIA",
+          "amount": "611"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "685"
+        },
+        {
+          "code": "FOU",
+          "amount": "611"
+        },
+        {
+          "code": "VF",
+          "amount": "1595"
+        },
+        {
+          "code": "OAE",
+          "amount": "132"
+        },
+        {
+          "code": "ANFF",
+          "amount": "13"
+        },
+        {
+          "code": "SED",
+          "amount": "3291"
+        },
+        {
+          "code": "SIK",
+          "amount": "30"
+        },
+        {
+          "code": "NE",
+          "amount": "0"
+        },
+        {
+          "code": "ARI",
+          "amount": "0"
+        },
+        {
+          "code": "SEK",
+          "amount": "154"
+        },
+        {
+          "code": "NF",
+          "amount": "-9"
+        },
+        {
+          "code": "ANF",
+          "amount": "72"
+        },
+        {
+          "code": "KBPS",
+          "amount": "146"
+        },
+        {
+          "code": "ARK",
+          "amount": "0"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "19"
+        },
+        {
+          "code": "SAM",
+          "amount": "645"
+        },
+        {
+          "code": "ORA",
+          "amount": "2"
+        },
+        {
+          "code": "SVD",
+          "amount": "21"
+        },
+        {
+          "code": "SIV",
+          "amount": "0"
+        },
+        {
+          "code": "BE",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "2"
+        },
+        {
+          "code": "SAP",
+          "amount": "1"
+        },
+        {
+          "code": "AFI",
+          "amount": "2"
+        },
+        {
+          "code": "FK",
+          "amount": "11"
+        },
+        {
+          "code": "AFK",
+          "amount": "11"
+        },
+        {
+          "code": "PNKO",
+          "amount": "33"
+        },
+        {
+          "code": "LTP",
+          "amount": "1168"
+        },
+        {
+          "code": "OFA",
+          "amount": "278"
+        },
+        {
+          "code": "SFA",
+          "amount": "13"
+        },
+        {
+          "code": "ORS",
+          "amount": "731"
+        },
+        {
+          "code": "BS",
+          "amount": "44"
+        },
+        {
+          "code": "SF",
+          "amount": "2500"
+        },
+        {
+          "code": "REVAN",
+          "amount": "22"
+        },
+        {
+          "code": "SG",
+          "amount": "3137"
+        },
+        {
+          "code": "SI",
+          "amount": "3154"
+        },
+        {
+          "code": "OAEE",
+          "amount": "553"
+        },
+        {
+          "code": "KBP",
+          "amount": "146"
+        },
+        {
+          "code": "AFKK",
+          "amount": "11"
+        },
+        {
+          "code": "AKG",
+          "amount": "545"
+        },
+        {
+          "code": "EBEF",
+          "amount": "0"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "15"
+        },
+        {
+          "code": "SV",
+          "amount": "0"
+        },
+        {
+          "code": "OR",
+          "amount": "685"
+        },
+        {
+          "code": "REVHO",
+          "amount": "23"
+        },
+        {
+          "code": "VMF",
+          "amount": "0"
+        },
+        {
+          "code": "SKG",
+          "amount": "2121"
+        },
+        {
+          "code": "SOK",
+          "amount": "124"
+        },
+        {
+          "code": "SOM",
+          "amount": "2646"
+        },
+        {
+          "code": "SGE",
+          "amount": "3291"
+        },
+        {
+          "code": "SKO",
+          "amount": "45"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1014"
+        },
+        {
+          "code": "LL",
+          "amount": "832"
+        },
+        {
+          "code": "IPA",
+          "amount": "0"
+        },
+        {
+          "code": "SKR",
+          "amount": "0"
+        },
+        {
+          "code": "LG",
+          "amount": "1254"
+        },
+        {
+          "code": "ALG",
+          "amount": "1014"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "685"
+        },
+        {
+          "code": "ANT",
+          "amount": "2"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "741"
+        },
+        {
+          "code": "ARKA",
+          "amount": "524"
+        },
+        {
+          "code": "TR",
+          "amount": "30.5"
+        },
+        {
+          "code": "KOH",
+          "amount": "1.62"
+        },
+        {
+          "code": "RG",
+          "amount": "18.7"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "3.9"
+        },
+        {
+          "code": "ER",
+          "amount": "-387.8"
+        },
+        {
+          "code": "ERE",
+          "amount": "-363.4"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.25"
+        },
+        {
+          "code": "LGR2",
+          "amount": "1.25"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.07"
+        },
+        {
+          "code": "EKA",
+          "amount": "4.7"
+        },
+        {
+          "code": "GG",
+          "amount": "20.4"
+        },
+        {
+          "code": "LT",
+          "amount": "0.0"
+        },
+        {
+          "code": "RDG",
+          "amount": "67.5"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.6"
+        },
+        {
+          "code": "KGA",
+          "amount": "64.4"
+        },
+        {
+          "code": "LGA",
+          "amount": "30.8"
+        },
+        {
+          "code": "BF",
+          "amount": "49.4"
+        },
+        {
+          "code": "OG",
+          "amount": "18.8"
+        },
+        {
+          "code": "OPA",
+          "amount": "1972.5"
+        },
+        {
+          "code": "OPAV",
+          "amount": "1972.5"
+        },
+        {
+          "code": "OPLK",
+          "amount": "3.4"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2014-12",
+      "year": "2014",
+      "periodStart": "2014-01-01",
+      "periodEnd": "2014-12-31",
+      "accounts": [
+        {
+          "code": "IPI",
+          "amount": "0"
+        },
+        {
+          "code": "ADI",
+          "amount": "1431"
+        },
+        {
+          "code": "ADK",
+          "amount": "697"
+        },
+        {
+          "code": "IPT",
+          "amount": "0"
+        },
+        {
+          "code": "DR",
+          "amount": "-486"
+        },
+        {
+          "code": "SLG",
+          "amount": "1007"
+        },
+        {
+          "code": "SDI",
+          "amount": "3509"
+        },
+        {
+          "code": "AEKK",
+          "amount": "-553"
+        },
+        {
+          "code": "SDK",
+          "amount": "3995"
+        },
+        {
+          "code": "MI",
+          "amount": "0"
+        },
+        {
+          "code": "KUF",
+          "amount": "1516"
+        },
+        {
+          "code": "KLON",
+          "amount": "1875"
+        },
+        {
+          "code": "SIA",
+          "amount": "0"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "-491"
+        },
+        {
+          "code": "VF",
+          "amount": "1122"
+        },
+        {
+          "code": "ANFF",
+          "amount": "0"
+        },
+        {
+          "code": "SED",
+          "amount": "1575"
+        },
+        {
+          "code": "SIK",
+          "amount": "22"
+        },
+        {
+          "code": "NE",
+          "amount": "0"
+        },
+        {
+          "code": "ARI",
+          "amount": "0"
+        },
+        {
+          "code": "SEK",
+          "amount": "-531"
+        },
+        {
+          "code": "NF",
+          "amount": "-6"
+        },
+        {
+          "code": "ANF",
+          "amount": "33"
+        },
+        {
+          "code": "KBPS",
+          "amount": "26"
+        },
+        {
+          "code": "ARK",
+          "amount": "0"
+        },
+        {
+          "code": "ANDLØ",
+          "amount": "23"
+        },
+        {
+          "code": "SAM",
+          "amount": "0"
+        },
+        {
+          "code": "ORA",
+          "amount": "0"
+        },
+        {
+          "code": "SVD",
+          "amount": "0"
+        },
+        {
+          "code": "SIV",
+          "amount": "0"
+        },
+        {
+          "code": "BE",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "3"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "IRK",
+          "amount": "-8"
+        },
+        {
+          "code": "AFI",
+          "amount": "3"
+        },
+        {
+          "code": "FK",
+          "amount": "8"
+        },
+        {
+          "code": "AFK",
+          "amount": "8"
+        },
+        {
+          "code": "PNKO",
+          "amount": "29"
+        },
+        {
+          "code": "LTP",
+          "amount": "2175"
+        },
+        {
+          "code": "OFA",
+          "amount": "177"
+        },
+        {
+          "code": "SFA",
+          "amount": "0"
+        },
+        {
+          "code": "ORS",
+          "amount": "-491"
+        },
+        {
+          "code": "SF",
+          "amount": "1548"
+        },
+        {
+          "code": "REVAN",
+          "amount": "11"
+        },
+        {
+          "code": "SG",
+          "amount": "2106"
+        },
+        {
+          "code": "SI",
+          "amount": "2077"
+        },
+        {
+          "code": "OAEE",
+          "amount": "-491"
+        },
+        {
+          "code": "KBP",
+          "amount": "26"
+        },
+        {
+          "code": "AFKK",
+          "amount": "8"
+        },
+        {
+          "code": "AKG",
+          "amount": "454"
+        },
+        {
+          "code": "EBEF",
+          "amount": "0"
+        },
+        {
+          "code": "LEDPS",
+          "amount": "27"
+        },
+        {
+          "code": "SV",
+          "amount": "0"
+        },
+        {
+          "code": "OR",
+          "amount": "-491"
+        },
+        {
+          "code": "REVHO",
+          "amount": "17"
+        },
+        {
+          "code": "VMF",
+          "amount": "0"
+        },
+        {
+          "code": "SKG",
+          "amount": "1099"
+        },
+        {
+          "code": "SOK",
+          "amount": "-553"
+        },
+        {
+          "code": "SOM",
+          "amount": "1575"
+        },
+        {
+          "code": "SGE",
+          "amount": "1575"
+        },
+        {
+          "code": "SKO",
+          "amount": "0"
+        },
+        {
+          "code": "ANLG",
+          "amount": "1007"
+        },
+        {
+          "code": "LL",
+          "amount": "1500"
+        },
+        {
+          "code": "IPA",
+          "amount": "0"
+        },
+        {
+          "code": "SKR",
+          "amount": "0"
+        },
+        {
+          "code": "LG",
+          "amount": "468"
+        },
+        {
+          "code": "ALG",
+          "amount": "1007"
+        },
+        {
+          "code": "GLA",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "-491"
+        },
+        {
+          "code": "ANT",
+          "amount": "1"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "-486"
+        },
+        {
+          "code": "ARKA",
+          "amount": "476"
+        },
+        {
+          "code": "TR",
+          "amount": "-50.9"
+        },
+        {
+          "code": "KOH",
+          "amount": "3.70"
+        },
+        {
+          "code": "RG",
+          "amount": "-13.9"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "-15.1"
+        },
+        {
+          "code": "ER",
+          "amount": "172.0"
+        },
+        {
+          "code": "ERE",
+          "amount": "172.0"
+        },
+        {
+          "code": "LGR",
+          "amount": "1.43"
+        },
+        {
+          "code": "LGR2",
+          "amount": "1.43"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.02"
+        },
+        {
+          "code": "EKA",
+          "amount": "-33.7"
+        },
+        {
+          "code": "GG",
+          "amount": "-4.0"
+        },
+        {
+          "code": "LT",
+          "amount": "0.0"
+        },
+        {
+          "code": "RDG",
+          "amount": "-60.4"
+        },
+        {
+          "code": "FG1",
+          "amount": "0.0"
+        },
+        {
+          "code": "KGA",
+          "amount": "69.8"
+        },
+        {
+          "code": "LGA",
+          "amount": "63.9"
+        },
+        {
+          "code": "BF",
+          "amount": "46.0"
+        },
+        {
+          "code": "OG",
+          "amount": "-13.8"
+        },
+        {
+          "code": "OPA",
+          "amount": "3509.0"
+        },
+        {
+          "code": "OPAV",
+          "amount": "3509.0"
+        },
+        {
+          "code": "OPLK",
+          "amount": "1.6"
+        }
+      ]
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "combined": false,
+      "currency": "NOK",
+      "length": "12",
+      "period": "2013-12",
+      "year": "2013",
+      "periodStart": "2013-01-01",
+      "periodEnd": "2013-12-31",
+      "accounts": [
+        {
+          "code": "IPI",
+          "amount": "0"
+        },
+        {
+          "code": "ADI",
+          "amount": "349"
+        },
+        {
+          "code": "ADK",
+          "amount": "187"
+        },
+        {
+          "code": "IPT",
+          "amount": "0"
+        },
+        {
+          "code": "DR",
+          "amount": "-61"
+        },
+        {
+          "code": "SLG",
+          "amount": "0"
+        },
+        {
+          "code": "SDI",
+          "amount": "652"
+        },
+        {
+          "code": "SDK",
+          "amount": "713"
+        },
+        {
+          "code": "KUF",
+          "amount": "306"
+        },
+        {
+          "code": "KLON",
+          "amount": "440"
+        },
+        {
+          "code": "AEK",
+          "amount": "-62"
+        },
+        {
+          "code": "SIA",
+          "amount": "0"
+        },
+        {
+          "code": "AK",
+          "amount": "30"
+        },
+        {
+          "code": "SOVE",
+          "amount": "-62"
+        },
+        {
+          "code": "VF",
+          "amount": "0"
+        },
+        {
+          "code": "ANFF",
+          "amount": "2"
+        },
+        {
+          "code": "SED",
+          "amount": "323"
+        },
+        {
+          "code": "SIK",
+          "amount": "22"
+        },
+        {
+          "code": "NE",
+          "amount": "0"
+        },
+        {
+          "code": "ARI",
+          "amount": "0"
+        },
+        {
+          "code": "SEK",
+          "amount": "-40"
+        },
+        {
+          "code": "NF",
+          "amount": "0"
+        },
+        {
+          "code": "ANF",
+          "amount": "14"
+        },
+        {
+          "code": "KBPS",
+          "amount": "0"
+        },
+        {
+          "code": "ARK",
+          "amount": "0"
+        },
+        {
+          "code": "SAM",
+          "amount": "2"
+        },
+        {
+          "code": "ORA",
+          "amount": "0"
+        },
+        {
+          "code": "SVA",
+          "amount": "0"
+        },
+        {
+          "code": "SVD",
+          "amount": "0"
+        },
+        {
+          "code": "SIV",
+          "amount": "0"
+        },
+        {
+          "code": "BE",
+          "amount": "0"
+        },
+        {
+          "code": "FI",
+          "amount": "0"
+        },
+        {
+          "code": "SAP",
+          "amount": "0"
+        },
+        {
+          "code": "IRK",
+          "amount": "0"
+        },
+        {
+          "code": "AFI",
+          "amount": "0"
+        },
+        {
+          "code": "FK",
+          "amount": "0"
+        },
+        {
+          "code": "AFK",
+          "amount": "0"
+        },
+        {
+          "code": "LTP",
+          "amount": "526"
+        },
+        {
+          "code": "OFA",
+          "amount": "12"
+        },
+        {
+          "code": "SFA",
+          "amount": "2"
+        },
+        {
+          "code": "ORS",
+          "amount": "-62"
+        },
+        {
+          "code": "SF",
+          "amount": "320"
+        },
+        {
+          "code": "REVAN",
+          "amount": "4"
+        },
+        {
+          "code": "SG",
+          "amount": "363"
+        },
+        {
+          "code": "SI",
+          "amount": "303"
+        },
+        {
+          "code": "OAEE",
+          "amount": "-62"
+        },
+        {
+          "code": "KBP",
+          "amount": "1"
+        },
+        {
+          "code": "AFKK",
+          "amount": "0"
+        },
+        {
+          "code": "AKG",
+          "amount": "325"
+        },
+        {
+          "code": "EBEF",
+          "amount": "0"
+        },
+        {
+          "code": "SV",
+          "amount": "0"
+        },
+        {
+          "code": "OR",
+          "amount": "-62"
+        },
+        {
+          "code": "OKF",
+          "amount": "-8"
+        },
+        {
+          "code": "VMF",
+          "amount": "0"
+        },
+        {
+          "code": "SKG",
+          "amount": "363"
+        },
+        {
+          "code": "SOK",
+          "amount": "-62"
+        },
+        {
+          "code": "SOM",
+          "amount": "321"
+        },
+        {
+          "code": "SGE",
+          "amount": "323"
+        },
+        {
+          "code": "SKO",
+          "amount": "0"
+        },
+        {
+          "code": "LL",
+          "amount": "395"
+        },
+        {
+          "code": "IPA",
+          "amount": "0"
+        },
+        {
+          "code": "SKR",
+          "amount": "0"
+        },
+        {
+          "code": "LG",
+          "amount": "26"
+        },
+        {
+          "code": "ALG",
+          "amount": "0"
+        },
+        {
+          "code": "AARS",
+          "amount": "-62"
+        },
+        {
+          "code": "ANT",
+          "amount": "1"
+        },
+        {
+          "code": "EBITDA",
+          "amount": "-61"
+        },
+        {
+          "code": "ARKA",
+          "amount": "-42"
+        },
+        {
+          "code": "TR",
+          "amount": "-19.2"
+        },
+        {
+          "code": "KOH",
+          "amount": "2.02"
+        },
+        {
+          "code": "RG",
+          "amount": "-9.4"
+        },
+        {
+          "code": "EKAVO",
+          "amount": "-6.1"
+        },
+        {
+          "code": "ER",
+          "amount": "155.0"
+        },
+        {
+          "code": "ERE",
+          "amount": "155.0"
+        },
+        {
+          "code": "LGR",
+          "amount": "0.88"
+        },
+        {
+          "code": "LGR2",
+          "amount": "0.88"
+        },
+        {
+          "code": "LGR3",
+          "amount": "0.00"
+        },
+        {
+          "code": "EKA",
+          "amount": "-12.4"
+        },
+        {
+          "code": "GG",
+          "amount": "-9.1"
+        },
+        {
+          "code": "FG1",
+          "amount": "-0.1"
+        },
+        {
+          "code": "KGA",
+          "amount": "112.4"
+        },
+        {
+          "code": "LGA",
+          "amount": "0.0"
+        },
+        {
+          "code": "BF",
+          "amount": "100.0"
+        },
+        {
+          "code": "OG",
+          "amount": "-9.5"
+        },
+        {
+          "code": "OPA",
+          "amount": "652.0"
+        },
+        {
+          "code": "OPLK",
+          "amount": "1.2"
+        }
+      ]
+    }
+  ],
+  "companyCacheFlows": [],
+  "companyMain": [
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": true,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": true,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": 4,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2022
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": true,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": 5,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2021
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": 4,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2020
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": 2,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2019
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": true,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": 2,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2018
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": 4,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2017
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": true,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": 3,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2016
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": true,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": 2,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": 2,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2015
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": true,
+      "clarification9": false,
+      "clarification10": true,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": 1,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": true,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": 1,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": 1,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": true,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2014
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": true,
+      "clarification9": false,
+      "clarification10": true,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": 1,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": true,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": true,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2013
+    }
+  ],
+  "companyRoles": [
+    {
+      "companyId": "963707169",
+      "elector": null,
+      "name": "Lid Revisjon & Rådgivning",
+      "responsibility": null,
+      "title": "Revisor",
+      "details": {
+        "href": "https://api.proff.no/companies/register/NO/963707169",
+        "rel": "related"
+      }
+    },
+    {
+      "companyId": "984540671",
+      "elector": null,
+      "name": "Økonomihuset AS",
+      "responsibility": null,
+      "title": "Regnskapsfører",
+      "details": {
+        "href": "https://api.proff.no/companies/register/NO/984540671",
+        "rel": "related"
+      }
+    }
+  ],
+  "contactPerson": {
+    "email": null,
+    "name": "Olav Gerhard Haukenes Nygaard",
+    "role": "Daglig leder",
+    "roleCode": "DAGL",
+    "telephoneNumber": null
+  },
+  "corporateAccounts": [],
+  "corporateCacheFlows": [],
+  "corporateMain": [
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2022
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2021
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2020
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2019
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2018
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2017
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2016
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2015
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2014
+    },
+    {
+      "accIncompleteCode": null,
+      "accIncompleteDesc": null,
+      "auditorClarificationComment": null,
+      "auditorName": "LID REVISJON & RÅDGIVNING",
+      "auditorCompanyId": 963707169,
+      "auditorComment": null,
+      "auditorLiquidationSettlement": false,
+      "ceoSalOtherComp": false,
+      "clarification1": false,
+      "clarification2": false,
+      "clarification3": false,
+      "clarification4": false,
+      "clarification5": false,
+      "clarification6": false,
+      "clarification7": false,
+      "clarification8": false,
+      "clarification9": false,
+      "clarification10": false,
+      "clarification14": false,
+      "clarification15": false,
+      "clarification16": false,
+      "clarification17": false,
+      "clarification18": false,
+      "compensationPackage": false,
+      "currency": "NOK",
+      "disclamer1": false,
+      "disclamer2": false,
+      "disclamer3": false,
+      "disclamer4": false,
+      "disclamer5": false,
+      "disclamer6": false,
+      "disclamer7": null,
+      "disclamer8": false,
+      "disclamer9": false,
+      "disclamer10": false,
+      "disclamer11": false,
+      "disclamer12": false,
+      "disclamer13": false,
+      "disclamer14": false,
+      "disclamer15": false,
+      "disclamer17": false,
+      "disclamer18": false,
+      "disclamer19": false,
+      "employees": null,
+      "equityLessThanFiftyPercentShare": false,
+      "equityLoss": false,
+      "givenLoanConf87": false,
+      "haveOtpNoNumbers": false,
+      "length": null,
+      "limitedOperation": false,
+      "liquidationAccounting": false,
+      "manLabourYear": null,
+      "noOperation": false,
+      "notDutyOtp": false,
+      "operationsConsideredNotPresent": false,
+      "optionsBonus": false,
+      "partTimeEmployees": null,
+      "period": null,
+      "shareFiftyPercentLoss": false,
+      "shareLoss": false,
+      "shareTwoThirdsLoss": false,
+      "underLiquidation": false,
+      "year": 2013
+    }
+  ],
+  "mainOffice": null,
+  "personRoles": [
+    {
+      "birthDate": "19071966",
+      "elector": null,
+      "name": "Olav Gerhard Haukenes Nygaard",
+      "personId": "774065",
+      "responsibility": null,
+      "title": "Daglig leder",
+      "titleCode": "DAGL",
+      "postalAddress": {
+        "addressLine": "Brakehaugen 10",
+        "boxAddressLine": null,
+        "postPlace": "NESTTUN",
+        "zipCode": "5221"
+      },
+      "details": {
+        "href": "https://api.proff.no/persons/business/NO/774065",
+        "rel": "related"
+      }
+    },
+    {
+      "birthDate": "06121964",
+      "elector": null,
+      "name": "Ivar Kjærvik Hanson",
+      "personId": "201166",
+      "responsibility": null,
+      "title": "Styrets leder",
+      "titleCode": "LEDE",
+      "postalAddress": {
+        "addressLine": "Sundts Veg 89",
+        "boxAddressLine": null,
+        "postPlace": "NESTTUN",
+        "zipCode": "5221"
+      },
+      "details": {
+        "href": "https://api.proff.no/persons/business/NO/201166",
+        "rel": "related"
+      }
+    },
+    {
+      "birthDate": "11081954",
+      "elector": null,
+      "name": "Anna Aabø",
+      "personId": "16862",
+      "responsibility": null,
+      "title": "Styremedlem",
+      "titleCode": "MEDL",
+      "postalAddress": {
+        "addressLine": "Munkehagen 3",
+        "boxAddressLine": null,
+        "postPlace": "STAVANGER",
+        "zipCode": "4009"
+      },
+      "details": {
+        "href": "https://api.proff.no/persons/business/NO/16862",
+        "rel": "related"
+      }
+    },
+    {
+      "birthDate": "30121947",
+      "elector": null,
+      "name": "Wilkin Elias Wilkensen",
+      "personId": "505903",
+      "responsibility": null,
+      "title": "Styremedlem",
+      "titleCode": "MEDL",
+      "postalAddress": {
+        "addressLine": "Tertneshøyden 45 B",
+        "boxAddressLine": null,
+        "postPlace": "TERTNES",
+        "zipCode": "5113"
+      },
+      "details": {
+        "href": "https://api.proff.no/persons/business/NO/505903",
+        "rel": "related"
+      }
+    }
+  ],
+  "shareholders": [
+    {
+      "companyId": null,
+      "firstName": null,
+      "lastName": null,
+      "name": "Gerhard Haukenes Nygaard",
+      "numberOfShares": 1000,
+      "share": "100",
+      "details": null
+    }
+  ],
+  "signatories": [
+    "Daglig leder alene."
+  ],
+  "signatoryRoles": [],
+  "procuration": [
+    "Daglig leder alene."
+  ],
+  "procurationRoles": [],
+  "subsidiaries": [],
+  "creditRating": null,
+  "analyses": null,
+  "shortAnalyses": null,
+  "mortgages": {
+    "list": [
+      {
+        "type": "DT",
+        "groupType": "F",
+        "creditor": "INNOVASJON NORGE",
+        "date": "2016-10-20",
+        "lastModified": null,
+        "amount": 100000000
+      },
+      {
+        "type": "VL",
+        "groupType": "F",
+        "creditor": "INNOVASJON NORGE",
+        "date": "2016-10-20",
+        "lastModified": null,
+        "amount": 100000000
+      },
+      {
+        "type": "FA",
+        "groupType": "F",
+        "creditor": "INNOVASJON NORGE",
+        "date": "2016-10-20",
+        "lastModified": null,
+        "amount": 100000000
+      },
+      {
+        "type": "DT",
+        "groupType": "F",
+        "creditor": "INNOVASJON NORGE",
+        "date": "2017-07-03",
+        "lastModified": null,
+        "amount": 150000000
+      },
+      {
+        "type": "VL",
+        "groupType": "F",
+        "creditor": "INNOVASJON NORGE",
+        "date": "2017-07-03",
+        "lastModified": null,
+        "amount": 150000000
+      },
+      {
+        "type": "FA",
+        "groupType": "F",
+        "creditor": "INNOVASJON NORGE",
+        "date": "2017-07-03",
+        "lastModified": null,
+        "amount": 150000000
+      },
+      {
+        "type": "FA",
+        "groupType": "F",
+        "creditor": "SPAREBANKEN VEST",
+        "date": "2020-04-22",
+        "lastModified": null,
+        "amount": 1000000000
+      },
+      {
+        "type": "DT",
+        "groupType": "F",
+        "creditor": "SPAREBANKEN VEST",
+        "date": "2020-04-22",
+        "lastModified": null,
+        "amount": 50000000
+      },
+      {
+        "type": "VL",
+        "groupType": "F",
+        "creditor": "SPAREBANKEN VEST",
+        "date": "2020-04-22",
+        "lastModified": null,
+        "amount": 50000000
+      }
+    ],
+    "overview": {
+      "voluntary": {
+        "count": 9,
+        "sum": 1850000000
+      },
+      "compulsory": {
+        "count": 0,
+        "sum": 0
+      },
+      "other": {
+        "count": 0,
+        "sum": 0
+      }
+    }
+  },
+  "centralApproval": {
+    "status": {
+      "approved": false
+    }
+  },
+  "corporateStructure": null,
+  "publicListings": [],
+  "keyFigures": null,
+  "businessUnitId": null,
+  "companyId": "999552935",
+  "email": "post@cdt.no",
+  "establishedDate": "2013-01-03",
+  "foundationDate": "03.01.2013",
+  "foundationYear": "2013",
+  "liquidationDate": null,
+  "homePage": "http://www.cdt.no",
+  "marketingProtection": false,
+  "naceCategories": [
+    "28.910 Produksjon av maskiner og utstyr til metallurgisk industri"
+  ],
+  "name": "CYBERNETIC DRILLING TECHNOLOGIES AS",
+  "numberOfEmployees": "8",
+  "organisationNumber": "999552935",
+  "sOrganisationNumber": null,
+  "profit": "8004",
+  "revenue": "18158",
+  "link": {
+    "href": "https://api.proff.no/companies/register/NO/999552935",
+    "rel": "self"
+  },
+  "location": {
+    "countryPart": "Vestlandet",
+    "county": "Vestland",
+    "municipality": "Bergen",
+    "coordinates": [
+      {
+        "XCoordinate": 5.32723316,
+        "YCoordinate": 60.38210389,
+        "coordinateSystem": "EPSG:4326"
+      }
+    ]
+  },
+  "phoneNumbers": {
+    "faxNumber": null,
+    "mobilePhone": null,
+    "mobilePhone2": null,
+    "telephoneNumber": "55558820",
+    "telephoneNumber2": null
+  },
+  "postalAddress": {
+    "addressLine": "Thormøhlens gate 49A",
+    "boxAddressLine": null,
+    "postPlace": "Bergen",
+    "zipCode": "5006"
+  },
+  "status": {
+    "description": null,
+    "statusFlag": "ACTIVE"
+  },
+  "visitorAddress": {
+    "addressLine": "Thormøhlens gate 49A",
+    "boxAddressLine": null,
+    "postPlace": "Bergen",
+    "zipCode": "5006"
+  },
+  "sectorCode": "2100",
+  "companyPurpose": "Fremstilling og salg av styresystemer for automatisert boring og andre produkter og tjenester som naturlig faller sammen med dette, herunder å delta i andre selskaper med lignende virksomhet, kjøp og salg av aksjer, eller på annen måte gjøre seg interessert i andre foretagender."
+}

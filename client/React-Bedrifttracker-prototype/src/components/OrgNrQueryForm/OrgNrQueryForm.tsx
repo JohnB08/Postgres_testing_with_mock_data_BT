@@ -1,6 +1,7 @@
 import { Autocomplete, TextField } from "@mui/material"
 import { SearchObject, useData } from '../ContextWrapper/ContextWrapper'
 import { useState, FormEvent} from 'react'
+import {Unstable_NumberInput as NumberInput, numberInputClasses} from "@mui/base";
 import {autocompleteOptions, autocompleteOptions2} from "../../UtilJson/autocompleteHelper"
 
 
@@ -56,6 +57,9 @@ return (
         renderInput={(params) => <TextField {...params} label="Sammenlign med fase."/>}
         onChange={(event, option)=>option === null ? null : handleAddFase(option)}
         />
+        <div>
+          <NumberInput/><NumberInput/>
+        </div>
       
       <button className="subBtn" type='submit' onClick={handleSubmit}>Search</button>
     </form>

@@ -1,5 +1,5 @@
 import fs from "fs"
-import { economicCodes } from "../mockData/responseConstructor.js";
+import { economicCodes } from "../LocalData/EconomicCodes.js";
 
 
 /* DROPP TAGS, RESTRUKTURER TIL INKUBATORSTATUS ISTEDEN */

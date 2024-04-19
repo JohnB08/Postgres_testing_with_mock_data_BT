@@ -1,6 +1,6 @@
 import { db } from "../dbConfig/dbConfig.js";
 import { isKey } from "../verifierFuncs/isKey.js";
-import { economicCodes } from "../mockData/responseConstructor.js";
+import { economicCodes } from "../LocalData/EconomicCodes.js";
 export const economicTables = Object.keys(economicCodes).map(key => `CODE_${key} DOUBLE PRECISION DEFAULT NULL, `).join("");
 const createCompanyNameTable = async () => {
     try {

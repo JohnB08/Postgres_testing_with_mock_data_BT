@@ -33,7 +33,11 @@ type DataContextType = {
     setCurrentOrgIndex: (param:number)=>void
     keyAutoCompleteOptionArray: AutocompleteOption
     orgArray: OrgTableType[] | null
-    currentOrgIndex: number
+    currentOrgIndex: number,
+    toYear: number,
+    fromYear: number,
+    setFromYear: (param:number)=>void,
+    setToYear: (param:number)=>void,
 }
 
 
@@ -51,7 +55,11 @@ const initialDataContext = {
     queryType: null,
     orgArray: null,
     setCurrentOrgIndex: ()=>{},
-    currentOrgIndex: 0
+    currentOrgIndex: 0,
+    fromYear: 2013,
+    toYear: new Date().getFullYear(),
+    setToYear: ()=>{},
+    setFromYear: ()=>{}
 }
 const dataContext = createContext<DataContextType>(initialDataContext);
 
@@ -98,6 +106,11 @@ export const DataProvider = ({children}: ProviderProps) =>{
     const [keyAutoCompleteOptionArray, setKeyAutoCompleteOptionArray] = useState<AutocompleteOption>([])
     const [currentOrgIndex, setCurrentOrgIndex] = useState<number>(0)
     const [orgArray, setOrgArray] = useState<OrgTableType[] | null>(null)
+    const [fromYear, setFromYear] = useState<number>(2013);
+    const [toYear, setToYear] = useState<number>(new Date().getFullYear())
+    const [inputValue, setInputValue] = useState<SearchObject>({
+    id: "statusQuery"
+    })
     useEffect(()=>{
         setCurrentOrgIndex(0)
         setErrorState(false)
@@ -204,7 +217,7 @@ export const DataProvider = ({children}: ProviderProps) =>{
        updateGraphData();
     }, [data, currentKey, currentOrgIndex])
     return (
-        <dataContext.Provider value={{currentOrgIndex, queryType, setQueryType, data, urlParams, setUrl, setCurrentKey, currentCompany, currentDescription, dataset, keyAutoCompleteOptionArray, errorState, orgArray, setCurrentOrgIndex}}>
+        <dataContext.Provider value={{setFromYear, setToYear, toYear, fromYear, currentOrgIndex, queryType, setQueryType, data, urlParams, setUrl, setCurrentKey, currentCompany, currentDescription, dataset, keyAutoCompleteOptionArray, errorState, orgArray, setCurrentOrgIndex}}>
             {children}
         </dataContext.Provider>
     )

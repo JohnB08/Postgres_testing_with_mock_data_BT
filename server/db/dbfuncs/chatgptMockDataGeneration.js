@@ -1,5 +1,5 @@
 import fs from "fs";
-import { economicCodes } from "../mockData/responseConstructor.js";
+import { economicCodes } from "../LocalData/EconomicCodes.js";
 /* DROPP TAGS, RESTRUKTURER TIL INKUBATORSTATUS ISTEDEN */
 /* Chatgpt made this, and it worked! (had to add typing, but it works.) I'll add some parameters to change how many years, and how many companies i want it to generate.
 Then i'll add a fs function at the end to update my mockData.json file.*/
