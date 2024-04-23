@@ -7,7 +7,7 @@ const options = {
 };
 console.log(process.cwd())
 
-const workBook = xlsx.readFile("./db/LocalData/INKTotal.xlsx", options)
+const workBook = xlsx.readFile("./testDataSheet/INKTotal.xlsx", options)
 const sheetName = workBook.SheetNames[1]
 const sheet = workBook.Sheets[sheetName]
 const data = xlsx.utils.sheet_to_json(sheet)
