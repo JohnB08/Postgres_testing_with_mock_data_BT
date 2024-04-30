@@ -317,3 +317,29 @@ BEGIN
 END;
 $$ language plpgsql
 */
+/*
+CREATE OR REPLACE FUNCTION seed_avg_table() returns void as $$
+    DECLARE
+        fase_array text[];
+        fase_name text;
+    BEGIN
+        SELECT DISTINCT Array_agg(fase) INTO fase_array FROM lokal_årlig_bedrift_fase_rapport;
+        FOREACH fase_name IN ARRAY fase_array
+        LOOP
+            SELECT * FROM seed_avg_data_pr_year(string_to_array(fase_name));
+        END LOOP;
+    END;
+$$ language plpgsql;
+ */
+/* CREATE OR REPLACE FUNCTION seed_avg_data_pr_year(fase_array text[]) RETURNS VOID AS $$
+DECLARE
+    yearly_data json;
+BEGIN
+    FOR i IN 2013..2022
+        LOOP
+            SELECT create_yearly_object(Array_agg(fase_name), i) INTO yearly_data;
+            INSERT INTO avg_data_year_fase (fase, rapportår, avg_data)
+            VALUES (Array_to_string(fase_name, ', '), i, yearly_data);
+        END LOOP;
+END;
+$$ language plpgsql; */ 

@@ -76,7 +76,6 @@ export const searchByOrgNr = async(companyOrgNr: string, startYear: number = 0, 
     }
 }
 
-
 /**
  * funksjon for å hente tagArray for gjeldene bedrift_id
  * @param companyId 
